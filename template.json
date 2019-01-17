@@ -1,5 +1,6 @@
 "workbench.colorCustomizations": {
     "activityBarBadge.background": "@5",
+    "activityBarBadge.foreground": "@2",
     "list.activeSelectionForeground": "@5",
     "list.inactiveSelectionForeground": "@5",
     "list.highlightForeground": "@5",
@@ -37,6 +38,8 @@
     "activityBar.foreground": "@3",
     "panel.background": "@2",
     "statusBar.background": "@3",
+    "statusBar.foreground": "@1",
     "breadcrumb.background": "@2",
-    "sideBar.background": "@1"
+    "sideBar.background": "@1",
+    "sideBarSectionHeader.background": "@2"
 }
