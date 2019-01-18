@@ -37,9 +37,13 @@
     "scrollbar.shadow": "@1",
     "activityBar.foreground": "@3",
     "panel.background": "@2",
-    "statusBar.background": "@3",
-    "statusBar.foreground": "@1",
-    "breadcrumb.background": "@2",
+    "statusBar.background": "@1",
+    "statusBar.foreground": "@3",
+    // "breadcrumb.background": "@2",
     "sideBar.background": "@1",
-    "sideBarSectionHeader.background": "@2"
+    "sideBarSectionHeader.background": "@2",
+    "editorWhitespace.foreground": "@1",
+    "activityBar.border": "@1",
+    "activityBar.inactiveForeground": "@4",
+    "sideBar.foreground": "@4"
 }
