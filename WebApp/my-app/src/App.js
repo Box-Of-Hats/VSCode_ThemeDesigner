@@ -6,9 +6,28 @@ class App extends Component {
         super(props);
         this.state = {
             selectedColor: "#FFFFFF",
+            codeValues: {
+                "activityBarBadge.background": "#FFD3F1",
+                "activityBarBadge.foreground": "#30423F",
+                "list.activeSelectionForeground": "#FFD3F1",
+                "list.inactiveSelectionForeground": "#FFD3F1",
+                "list.highlightForeground": "#FFD3F1"
+            }
         };
         this.handleColorChange = this.handleColorChange.bind(this);
+        this.handleAssetChange = this.handleAssetChange.bind(this);
         this.getColor = this.getColor.bind(this);
+    }
+
+    handleAssetChange(key, value) {
+        // this.setState((prevState) => { prevState ]]} )
+        let prevCodeValues = JSON.parse(JSON.stringify(this.state.codeValues))
+        //make changes to ingredients
+        prevCodeValues[key] = value;//whatever new ingredients are
+        this.setState({
+            codeValues: prevCodeValues
+        })
+
     }
 
     getColor() {
@@ -22,8 +41,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-
-                <div style={{ float: "left" }}>
+                <div>
                     Current: <span style={{ backgroundColor: this.state.selectedColor, padding: "3px" }}>{this.state.selectedColor}</span>
                     <div className="colorPickers">
                         <ColorPicker color="#FF0000" handleSelect={this.handleColorChange} />
@@ -34,13 +52,10 @@ class App extends Component {
                         <ColorPicker handleSelect={this.handleColorChange} />
                     </div>
                 </div>
-                <div style={{ float: "right" }}>
-                    <ColorableAsset id="editor.background1" color="#ffccbb" getColor={this.getColor} />
-                    <ColorableAsset id="editor.foreground2" color="#ffccbb" getColor={this.getColor} />
-                    <ColorableAsset id="editor.background3" color="#ffccbb" getColor={this.getColor} />
-                    <ColorableAsset id="editor.background4" color="#ffccbb" getColor={this.getColor} />
+                <div>
+                    {Object.keys(this.state.codeValues).map((i, key) => { return <ColorableAsset key={key} id={i} color={this.state.codeValues[i]} getColor={this.getColor} handleChange={this.handleAssetChange} /> })}
                 </div>
-                <CodePreview />
+                <CodePreview keyValues={this.state.codeValues} />
 
             </div>
         );
@@ -50,12 +65,22 @@ class App extends Component {
 class CodePreview extends Component {
     constructor(props) {
         super(props)
+        this.generatePreviewText = this.generatePreviewText.bind(this);
+    }
+
+    generatePreviewText() {
+        var text = "";
+        Object.keys(this.props.keyValues).forEach(key => {
+            text = text + key + ": " + this.props.keyValues[key] + ",\n";
+        });
+        return text
     }
 
     render() {
+        var codePreview = this.generatePreviewText();
         return (
-            <div>
-                CODE PREVIEW
+            <div className="codePreview">
+                {codePreview.split("\n").map((i, key) => { return <div className="codeLine" key={key}>{i}</div> })}
             </div>
         )
     }
@@ -68,21 +93,21 @@ class ColorableAsset extends Component {
             color: props.color ? props.color : "#efefef"
         }
         this.handleClick = this.handleClick.bind(this);
+        //this.handleAssetChange = this.handleAssetChange.bind(this);
     }
 
     handleClick() {
         console.log("Clicked", this.props.id);
-        console.log("Setting color to", this.props.getColor())
-        this.setState({ color: this.props.getColor() })
+        console.log("Setting color to", this.props.getColor());
+        this.setState({ color: this.props.getColor() });
+        this.props.handleChange(this.props.id, this.props.getColor());
     }
 
     render() {
         return (
             <div style={{
-                width: "100px",
-                height: "100px",
                 backgroundColor: this.state.color
-            }} onClick={this.handleClick}>
+            }} className="colorableAsset" onClick={this.handleClick}>
 
             </div >
         )
@@ -101,6 +126,7 @@ class ColorPicker extends Component {
 
     handleChange(event) {
         this.setState({ color: event.target.value });
+        this.props.handleSelect(event.target.value);
     }
 
     handleSelect(event) {
