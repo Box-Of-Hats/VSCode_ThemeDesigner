@@ -5,57 +5,63 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedColor: "#FFFFFF",
-            codeValues: {
-                "activityBarBadge.background": "#FFD3F1",
-                "activityBarBadge.foreground": "#30423F",
-                "list.activeSelectionForeground": "#FFD3F1",
-                "list.inactiveSelectionForeground": "#FFD3F1",
-                "list.highlightForeground": "#FFD3F1"
-            }
+            palette: {
+                "c0": "#FF0000",
+                "c1": "#00FF00",
+                "c2": "#0000FF",
+                "c3": "#F000F0",
+                "c4": "#F0F000",
+                "c5": "#000000",
+                "c6": "#FFFFFF",
+            },
+            assets: {
+                "activityBar.background": "c0",
+                "editor.background": "c1"
+            },
+            selectedColorName: "c0"
         };
         this.handleColorChange = this.handleColorChange.bind(this);
-        this.handleAssetChange = this.handleAssetChange.bind(this);
-        this.getColor = this.getColor.bind(this);
+        this.updateAsset = this.updateAsset.bind(this);
+        this.updatePalette = this.updatePalette.bind(this);
     }
 
-    handleAssetChange(key, value) {
-        // this.setState((prevState) => { prevState ]]} )
-        let prevCodeValues = JSON.parse(JSON.stringify(this.state.codeValues))
-        //make changes to ingredients
-        prevCodeValues[key] = value;//whatever new ingredients are
+    handleColorChange(colorName) {
+        this.setState({ selectedColorName: colorName });
+    }
+
+
+    updateAsset(assetName) {
+        let prev = JSON.parse(JSON.stringify(this.state.assets))
+
+        prev[assetName] = this.state.selectedColorName;
         this.setState({
-            codeValues: prevCodeValues
+            assets: prev
         })
-
     }
 
-    getColor() {
-        return this.state.selectedColor;
-    }
-
-    handleColorChange(setColor) {
-        this.setState({ selectedColor: setColor });
+    updatePalette(colorName, colorValue) {
+        //Update a value in the palette
+        let prev = JSON.parse(JSON.stringify(this.state.palette))
+        prev[colorName] = colorValue;
+        this.setState({
+            palette: prev
+        })
     }
 
     render() {
         return (
             <div className="App">
                 <div>
-                    Current: <span style={{ backgroundColor: this.state.selectedColor, padding: "3px" }}>{this.state.selectedColor}</span>
+                    Current: <span style={{ backgroundColor: this.state.palette[this.state.selectedColorName], padding: "3px" }}>{this.state.selectedColorName}</span>
                     <div className="colorPickers">
-                        <ColorPicker color="#FF0000" handleSelect={this.handleColorChange} />
-                        <ColorPicker handleSelect={this.handleColorChange} />
-                        <ColorPicker handleSelect={this.handleColorChange} />
-                        <ColorPicker handleSelect={this.handleColorChange} />
-                        <ColorPicker handleSelect={this.handleColorChange} />
-                        <ColorPicker handleSelect={this.handleColorChange} />
+                        {Object.keys(this.state.palette).map((i, key) => {
+                            return <ColorPicker key={key} colorName={i} color={this.state.palette[i]}
+                                handleChange={this.updatePalette} handleSelect={this.handleColorChange} />
+                        })}
                     </div>
                 </div>
-                <div>
-                    {Object.keys(this.state.codeValues).map((i, key) => { return <ColorableAsset key={key} id={i} color={this.state.codeValues[i]} getColor={this.getColor} handleChange={this.handleAssetChange} /> })}
-                </div>
-                <CodePreview keyValues={this.state.codeValues} />
+                <CodePreview assets={this.state.assets} palette={this.state.palette} />
+                <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} />
 
             </div>
         );
@@ -70,8 +76,8 @@ class CodePreview extends Component {
 
     generatePreviewText() {
         var text = "";
-        Object.keys(this.props.keyValues).forEach(key => {
-            text = text + key + ": " + this.props.keyValues[key] + ",\n";
+        Object.keys(this.props.assets).forEach(key => {
+            text = text + key + ": " + this.props.palette[this.props.assets[key]] + ",\n";
         });
         return text
     }
@@ -86,28 +92,21 @@ class CodePreview extends Component {
     }
 }
 
-class ColorableAsset extends Component {
+class WindowPreview extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            color: props.color ? props.color : "#efefef"
-        }
         this.handleClick = this.handleClick.bind(this);
-        //this.handleAssetChange = this.handleAssetChange.bind(this);
     }
 
-    handleClick() {
-        console.log("Clicked", this.props.id);
-        console.log("Setting color to", this.props.getColor());
-        this.setState({ color: this.props.getColor() });
-        this.props.handleChange(this.props.id, this.props.getColor());
+    handleClick(assetName) {
+        this.props.handleChange(assetName);
     }
 
     render() {
         return (
-            <div style={{
-                backgroundColor: this.state.color
-            }} className="colorableAsset" onClick={this.handleClick}>
+            <div className="windowPreview">
+                <div className="activityBar" onClick={() => this.handleClick("activityBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["activityBar.background"]] }}></div>
+                <div className="editor" onClick={() => this.handleClick("editor.background")} style={{ backgroundColor: this.props.palette[this.props.assets["editor.background"]] }}></div>
 
             </div >
         )
@@ -118,28 +117,33 @@ class ColorPicker extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: props.color ? props.color : "#FFFFFF"
+            value: props.color ? props.color : "#FFFFFF"
         }
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
+        this.handleColorChange = this.handleColorChange.bind(this);
+        this.handleSelectButtonClick = this.handleSelectButtonClick.bind(this);
     }
 
-    handleChange(event) {
-        this.setState({ color: event.target.value });
-        this.props.handleSelect(event.target.value);
+    handleColorChange(event) {
+        event.preventDefault();
+        console.log("ColorPicker.handleColorChange: ", event.target.value);
+        this.setState({ value: event.value });
+        this.props.handleChange(this.props.colorName, event.target.value);
+        this.props.handleSelect(this.props.colorName);
     }
 
-    handleSelect(event) {
-        this.props.handleSelect(this.state.color);
+    handleSelectButtonClick(event) {
+        event.preventDefault();
+        console.log("ColorPicker.handleSelectButtonClick:", this.props.colorName);
+        this.props.handleSelect(this.props.colorName);
     }
 
     render() {
         return (
             <div className="colorPicker">
-                <label>Color:
-                <input className="colorPicker__colorInput" onChange={this.handleChange} value={this.state.color} type="color"></input>
+                <label>{this.props.colorName}
+                    <input className="colorPicker__colorInput" onChange={this.handleColorChange} value={this.state.value} type="color"></input>
                 </label>
-                <input className="colorPicker__button" type="button" value="Select" onClick={this.handleSelect} />
+                <input className="colorPicker__button" type="button" value="Select" onClick={this.handleSelectButtonClick} />
             </div>
         );
     }

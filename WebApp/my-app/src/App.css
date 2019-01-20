@@ -1,3 +1,7 @@
+html {
+    box-sizing: border-box;
+}
+
 .App {
     padding: 20px;
     background-color: #efefef;
@@ -53,4 +57,27 @@
     width: 100px;
     height: 100px;
     display: inline-block;
+}
+
+/* Window Preview */
+
+.windowPreview {
+    width: 260px;
+    height: 200px;
+    background-color: #030303;
+    border: 2px solid black;
+}
+
+.activityBar {
+    /* background-color: #ffee00; */
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+}
+
+.editor {
+    /* background-color: #3cc7cc; */
+    width: 70%;
+    display: inline-block;
+    height: 100%;
 }
