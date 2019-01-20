@@ -51,18 +51,17 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div>
-                    Current: <span style={{ backgroundColor: this.state.palette[this.state.selectedColorName], padding: "3px" }}>{this.state.selectedColorName}</span>
+                <div className="sideBar">
                     <div className="colorPickers">
+                        <div className="title">Current: <span style={{ backgroundColor: this.state.palette[this.state.selectedColorName], padding: "3px" }}>{this.state.selectedColorName}</span></div>
                         {Object.keys(this.state.palette).map((i, key) => {
                             return <ColorPicker key={key} colorName={i} color={this.state.palette[i]}
                                 handleChange={this.updatePalette} handleSelect={this.handleColorChange} />
                         })}
                     </div>
                 </div>
-                <CodePreview assets={this.state.assets} palette={this.state.palette} />
                 <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} />
-
+                <CodePreview assets={this.state.assets} palette={this.state.palette} />
             </div>
         );
     }

@@ -1,4 +1,4 @@
-html {
+* {
     box-sizing: border-box;
 }
 
@@ -7,8 +7,15 @@ html {
     background-color: #efefef;
 }
 
+.title {
+    margin: 10px auto;
+    display: inline-block;
+}
+
 .colorPickers {
     margin-top: 10px;
+    display: inline-block;
+    height: 100%;
 }
 
 .colorPicker {
@@ -45,39 +52,43 @@ html {
 }
 
 .codePreview {
+    display: inline-block;
     border: 3px solid black;
     border-radius: 6px;
     background-color: #414141;
     color: #efefef;
     padding: 5px;
     font-family: 'Lucida Sans', monospace;
+    width: 100%;
 }
 
-.colorableAsset {
-    width: 100px;
-    height: 100px;
+.sideBar {
+    background-color: #bebebe;
+    width: 10%;
     display: inline-block;
+    padding: 6px;
 }
 
 /* Window Preview */
 
 .windowPreview {
-    width: 260px;
-    height: 200px;
+    display: inline-block;
+    width: 1408px;
+    height: 792px;
     background-color: #030303;
     border: 2px solid black;
 }
 
 .activityBar {
     /* background-color: #ffee00; */
-    width: 30%;
+    width: 6%;
     height: 100%;
     display: inline-block;
 }
 
 .editor {
     /* background-color: #3cc7cc; */
-    width: 70%;
+    width: 94%;
     display: inline-block;
     height: 100%;
 }
