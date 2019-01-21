@@ -94,10 +94,10 @@ class CodePreview extends Component {
 
     render() {
         var codePreview = this.generatePreviewText();
+
         return (
-            <div className="codePreview">
-                {codePreview.split("\n").map((i, key) => { return <div className="codeLine" key={key}>{i}</div> })}
-            </div>
+            <textarea className="codePreview" value={codePreview} readOnly >
+            </textarea >
         )
     }
 }
