@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
+import './style/App.css';
+// import vsCodeLogo from './img/vsCodeLogo.png'; // with import
+const vsCodeLogo = require('./img/vsCodeLogo.png');
 
 class App extends Component {
     constructor(props) {
@@ -54,17 +56,22 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="appSideBar">
-                    <div className="colorPickers">
-                        <div className="title">Current: <span style={{ backgroundColor: this.state.palette[this.state.selectedColorName], padding: "3px" }}>{this.state.selectedColorName}</span></div>
-                        {Object.keys(this.state.palette).map((i, key) => {
-                            return <ColorPicker key={key} colorName={i} color={this.state.palette[i]}
-                                handleChange={this.updatePalette} handleSelect={this.handleColorChange} />
-                        })}
+                <div className="header"><img src={vsCodeLogo}></img><span>VSCode Theme Designer</span></div>
+                <div className="appSideBarWrapper">
+                    <div className="appSideBar">
+                        <div className="colorPickers">
+                            {Object.keys(this.state.palette).map((i, key) => {
+                                return <ColorPicker key={key} colorName={i} color={this.state.palette[i]}
+                                    handleChange={this.updatePalette} handleSelect={this.handleColorChange}
+                                    selected={i === this.state.selectedColorName} />
+                            })}
+                        </div>
+                        <CodePreview assets={this.state.assets} palette={this.state.palette} />
                     </div>
                 </div>
-                <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} />
-                <CodePreview assets={this.state.assets} palette={this.state.palette} />
+                <div className="windowPreviewContainer">
+                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} />
+                </div>
             </div>
         );
     }
@@ -95,6 +102,15 @@ class CodePreview extends Component {
     }
 }
 
+function Asset(props) {
+    return (
+        <div className={`asset ${props.className}`} onClick={() => props.handleClick(props.assetName)}
+            style={props.style ? props.style : { backgroundColor: props.palette[props.assets[props.assetName]] }}>
+            {props.inner}
+        </div >
+    );
+}
+
 class WindowPreview extends Component {
     constructor(props) {
         super(props);
@@ -106,13 +122,14 @@ class WindowPreview extends Component {
     }
 
     render() {
+        const { assets, palette } = this.props;
         return (
             <div className="windowPreview">
-                <div className="titleBar" onClick={() => this.handleClick("titleBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["titleBar.background"]] }}>File Edit Selection View Go Debug Terminal Help</div>
-                    <div className="activityBar" onClick={() => this.handleClick("activityBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["activityBar.background"]] }}>A</div>
-                    <div className="sideBar" onClick={() => this.handleClick("sideBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["sideBar.background"]] }}></div>
-                    <div className="editor" onClick={() => this.handleClick("editor.background")} style={{ backgroundColor: this.props.palette[this.props.assets["editor.background"]] }}></div>
-                <div className="statusBar" onClick={() => this.handleClick("statusBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["statusBar.background"]] }}>This is the status bar</div>
+                <Asset className="titleBar" assetName="titleBar.background" palette={palette} assets={assets} handleClick={this.handleClick} inner="File Edit Selection View Go Debug Terminal Help" />
+                <Asset className="activityBar" assetName="activityBar.background" palette={palette} assets={assets} handleClick={this.handleClick} />
+                <Asset className="sideBar" assetName="sideBar.background" palette={palette} assets={assets} handleClick={this.handleClick} />
+                <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} />
+                <Asset className="statusBar" assetName="statusBar.background" palette={palette} assets={assets} handleClick={this.handleClick} />
             </div >
         )
     }
@@ -143,13 +160,15 @@ class ColorPicker extends Component {
     }
 
     render() {
+        var highlightClass = this.props.selected ? "highlight" : "";
         return (
             <div className="colorPicker">
-                <label>{this.props.colorName}
-                    <input className="colorPicker__colorInput" onChange={this.handleColorChange} value={this.state.value} type="color"></input>
+                <label className="colorPicker__label" style={{ backgroundColor: this.props.color }}>
+                    {/* {this.props.colorName} */}
+                    <input style={{ display: "none", overflow: "hidden", width: 0 }} onChange={this.handleColorChange} value={this.state.value} type="color"></input>
                 </label>
-                <input className="colorPicker__button" type="button" value="Select" onClick={this.handleSelectButtonClick} />
-            </div>
+                <input style={{ boxShadow: this.props.selected ? `inset 10px 0 5px ${this.props.color}` : "none" }} className={`colorPicker__button ${highlightClass}`} type="button" value="Select" onClick={this.handleSelectButtonClick} />
+            </div >
         );
     }
 }

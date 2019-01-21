@@ -1,0 +1,157 @@
+//Constants
+@white: #efefef;
+@greyLight: #585858;
+@greyDark: #414141;
+@black: #0e0e0e;
+@highlight: rgb(249, 255, 191);
+@windowPreviewHeight: 802px;
+@windowPreviewWidth: 1408px;
+@radiusStandard: 2px;
+//Mixins
+.container {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+//Stlying
+* {
+    box-sizing: border-box;
+}
+
+.App {
+    background-color: @white;
+    box-sizing: border-box;
+    height: 100vh;
+    .header {
+        background-color: @greyDark;
+        height: 100px;
+        width: 100%;
+        padding: 16px;
+        color: @white;
+        font-size: 30pt;
+        margin-bottom: 20px;
+        vertical-align: top;
+        .container();
+        span {
+            vertical-align: top;
+        }
+        img {
+            width: 60px;
+            margin: 0 10px 0 0;
+        }
+    }
+    .appSideBarWrapper {
+        width: 300px;
+        display: inline-block;
+        .appSideBar {
+            background-color: @white;
+            display: inline-block;
+            padding: 10px 20px;
+            width: 260px;
+            border-radius: @radiusStandard;
+            .container();
+            .colorPickers {
+                width: 100%;
+                margin: 10px auto;
+                display: inline-block;
+                .colorPicker {
+                    display: block;
+                    text-align: right;
+                    .highlight {
+                        background-color: @highlight;
+                    }
+                    &__label {
+                        width: 60%;
+                        display: inline-block;
+                        border: 1px dashed black;
+                        cursor: pointer;
+                        height: 26px;
+                        vertical-align: top;
+                    }
+                    &__button {
+                        padding: 6px 12px;
+                        background: @white;
+                        border: none;
+                        border-radius: @radiusStandard;
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: @black;
+                        vertical-align: top;
+                        height: 26px;
+                        width: 30%;
+                        &:focus {
+                            outline: 0;
+                        }
+                        &:hover {
+                            transition: 300ms;
+                            background: @white;
+                        }
+                        &:active {
+                            transition: 0s;
+                            background: @highlight;
+                        }
+                    }
+                }
+            }
+            .codePreview {
+                width: 90%;
+                display: inline-block;
+                border: 3px solid black;
+                border-radius: 6px;
+                background-color: @greyDark;
+                color: @white;
+                padding: 5px;
+                font-family: 'Lucida Sans', monospace; //width: 100%;
+                vertical-align: top;
+                overflow-wrap: break-word;
+                vertical-align: top;
+            }
+        }
+    }
+    .windowPreviewContainer {
+        display: inline-block;
+        vertical-align: top;
+        background-color: @white;
+        .container();
+        .windowPreview {
+            display: grid;
+            grid-template-columns: 70px 200px 1138px;
+            grid-template-rows: 30px 752px 20px;
+            width: @windowPreviewWidth;
+            background-color: @black;
+            border: 2px solid @black;
+            overflow: hidden;
+            .asset {
+                &:hover {
+                    /* svg from  SVGBackgrounds.com */
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='104' viewBox='0 0 20 20'%3E%3Cg %3E%3Cpolygon fill='%236e6e6e' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%236e6e6e' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
+                }
+            } // Assets
+            .titleBar {
+                grid-column-start: 1;
+                grid-column-end: 4;
+                padding: 1px 5px;
+            }
+            .activityBar {
+                color: @white;
+            }
+            .sideBar {
+                color: @white;
+            }
+            .editor {
+                color: @white;
+            }
+            .statusBar {
+                grid-column-start: 1;
+                grid-column-end: 4;
+            }
+        }
+    }
+    .footer {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: @black;
+        height: 63px;
+        color: @white;
+    }
+}
