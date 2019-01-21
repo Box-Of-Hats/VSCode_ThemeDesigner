@@ -62,7 +62,7 @@
     width: 100%;
 }
 
-.sideBar {
+.appSideBar {
     background-color: #bebebe;
     width: 10%;
     display: inline-block;
@@ -70,25 +70,33 @@
 }
 
 /* Window Preview */
+.container {
+    margin: 0 auto;
+    background-color: #FF0000;
+}
 
 .windowPreview {
-    display: inline-block;
+    display: grid;
+    grid-template-columns: 70px 200px 1138px;
+    grid-template-rows: 30px 752px 20px;
     width: 1408px;
-    height: 792px;
     background-color: #030303;
     border: 2px solid black;
 }
 
+.titleBar {
+    grid-column: 1 / 4;
+}
+
 .activityBar {
-    /* background-color: #ffee00; */
-    width: 6%;
-    height: 100%;
-    display: inline-block;
+}
+
+.sideBar {
 }
 
 .editor {
-    /* background-color: #3cc7cc; */
-    width: 94%;
-    display: inline-block;
-    height: 100%;
+}
+
+.statusBar {
+    grid-column: 1 / 4;
 }

@@ -6,17 +6,20 @@ class App extends Component {
         super(props);
         this.state = {
             palette: {
-                "c0": "#FF0000",
-                "c1": "#00FF00",
-                "c2": "#0000FF",
-                "c3": "#F000F0",
-                "c4": "#F0F000",
-                "c5": "#000000",
-                "c6": "#FFFFFF",
+                "c0": "#141A18",
+                "c1": "#1D2725",
+                "c2": "#30423F",
+                "c3": "#FFD3F1",
+                "c4": "#EFEFEF",
+                "c5": "#cdeeca",
             },
             assets: {
-                "activityBar.background": "c0",
-                "editor.background": "c1"
+                "activityBar.background": "c2",
+                "activityBar.foreground": "c4",
+                "editor.background": "c0",
+                "sideBar.background": "c1",
+                "statusBar.background": "c2",
+                "titleBar.background": "c3",
             },
             selectedColorName: "c0"
         };
@@ -51,7 +54,7 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="sideBar">
+                <div className="appSideBar">
                     <div className="colorPickers">
                         <div className="title">Current: <span style={{ backgroundColor: this.state.palette[this.state.selectedColorName], padding: "3px" }}>{this.state.selectedColorName}</span></div>
                         {Object.keys(this.state.palette).map((i, key) => {
@@ -74,10 +77,11 @@ class CodePreview extends Component {
     }
 
     generatePreviewText() {
-        var text = "";
+        var text = "\"workbench.colorCustomizations\": {\n";
         Object.keys(this.props.assets).forEach(key => {
-            text = text + key + ": " + this.props.palette[this.props.assets[key]] + ",\n";
+            text = text + "\"" + key + "\": \"" + this.props.palette[this.props.assets[key]] + "\",\n";
         });
+        text = text + "},";
         return text
     }
 
@@ -104,9 +108,11 @@ class WindowPreview extends Component {
     render() {
         return (
             <div className="windowPreview">
-                <div className="activityBar" onClick={() => this.handleClick("activityBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["activityBar.background"]] }}></div>
-                <div className="editor" onClick={() => this.handleClick("editor.background")} style={{ backgroundColor: this.props.palette[this.props.assets["editor.background"]] }}></div>
-
+                <div className="titleBar" onClick={() => this.handleClick("titleBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["titleBar.background"]] }}>File Edit Selection View Go Debug Terminal Help</div>
+                    <div className="activityBar" onClick={() => this.handleClick("activityBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["activityBar.background"]] }}>A</div>
+                    <div className="sideBar" onClick={() => this.handleClick("sideBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["sideBar.background"]] }}></div>
+                    <div className="editor" onClick={() => this.handleClick("editor.background")} style={{ backgroundColor: this.props.palette[this.props.assets["editor.background"]] }}></div>
+                <div className="statusBar" onClick={() => this.handleClick("statusBar.background")} style={{ backgroundColor: this.props.palette[this.props.assets["statusBar.background"]] }}>This is the status bar</div>
             </div >
         )
     }
