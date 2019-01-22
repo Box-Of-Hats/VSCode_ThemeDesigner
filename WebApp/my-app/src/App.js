@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './style/App.css';
-// import vsCodeLogo from './img/vsCodeLogo.png'; // with import
 const vsCodeLogo = require('./img/vsCodeLogo.png');
 
 class App extends Component {
@@ -97,7 +96,7 @@ class CodePreview extends Component {
         var codePreview = this.generatePreviewText();
 
         return (
-            <textarea className="codePreview" value={codePreview} readOnly >
+            <textarea className="codePreview" value={codePreview} readOnly>
             </textarea >
         )
     }
