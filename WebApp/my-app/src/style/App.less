@@ -7,6 +7,8 @@
 @windowPreviewHeight: 802px;
 @windowPreviewWidth: 1408px;
 @radiusStandard: 3px;
+@windowPreviewMultiplier: 0.6;
+
 //Mix-ins
 .container {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -112,13 +114,15 @@
         .container();
         .windowPreview {
             display: grid;
-            grid-template-columns: 70px 200px 1138px;
-            grid-template-rows: 30px 752px 20px;
-            width: @windowPreviewWidth;
+            grid-template-columns: 50px*@windowPreviewMultiplier 275px*@windowPreviewMultiplier 1150px*@windowPreviewMultiplier 148px*@windowPreviewMultiplier;
+            grid-template-rows: 31px*@windowPreviewMultiplier 35px*@windowPreviewMultiplier 696px*@windowPreviewMultiplier 257px*@windowPreviewMultiplier 25px*@windowPreviewMultiplier;
+            // width: 1920px*@windowPreviewMultiplier;
+            // height: 1080px*@windowPreviewMultiplier;
             background-color: @black;
             border: 2px solid @black;
             overflow: hidden;
             .asset {
+                border: 1px solid red;
                 &:hover {
                     /* svg from  SVGBackgrounds.com */
                     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='104' viewBox='0 0 20 20'%3E%3Cg %3E%3Cpolygon fill='%236e6e6e' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%236e6e6e' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
@@ -126,22 +130,38 @@
             } // Assets
             .titleBar {
                 grid-column-start: 1;
-                grid-column-end: 4;
+                grid-column-end: 6;
                 padding: 1px 5px;
+                font-size: 10px;
             }
             .activityBar {
                 color: @white;
+                grid-row-start: 2;
+                grid-row-end: 5;
             }
             .sideBar {
                 color: @white;
+                grid-row-start: 3;
+                grid-row-end: 5;
             }
             .editor {
                 color: @white;
+                grid-column-start: 3;
+                grid-column-end: 4;
+                grid-row-start: 3;
+                grid-row-end: 3;
             }
             .statusBar {
                 grid-column-start: 1;
-                grid-column-end: 4;
+                grid-column-end: 6;
             }
+            .panel {
+                grid-column-start: 3;
+                grid-column-end: 4;
+                grid-row-start: 4;
+                grid-row-end:4;
+            }
+            
         }
     }
     .footer {

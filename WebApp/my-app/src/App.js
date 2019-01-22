@@ -146,9 +146,11 @@ class WindowPreview extends Component {
             <div className="windowPreview">
                 <Asset className="titleBar" assetName="titleBar.background" palette={palette} assets={assets} handleClick={this.handleClick} inner="File Edit Selection View Go Debug Terminal Help" />
                 <Asset className="activityBar" assetName="activityBar.background" palette={palette} assets={assets} handleClick={this.handleClick} />
+                <Asset className="panel" assetName="panel.background" palette={palette} assets={assets} handleClick={this.handleClick} />
                 <Asset className="sideBar" assetName="sideBar.background" palette={palette} assets={assets} handleClick={this.handleClick} />
                 <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} />
                 <Asset className="statusBar" assetName="statusBar.background" palette={palette} assets={assets} handleClick={this.handleClick} />
+  
             </div >
         )
     }
