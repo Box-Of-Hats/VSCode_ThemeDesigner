@@ -72,6 +72,7 @@ class App extends Component {
                 <div className="windowPreviewContainer">
                     <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} />
                 </div>
+                <Footer />
             </div>
         );
     }
@@ -100,6 +101,25 @@ class CodePreview extends Component {
             </textarea >
         )
     }
+}
+
+const Footer = ({ props }) => {
+    return <div className="footer">
+        <ul>
+            <li>
+                <a href="https://github.com/Box-Of-Hats/VSCode_ThemeGenerator/">Source</a>
+            </li>
+            <li>
+                <a href="https://box-of-hats.github.io/">My Work</a>
+            </li>
+            <li>
+                |
+            </li>
+            <li>
+                Box Of Hats &copy; {new Date().getFullYear()}
+            </li>
+        </ul>
+    </div>
 }
 
 function Asset(props) {

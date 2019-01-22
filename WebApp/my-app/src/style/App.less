@@ -23,9 +23,8 @@
     height: 100vh;
     .header {
         background-color: @greyDark;
-        height: 100px;
         width: 100%;
-        padding: 16px;
+        padding: 12px 0 6px 16px;
         color: @white;
         font-size: 30pt;
         margin-bottom: 20px;
@@ -151,9 +150,29 @@
     .footer {
         display: block;
         width: 100%;
-        padding: 10px;
-        background-color: @black;
-        height: 63px;
-        color: @white;
+        background-color: @white;
+        color: darken(@white, 30%);
+        text-align: center;
+        height: 30px;
+        ul {
+            list-style-type: none;
+            overflow: hidden;
+            li {
+                display: inline-block;
+                padding-left: 20px;
+                a {
+                    display: inline-block;
+                    text-decoration: none;
+                    min-width: 80px;
+                    &:visited {
+                        color: inherit;
+                    }
+                    &:hover {
+                        font-weight: 600;
+                        color: darken(@white, 60%);
+                    }
+                }
+            }
+        }
     }
 }
