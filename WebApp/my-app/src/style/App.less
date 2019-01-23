@@ -4,14 +4,24 @@
 @greyDark: #414141;
 @black: #0e0e0e;
 @highlight: rgb(249, 255, 191);
-@windowPreviewHeight: 802px;
-@windowPreviewWidth: 1408px;
 @radiusStandard: 3px;
-@windowPreviewMultiplier: 0.6;
-
+@windowPreviewWidth: 1080px;
+@codeFont: 'Lucida Sans',
+monospace;
+@uiFont: 'Helvetica';
 //Mix-ins
 .container {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.defaultText {
+    color: @white;
+    font-size: 70%;
+    padding-left: 10px;
+    padding-top: 1%;
+    display: inline-block;
+    font-family: @uiFont;
+    user-select: none;
 }
 
 //Styling
@@ -101,9 +111,9 @@
                 color: @black;
                 border-radius: @radiusStandard;
                 background-color: @white;
-                font-family: 'Lucida Sans', monospace; //width: 100%;
                 vertical-align: top;
                 resize: none;
+                font-family: @codeFont;
             }
         }
     }
@@ -114,35 +124,68 @@
         .container();
         .windowPreview {
             display: grid;
-            grid-template-columns: 50px*@windowPreviewMultiplier 275px*@windowPreviewMultiplier 1150px*@windowPreviewMultiplier 148px*@windowPreviewMultiplier;
-            grid-template-rows: 31px*@windowPreviewMultiplier 35px*@windowPreviewMultiplier 696px*@windowPreviewMultiplier 257px*@windowPreviewMultiplier 25px*@windowPreviewMultiplier;
-            // width: 1920px*@windowPreviewMultiplier;
-            // height: 1080px*@windowPreviewMultiplier;
+            grid-template-columns: 3% 17% 70% 10%;
+            grid-template-rows: 3% 4% 66% 24.5% 2.5%;
+            width: @windowPreviewWidth;
+            height: @windowPreviewWidth/16*9;
             background-color: @black;
             border: 2px solid @black;
             overflow: hidden;
             .asset {
-                border: 1px solid red;
+                //border: 1px dotted red; //Debug 
                 &:hover {
                     /* svg from  SVGBackgrounds.com */
                     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='104' viewBox='0 0 20 20'%3E%3Cg %3E%3Cpolygon fill='%236e6e6e' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%236e6e6e' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
                 }
             } // Assets
             .titleBar {
+                .defaultText();
                 grid-column-start: 1;
                 grid-column-end: 6;
                 padding: 1px 5px;
-                font-size: 10px;
+            }
+            .tabs {
+                grid-column-start: 3;
+                grid-column-end: 5;
+                grid-row-start: 2;
+                display: grid;
+                grid-template-columns: 15% 15% 15% 55%; //Over 100% because the gutter needs to overflow
+                grid-template-rows: 100%;
+                .tab {
+                    .defaultText();
+                    text-align: center;
+                    padding-top: 4px;
+                }
             }
             .activityBar {
                 color: @white;
                 grid-row-start: 2;
                 grid-row-end: 5;
             }
-            .sideBar {
+            .activityBarForeground {
                 color: @white;
-                grid-row-start: 3;
+                position: relative;
+                top: 10px;
+            }
+            .sideBarContainer {
+                color: @white;
+                grid-row-start: 2;
                 grid-row-end: 5;
+                background-color: #22f;
+                display: grid;
+                grid-template-rows: 3.5% 3% 9% 3% 78.5% 3%;
+                grid-template-columns: 100%;
+                .sideBarSectionHeader {
+                    .defaultText();
+                    font-weight: 600;
+                }
+                .sideBar {
+                    .defaultText();
+                    padding-top: 4px;
+                    .openEditorText {
+                        height: 33%;
+                    }
+                }
             }
             .editor {
                 color: @white;
@@ -150,18 +193,40 @@
                 grid-column-end: 4;
                 grid-row-start: 3;
                 grid-row-end: 3;
+                font-family: @codeFont;
+                font-size: 10pt;
+                padding: 10px;
+            }
+            .rightContainer {
+                display: grid;
+                grid-column-start: 4;
+                grid-row-start: 3;
+                grid-row-end: 4;
+                grid-template-rows: 35% 20% 45%;
+                grid-template-columns: 90% 10%;
+                .scrollBar {
+                    grid-row-start: 2;
+                    grid-column-start: 2;
+                }
+                .miniMapSection {
+                    //This asset doesn't have a corresponding VSCode setting
+                    grid-row-start: 1;
+                    grid-row-end: 4;
+                }
             }
             .statusBar {
                 grid-column-start: 1;
                 grid-column-end: 6;
+                .defaultText();
+                font-size: 60%;
+                padding: 2px 0 0 10px;
             }
             .panel {
                 grid-column-start: 3;
-                grid-column-end: 4;
+                grid-column-end: 5;
                 grid-row-start: 4;
-                grid-row-end:4;
+                grid-row-end: 4;
             }
-            
         }
     }
     .footer {
@@ -171,6 +236,7 @@
         color: darken(@white, 30%);
         text-align: center;
         height: 30px;
+        padding: 50px 0 0 0;
         ul {
             list-style-type: none;
             overflow: hidden;
