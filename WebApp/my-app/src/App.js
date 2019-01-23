@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import './style/App.css';
 const vsCodeLogo = require('./img/vsCodeLogo.png');
 const defaultSettings = require('./default.json');
@@ -120,8 +121,9 @@ function Asset(props) {
         foreColor = "#efefef";
     }
     return (
-        <div className={`asset ${props.className}`} onClick={() => props.handleClick(props.assetName)}
-            onContextMenu={(e) => { e.preventDefault(); console.log(props.assetName); props.handleClick(props.assetFore) }}
+        <div className={`asset ${props.className}`} onClick={() => props.handleClick(props.assetName)} onMouseEnter ={() => props.handleEnter(props.assetName)} 
+            onMouseLeave={() => props.handleExit(props.assetName)}
+            data-assetname={props.assetName} onContextMenu={(e) => { e.preventDefault(); console.log(props.assetName); props.handleClick(props.assetFore) }}
             style={props.style ? props.style : {
                 backgroundColor: props.palette[props.assets[props.assetName]],
                 color: foreColor
@@ -161,6 +163,7 @@ function FileStructure(props) {
         } else {
             parent.push(<div>{line}</div>);
         }
+        return 0;
     });
     return parent;
 }
@@ -170,6 +173,7 @@ function OpenEditors(props) {
     var parent = []
     lines.map((line) => {
         parent.push(<div className="openEditorText"> {line}</div >);
+        return 0;
     });
     return parent;
 }
@@ -178,39 +182,51 @@ class WindowPreview extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.handleEnter = this.handleEnter.bind(this);
+        this.handleExit = this.handleExit.bind(this);
     }
 
     handleClick(assetName) {
         this.props.handleChange(assetName);
     }
 
+    handleEnter(assetName) {
+        $(`[data-assetName='${assetName}']`).addClass("highlighted");
+    }
+    
+    handleExit(assetName){
+        $(`[data-assetName='${assetName}']`).removeClass("highlighted");
+    }
+
     render() {
         const { assets, palette } = this.props;
         return (
             <div className="windowPreview">
-                <Asset className="titleBar" assetName="titleBar.activeBackground" assetFore="titleBar.activeForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner="File Edit Selection View Go Debug Terminal Help" />
-                <Asset className="activityBar" assetName="activityBar.background" assetFore="activityBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} />
+                <Asset className="titleBar" assetName="titleBar.activeBackground" assetFore="titleBar.activeForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner="File Edit Selection View Go Debug Terminal Help" handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                <Asset className="activityBar" assetName="activityBar.background" assetFore="activityBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                 <div className="tabs">
-                    <Asset className="tab activeTab" assetName="tab.activeBackground" assetFore="tab.activeForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner={`${icon1} ActiveTab.js`} />
-                    <Asset className="tab inactiveTab" assetName="tab.inactiveBackground" assetFore="tab.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner={`${icon0} bg1.json`} />
-                    <Asset className="tab inactiveTab" assetName="tab.inactiveBackground" assetFore="tab.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner={`${icon0} bg2.json`} />
-                    <Asset className="editorGroupHeader" assetName="editorGroupHeader.tabsBackground" palette={palette} assets={assets} handleClick={this.handleClick} />
+                    <Asset className="tab activeTab" assetName="tab.activeBackground" assetFore="tab.activeForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner={`${icon1} ActiveTab.js`} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="tab inactiveTab" assetName="tab.inactiveBackground" assetFore="tab.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner={`${icon0} bg1.json`} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="tab inactiveTab" assetName="tab.inactiveBackground" assetFore="tab.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} inner={`${icon0} bg2.json`} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="editorGroupHeader" assetName="editorGroupHeader.tabsBackground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                 </div>
                 <div className="sideBarContainer">
-                    <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="EXPLORER" />
-                    <Asset className="sideBarSectionHeader" assetName="sideBarSectionHeader.background" assetFore="sideBarSectionHeader.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="◢ OPEN EDITORS" />
-                    <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner={<OpenEditors />} />
-                    <Asset className="sideBarSectionHeader" assetName="sideBarSectionHeader.background" assetFore="sideBarSectionHeader.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="◢ MYPROJECTNAME" />
-                    <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner={<FileStructure />} />
-                    <Asset className="sideBarSectionHeader" assetName="sideBarSectionHeader.background" assetFore="sideBarSectionHeader.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="▶ OUTLINE" />
+                    <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="EXPLORER" handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="sideBarSectionHeader" assetName="sideBarSectionHeader.background" assetFore="sideBarSectionHeader.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="◢ OPEN EDITORS" handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner={<OpenEditors />} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="sideBarSectionHeader" assetName="sideBarSectionHeader.background" assetFore="sideBarSectionHeader.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="◢ MYPROJECTNAME" handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner={<FileStructure />} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="sideBarSectionHeader" assetName="sideBarSectionHeader.background" assetFore="sideBarSectionHeader.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="▶ OUTLINE" handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                 </div>
                 <div className="rightContainer">
-                    <Asset className="miniMapSection" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} />
-                    <Asset className="scrollBar" assetName="scrollbarSlider.background" palette={palette} assets={assets} handleClick={this.handleClick} />
+                    <Asset className="miniMapSection" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="scrollBar" assetName="scrollbarSlider.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                 </div>
-                <Asset className="panel" assetName="panel.background" assetFore="terminal.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="This is the terminal" />
-                <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} inner={<CodeExample />} />
-                <Asset className="statusBar" assetName="statusBar.background" assetFore="statusBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="master 🗘 ⓧ ⚠ 🛈 javascript | 🙿 App.js" />
+                <Asset className="panel" assetName="panel.background" assetFore="terminal.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="This is the terminal" handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} inner={<CodeExample />} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                <Asset className="statusBar" assetName="statusBar.background" assetFore="statusBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} inner="master 🗘 ⓧ ⚠ 🛈 javascript | 🙿 App.js" handleEnter={this.handleEnter} handleExit={this.handleExit}/>
 
             </div >
         )

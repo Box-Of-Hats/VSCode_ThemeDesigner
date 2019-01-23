@@ -25,22 +25,37 @@ monospace;
 }
 
 //Styling
+body {
+    background-color: @white;
+}
 * {
     box-sizing: border-box;
 }
 
 .App {
-    background-color: @white;
     box-sizing: border-box;
     height: 100vh;
+    display: grid;
+    grid-template-rows: 10% 1% 89% 10%;
+    grid-template-columns: 20% 70% 10%;
+    grid-template-areas:
+        "header header header"
+        ". . ."
+        "menu preview ."
+        "footer footer footer";
+    .highlighted {
+        @highlightSize: 50;
+        @highlightOpacity: 0.1;
+        background-attachment: fixed;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='@{highlightSize}' height='@{highlightSize}' viewBox='0 0 20 20'%3E%3Cg fill-opacity='@{highlightOpacity}'%3E%3Cpolygon fill='%23f2f2f2' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%23f2f2f2' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
+
+    }
     .header {
         background-color: @greyDark;
-        width: 100%;
         padding: 12px 0 6px 16px;
         color: @white;
         font-size: 30pt;
-        margin-bottom: 20px;
-        vertical-align: top;
+        grid-area: header;
         .container();
         span {
             vertical-align: top;
@@ -51,13 +66,10 @@ monospace;
         }
     }
     .appSideBarWrapper {
-        width: 300px;
-        display: inline-block;
+        grid-area: menu;
         .appSideBar {
-            background-color: @white;
-            display: inline-block;
+            margin-right: 10%;
             padding: 10px 20px;
-            width: 260px;
             border-radius: @radiusStandard;
             .container();
             .colorPickers {
@@ -118,26 +130,17 @@ monospace;
         }
     }
     .windowPreviewContainer {
-        display: inline-block;
-        vertical-align: top;
-        background-color: @white;
+        grid-area: preview;
         .container();
         .windowPreview {
+            background-color: @black;
             display: grid;
             grid-template-columns: 3% 17% 70% 10%;
             grid-template-rows: 3% 4% 66% 24.5% 2.5%;
-            width: @windowPreviewWidth;
-            height: @windowPreviewWidth/16*9;
-            background-color: @black;
+            height:100%;
             border: 2px solid @black;
             overflow: hidden;
-            .asset {
-                //border: 1px dotted red; //Debug 
-                &:hover {
-                    /* svg from  SVGBackgrounds.com */
-                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='104' viewBox='0 0 20 20'%3E%3Cg %3E%3Cpolygon fill='%236e6e6e' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%236e6e6e' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
-                }
-            } // Assets
+            // Assets
             .titleBar {
                 .defaultText();
                 grid-column-start: 1;
@@ -155,6 +158,7 @@ monospace;
                     .defaultText();
                     text-align: center;
                     padding-top: 4px;
+                    white-space: nowrap;
                 }
             }
             .activityBar {
@@ -171,10 +175,11 @@ monospace;
                 color: @white;
                 grid-row-start: 2;
                 grid-row-end: 5;
-                background-color: #22f;
                 display: grid;
                 grid-template-rows: 3.5% 3% 9% 3% 78.5% 3%;
                 grid-template-columns: 100%;
+                white-space: nowrap;
+                overflow: hidden;
                 .sideBarSectionHeader {
                     .defaultText();
                     font-weight: 600;
@@ -183,7 +188,7 @@ monospace;
                     .defaultText();
                     padding-top: 4px;
                     .openEditorText {
-                        height: 33%;
+                        height: 100/3%;
                     }
                 }
             }
@@ -199,6 +204,7 @@ monospace;
             }
             .rightContainer {
                 display: grid;
+                border: 0 0 0 1px solid @greyDark;
                 grid-column-start: 4;
                 grid-row-start: 3;
                 grid-row-end: 4;
@@ -212,6 +218,7 @@ monospace;
                     //This asset doesn't have a corresponding VSCode setting
                     grid-row-start: 1;
                     grid-row-end: 4;
+                    border-right: 1px solid fade(@black, 80%);
                 }
             }
             .statusBar {
@@ -230,13 +237,10 @@ monospace;
         }
     }
     .footer {
-        display: block;
-        width: 100%;
-        background-color: @white;
         color: darken(@white, 30%);
         text-align: center;
-        height: 30px;
         padding: 50px 0 0 0;
+        grid-area: footer;
         ul {
             list-style-type: none;
             overflow: hidden;
