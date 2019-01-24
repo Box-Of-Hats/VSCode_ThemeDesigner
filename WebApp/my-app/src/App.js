@@ -188,6 +188,14 @@ const TitleBarText = ({props}) => {
         </div>)
 }
 
+const TerminalText = ({props}) => {
+    return (
+        <div>
+            This is the terminal
+        </div>
+    )
+}
+
 class WindowPreview extends Component {
     constructor(props) {
         super(props);
@@ -255,7 +263,7 @@ class WindowPreview extends Component {
                     <Asset className="" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                 </div>
                 <Asset className="panel" assetName="panel.background" assetFore="terminal.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                <span>This is the terminal</span>
+                    <TerminalText/>
                 </Asset>
                 <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <CodeExample />
