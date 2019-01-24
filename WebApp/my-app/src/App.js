@@ -272,12 +272,17 @@ class WindowPreview extends Component {
                 </div>
                 <Asset className="panel" assetName="panel.background" assetFore="terminal.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <div className="terminalText">
-                        <div className="problems">PROBLEMS</div>
+                        <div className="problems">
+                            PROBLEMS 
+                            <Asset className="badge" assetName="badge.background" assetFore="badge.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} >
+                                23
+                            </Asset>
+                        </div>
                         <div className="output">OUTPUT</div>
                         <div className="debugConsole">DEBUG CONSOLE</div>
                         <div className="terminal">TERMINAL</div>
                         <Asset className="panelDropdown" assetName="dropdown.background" assetFore="dropdown.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>1: node ▾</Asset>
-                        <div>➕ 🗖 🗑 ˄ ✕</div>
+                        <div className="panelButtons">➕ 🗖 🗑 ˄ ✕</div>
                         <div className="console">
                             You can now view my-app in the browser. <br />
                             <br />

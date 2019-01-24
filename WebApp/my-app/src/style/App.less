@@ -276,16 +276,25 @@ body {
                 grid-row-end: 4;
                 .terminalText {
                     display: grid;
-                    grid-template-columns: 15% 15% 15% 15% 30% 10%;
-                    grid-template-rows: 15% 85%;
+                    grid-template-columns: 10% 10% 10% 10% 40% 12% 8%;
+                    grid-template-rows: 18% 92%;
                     grid-template-areas:
-                        "problems output debugConsole terminal buttons"
-                        "console console console console console";
+                        "problems output debugConsole terminal . dropdown buttons"
+                        "console console console console console console console";
                     font-size: 12pt;
                     padding: 10px;
+                    font-size: 70%;
+                    white-space: nowrap;
 
                     .problems{
                         grid-area: problems;
+                        .badge {
+                            width: fit-content;
+                            padding: 2px 6px 2px 6px;
+                            border-radius: 40%;
+                            display: inline-block;
+                            margin: 0 6px;
+                        }
                     }
                     .output{
                         grid-area: output;
@@ -301,15 +310,20 @@ body {
                         text-align: right;
                     }
                     .console{
-                        padding-top: 10px;
                         grid-area: console;
+                        padding-top: 10px;
                     }
                     .panelDropdown {
-                        width: 45%;
-                        font-size: 80%;
+                        grid-area: dropdown;
+                        width: 100%;
                         margin-left:auto;
                         margin-right:0;
-                        padding: 1px 0px 0px 6px;
+                        padding: 2px 0px 2px 6px;
+                    }
+                    .panelButtons {
+                        grid-area: buttons;
+                        text-align: right;
+                        font-size: 10pt;
                     }
                 }
             }
