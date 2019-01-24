@@ -55,6 +55,13 @@
         "titleBar.activeBackground": "c2",
         "titleBar.activeForeground": "c4",
         "titleBar.inactiveBackground": "c1",
-        "menu.foreground": "c3"
+        "menu.foreground": "c3",
+        "dropdown.background": "c1",
+        "dropdown.foreground": "c4",
+        "input.background": "c2",
+        "input.placeholderForeground": "c4",
+        "input.foreground": "c4",
+        "terminal.foreground": "c4"
+
     }
 }

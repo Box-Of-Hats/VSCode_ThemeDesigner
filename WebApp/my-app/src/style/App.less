@@ -204,7 +204,7 @@ body {
                 grid-row-start: 2;
                 grid-row-end: 5;
                 display: grid;
-                grid-template-rows: 3.5% 3% 9% 3% 78.5% 3%;
+                grid-template-rows: 3.5% 3% 9% 3% 40% 3% 38.5%;
                 grid-template-columns: 100%;
                 white-space: nowrap;
                 overflow: hidden;
@@ -213,10 +213,23 @@ body {
                     font-weight: 600;
                 }
                 .sideBar {
-                    .defaultText();
-                    padding-top: 4px;
+                    padding: 4px 0 0 4px;
                     .openEditorText {
+                        .defaultText();
+                        color: unset;
                         height: 100/3%;
+                        display: block;
+                    }
+                    .fileEntryText {
+                        .defaultText();
+                        color: unset;
+                        display: block;
+                    }
+                    .filterBox {
+                        width: 94%;
+                        padding: 6px;
+                        margin: 6px auto;
+                        font-size: 75%;
                     }
                 }
             }
@@ -261,6 +274,44 @@ body {
                 grid-column-end: 5;
                 grid-row-start: 4;
                 grid-row-end: 4;
+                .terminalText {
+                    display: grid;
+                    grid-template-columns: 15% 15% 15% 15% 30% 10%;
+                    grid-template-rows: 15% 85%;
+                    grid-template-areas:
+                        "problems output debugConsole terminal buttons"
+                        "console console console console console";
+                    font-size: 12pt;
+                    padding: 10px;
+
+                    .problems{
+                        grid-area: problems;
+                    }
+                    .output{
+                        grid-area: output;
+                    }
+                    .debugConsole{
+                        grid-area: debugConsole;
+                    }
+                    .terminal{
+                        grid-area: terminal;
+                    }
+                    .buttons{
+                        grid-area: buttons;
+                        text-align: right;
+                    }
+                    .console{
+                        padding-top: 10px;
+                        grid-area: console;
+                    }
+                    .panelDropdown {
+                        width: 45%;
+                        font-size: 80%;
+                        margin-left:auto;
+                        margin-right:0;
+                        padding: 1px 0px 0px 6px;
+                    }
+                }
             }
         }
     }
@@ -272,13 +323,16 @@ body {
         ul {
             list-style-type: none;
             overflow: hidden;
+            color: inherit;
             li {
                 display: inline-block;
                 padding-left: 20px;
+                color: inherit;
                 a {
                     display: inline-block;
                     text-decoration: none;
                     min-width: 80px;
+                    color: inherit;
                     &:visited {
                         color: inherit;
                     }

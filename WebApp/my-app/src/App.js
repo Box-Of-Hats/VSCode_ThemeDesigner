@@ -121,9 +121,12 @@ function Asset(props) {
         foreColor = "#efefef";
     }
     return (
-        <div className={`asset ${props.className}`} onClick={() => props.handleClick(props.assetName)} onMouseEnter ={() => props.handleEnter(props.assetName)} 
-            onMouseLeave={() => props.handleExit(props.assetName)}
-            data-assetname={props.assetName} onContextMenu={(e) => { e.preventDefault(); console.log(props.assetName); props.handleClick(props.assetFore) }}
+        <div className={`asset ${props.className}`}
+            onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.handleClick(props.assetName) }}
+            onContextMenu={(e) => { e.stopPropagation(); e.preventDefault(); e.stopPropagation(); props.handleClick(props.assetFore) }}
+            onMouseEnter={(e) => {e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetName)}}
+            onMouseLeave={(e) => {e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetName)}}
+            data-assetname={props.assetName}
             style={props.style ? props.style : {
                 backgroundColor: props.palette[props.assets[props.assetName]],
                 color: foreColor
@@ -153,20 +156,25 @@ function CodeExample(props) {
 }
 
 function FileStructure(props) {
-    var lines = ["◢ WebApp", "\t▶ .VSCode", "\t◢ src", `\t\t${icon1} App.js`, "\t◢ style", `\t\t${icon2}index.css`, `\t\t${icon2}app.css`]
+    if (props.lines === undefined){
+        var lines = ["◢ WebApp", "\t▶ .VSCode", "\t◢ src", `\t\t${icon1} App.js`, "\t◢ style", `\t\t${icon2}index.css`, `\t\t${icon2}app.css`]
+    } else {
+        var lines = props.lines
+    }
     var parent = []
     lines.map((line) => {
         if (line.includes("\t\t")) {
-            parent.push(<div style={{ paddingLeft: "20%" }}>{line}</div>);
+            parent.push(<div className="fileEntryText" style={{ paddingLeft: "20%" }}>{line}</div>);
         } else if (line.includes("\t")) {
-            parent.push(<div style={{ paddingLeft: "10%" }}>{line}</div>);
+            parent.push(<div className="fileEntryText" style={{ paddingLeft: "10%" }}>{line}</div>);
         } else {
-            parent.push(<div>{line}</div>);
+            parent.push(<div className="fileEntryText">{line}</div>);
         }
         return 0;
     });
     return parent;
 }
+
 
 function OpenEditors(props) {
     var lines = [`${icon1} App.js WebApp\\my-app\\src`, "Settings", `${icon2}index.css WebApp\\my-app\\style`]
@@ -178,7 +186,7 @@ function OpenEditors(props) {
     return parent;
 }
 
-const TitleBarText = ({props}) => {
+const TitleBarText = ({ props }) => {
     return (
         <div className="titleBarText">
             <div className="icon icon-vscode"></div>
@@ -186,14 +194,6 @@ const TitleBarText = ({props}) => {
             <div>App,js - VSCode_ThemeGenerator - Visual Studio Code</div>
             <div className="windowButtons">🗕 🗖 ✕</div>
         </div>)
-}
-
-const TerminalText = ({props}) => {
-    return (
-        <div>
-            This is the terminal
-        </div>
-    )
 }
 
 class WindowPreview extends Component {
@@ -209,10 +209,12 @@ class WindowPreview extends Component {
     }
 
     handleEnter(assetName) {
+        //Remove all with the class to fix pass through
+        $(".highlighted").removeClass("highlighted");
         $(`[data-assetName='${assetName}']`).addClass("highlighted");
     }
-    
-    handleExit(assetName){
+
+    handleExit(assetName) {
         $(`[data-assetName='${assetName}']`).removeClass("highlighted");
     }
 
@@ -223,7 +225,7 @@ class WindowPreview extends Component {
                 <Asset className="titleBar" assetName="titleBar.activeBackground" assetFore="titleBar.activeForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <TitleBarText />
                 </Asset>
-                <Asset className="activityBar" assetName="activityBar.background" assetFore="activityBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                <Asset className="activityBar" assetName="activityBar.background" assetFore="activityBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 <div className="tabs">
                     <Asset className="tab activeTab" assetName="tab.activeBackground" assetFore="tab.activeForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <span>{icon1} ActiveTab.js</span>
@@ -234,7 +236,7 @@ class WindowPreview extends Component {
                     <Asset className="tab inactiveTab" assetName="tab.inactiveBackground" assetFore="tab.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <span>{icon0} bg2.json</span>
                     </Asset>
-                    <Asset className="editorGroupHeader" assetName="editorGroupHeader.tabsBackground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="editorGroupHeader" assetName="editorGroupHeader.tabsBackground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 </div>
                 <div className="sideBarContainer">
                     <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
@@ -253,17 +255,38 @@ class WindowPreview extends Component {
                         <FileStructure />
                     </Asset>
                     <Asset className="sideBarSectionHeader" assetName="sideBarSectionHeader.background" assetFore="sideBarSectionHeader.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>▶ OUTLINE</span>
+                        <span>◢ OUTLINE</span>
+                    </Asset>
+                    <Asset className="sideBar" assetName="sideBar.background" assetFore="sideBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
+                        <Asset className="filterBox" assetName="input.background" assetFore="input.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
+                            Filter
+                        </Asset>
+                        <FileStructure lines={["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"]}/>
                     </Asset>
                 </div>
                 <div className="rightContainer">
-                    <Asset className="miniMapSection" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
-                    <Asset className="" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
-                    <Asset className="scrollBar" assetName="scrollbarSlider.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
-                    <Asset className="" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                    <Asset className="miniMapSection" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
+                    <Asset className="" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
+                    <Asset className="scrollBar" assetName="scrollbarSlider.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
+                    <Asset className="" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 </div>
                 <Asset className="panel" assetName="panel.background" assetFore="terminal.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    <TerminalText/>
+                    <div className="terminalText">
+                        <div className="problems">PROBLEMS</div>
+                        <div className="output">OUTPUT</div>
+                        <div className="debugConsole">DEBUG CONSOLE</div>
+                        <div className="terminal">TERMINAL</div>
+                        <Asset className="panelDropdown" assetName="dropdown.background" assetFore="dropdown.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>1: node ▾</Asset>
+                        <div>➕ 🗖 🗑 ˄ ✕</div>
+                        <div className="console">
+                            You can now view my-app in the browser. <br />
+                            <br />
+                            Local:  http://localhost:3000/ <br />
+                            On Your Network:  http://192.168.1.182:3000/ <br />
+                            >
+            </div>
+                    </div>
+
                 </Asset>
                 <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <CodeExample />
