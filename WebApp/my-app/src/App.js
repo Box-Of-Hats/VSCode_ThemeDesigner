@@ -178,8 +178,14 @@ function OpenEditors(props) {
     return parent;
 }
 
-const TitleBar = ({props}) => {
-    return (<div>File Edit Selection View Go Debug Terminal Help</div>)
+const TitleBarText = ({props}) => {
+    return (
+        <div className="titleBarText">
+            <div className="icon icon-vscode"></div>
+            File Edit Selection View Go Debug Terminal Help
+            <div>App,js - VSCode_ThemeGenerator - Visual Studio Code</div>
+            <div className="windowButtons">🗕 🗖 ✕</div>
+        </div>)
 }
 
 class WindowPreview extends Component {
@@ -207,7 +213,7 @@ class WindowPreview extends Component {
         return (
             <div className="windowPreview">
                 <Asset className="titleBar" assetName="titleBar.activeBackground" assetFore="titleBar.activeForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    <TitleBar />
+                    <TitleBarText />
                 </Asset>
                 <Asset className="activityBar" assetName="activityBar.background" assetFore="activityBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                 <div className="tabs">

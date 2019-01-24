@@ -14,14 +14,6 @@ monospace;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.icon {
-    &-vscode {
-        background-image: url("./icons/vsCodeLogo.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-}
-
 .defaultText {
     color: @white;
     font-size: 70%;
@@ -38,6 +30,17 @@ body {
 }
 * {
     box-sizing: border-box;
+}
+
+.icon {
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    &-vscode {
+        background-image: url("./icons/vsCodeLogo.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 }
 
 .App {
@@ -154,6 +157,23 @@ body {
                 grid-column-start: 1;
                 grid-column-end: 6;
                 padding: 1px 5px;
+                .titleBarText {
+                    display:grid;
+                    grid-template-rows: 100%;
+                    grid-template-columns: 2% 40% 44% 14%;
+                    margin:3px 0 0 0 ;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    .icon {
+                        height: 14px;
+                        width: 14px;
+                        margin-left: 5px;
+                    }
+                    .windowButtons {
+                        text-align: right;
+                        right: 0px;
+                    }
+                }
             }
             .tabs {
                 grid-column-start: 3;
