@@ -28,7 +28,7 @@
         "list.highlightForeground": "c3",
         "list.inactiveSelectionForeground": "c3",
         "menu.background": "c1",
-        "menu.selectionBackground": "c1",
+        "menu.selectionBackground": "c2",
         "menu.selectionForeground": "c3",
         "menu.separatorBackground": "c3",
         "menubar.selectionForeground": "c3",

@@ -124,8 +124,8 @@ function Asset(props) {
         <div className={`asset ${props.className}`}
             onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.handleClick(props.assetName) }}
             onContextMenu={(e) => { e.stopPropagation(); e.preventDefault(); e.stopPropagation(); props.handleClick(props.assetFore) }}
-            onMouseEnter={(e) => {e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetName)}}
-            onMouseLeave={(e) => {e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetName)}}
+            onMouseEnter={(e) => { e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetName) }}
+            onMouseLeave={(e) => { e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetName) }}
             data-assetname={props.assetName}
             style={props.style ? props.style : {
                 backgroundColor: props.palette[props.assets[props.assetName]],
@@ -156,7 +156,7 @@ function CodeExample(props) {
 }
 
 function FileStructure(props) {
-    if (props.lines === undefined){
+    if (props.lines === undefined) {
         var lines = ["◢ WebApp", "\t▶ .VSCode", "\t◢ src", `\t\t${icon1} App.js`, "\t◢ style", `\t\t${icon2}index.css`, `\t\t${icon2}app.css`]
     } else {
         var lines = props.lines
@@ -194,6 +194,14 @@ const TitleBarText = ({ props }) => {
             <div>App,js - VSCode_ThemeGenerator - Visual Studio Code</div>
             <div className="windowButtons">🗕 🗖 ✕</div>
         </div>)
+}
+
+const ContextMenuItem = (props) => {
+    return (
+        <div className="contextMenuItem">
+            <span style={{float: "left"}}>{props.text}</span><span style={{float: "right"}}>{props.shortcut}</span>
+        </div>
+    );
 }
 
 class WindowPreview extends Component {
@@ -261,7 +269,7 @@ class WindowPreview extends Component {
                         <Asset className="filterBox" assetName="input.background" assetFore="input.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                             Filter
                         </Asset>
-                        <FileStructure lines={["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"]}/>
+                        <FileStructure lines={["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"]} />
                     </Asset>
                 </div>
                 <div className="rightContainer">
@@ -273,7 +281,7 @@ class WindowPreview extends Component {
                 <Asset className="panel" assetName="panel.background" assetFore="terminal.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <div className="terminalText">
                         <div className="problems">
-                            PROBLEMS 
+                            PROBLEMS
                             <Asset className="badge" assetName="badge.background" assetFore="badge.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} >
                                 23
                             </Asset>
@@ -287,18 +295,49 @@ class WindowPreview extends Component {
                             You can now view my-app in the browser. <br />
                             <br />
                             Local:  http://localhost:3000/ <br />
-                            On Your Network:  http://192.168.1.182:3000/ <br />
+                            On Your Network:  http://192.168.1.182:3000/ <br /><br />
                             >
-            </div>
+                        </div>
                     </div>
-
                 </Asset>
                 <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <CodeExample />
+                    <Asset className="contextMenu" assetName="menu.background" assetFore="menu.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
+                        <ContextMenuItem text="Go to definition" shortcut="F12"/>
+                        <ContextMenuItem text="Peek definition" shortcut="Alt+F12" />
+                              
+                        <Asset className="contextMenuItemSeparator" assetName="menu.separatorBackground" assetFore="menu.separatorBackground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
+                            style={{color: palette[assets["menu.separatorBackground"]]}}>
+                            <hr/>
+                        </Asset>
+
+                        <ContextMenuItem text="Rename Symbol" shortcut="F2" />
+                        <Asset className="contextMenuItemHighlighted" assetName="menu.selectionBackground" assetFore="menu.selectionForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
+                            <ContextMenuItem text="Style Settings" shortcut="Ctrl+Win" />
+                        </Asset>
+                        <ContextMenuItem text="Refactor..." shortcut="Ctrl+Shift+R" />
+                        
+                        <Asset className="contextMenuItemSeparator" assetName="menu.separatorBackground" assetFore="menu.separatorBackground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
+                            style={{color: palette[assets["menu.separatorBackground"]]}}>
+                            <hr/>
+                        </Asset>
+
+                        <ContextMenuItem text="Cut" shortcut="Ctrl+X" />
+                        <ContextMenuItem text="Copy" shortcut="Ctrl+C" />
+                        <ContextMenuItem text="Paste" shortcut="Ctrl+V" />
+                                
+                        <Asset className="contextMenuItemSeparator" assetName="menu.separatorBackground" assetFore="menu.separatorBackground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
+                            style={{color: palette[assets["menu.separatorBackground"]]}}>
+                            <hr/>
+                        </Asset>
+                        <ContextMenuItem text="Command Pallette" shortcut="Ctrl+Shift+P" />
+                        
+                    </Asset>
                 </Asset>
                 <Asset className="statusBar" assetName="statusBar.background" assetFore="statusBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <span>master 🗘 ⓧ ⚠ 🛈 javascript | 🙿 App.js</span>
                 </Asset>
+
 
             </div >
         )
