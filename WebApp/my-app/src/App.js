@@ -204,6 +204,13 @@ const ContextMenuItem = (props) => {
     );
 }
 
+const StatusBar = (props) => {
+    return (<div >
+        <span style={{float: "left"}}>master 🗘 ⓧ ⚠ 🛈 javascript | 🙿 App.js</span>
+        <span style={{float: "right"}}>Ln 209, Col 128 Spaces: 4 UTF-8 CRLF Javascript Prettier 😊 🔔</span> 
+    </div>);
+}
+
 class WindowPreview extends Component {
     constructor(props) {
         super(props);
@@ -335,7 +342,7 @@ class WindowPreview extends Component {
                     </Asset>
                 </Asset>
                 <Asset className="statusBar" assetName="statusBar.background" assetFore="statusBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    <span>master 🗘 ⓧ ⚠ 🛈 javascript | 🙿 App.js</span>
+                    <StatusBar />
                 </Asset>
 
 
