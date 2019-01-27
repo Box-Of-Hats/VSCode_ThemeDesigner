@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './style/App.css';
+import ThemePicker from './ThemePicker'
 const vsCodeLogo = require('./img/vsCodeLogo.png');
-const defaultSettings = require('./default.json');
+const defaultSettings = require('./config.json');
 const icon0 = "💢";
 const icon1 = "💖";
 const icon2 = "👁‍🗨";
@@ -11,8 +12,8 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            palette: defaultSettings.palette,
-            assets: defaultSettings.assets,
+            palette: defaultSettings.presets[0].palette,
+            assets: defaultSettings.presets[0].assets,
             selectedColorName: "c0"
         };
         this.handleColorChange = this.handleColorChange.bind(this);
@@ -49,6 +50,7 @@ class App extends Component {
                 <div className="header"><img src={vsCodeLogo} alt="Visual Studio Code Logo"></img><span>VSCode Theme Designer</span></div>
                 <div className="appSideBarWrapper">
                     <div className="appSideBar">
+                    <ThemePicker />
                         <div className="colorPickers">
                             {Object.keys(this.state.palette).map((i, key) => {
                                 return <ColorPicker key={key} colorName={i} color={this.state.palette[i]}
