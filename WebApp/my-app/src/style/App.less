@@ -9,9 +9,17 @@
 @codeFont: 'Lucida Sans',
 monospace;
 @uiFont: 'Helvetica';
+@pageFont: 'Comfortaa', cursive;
 //Mix-ins
 .container {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.input {
+    border-radius: @radiusStandard;
+    font-family: @pageFont;
+    padding: 2px;
+    text-align: center;
+    font-size: 14pt;
 }
 
 .defaultText {
@@ -42,8 +50,6 @@ body {
         background-repeat: no-repeat;
     }
 }
-
-
 
 .contextMenu {
     margin-right: 30px;
@@ -116,15 +122,28 @@ body {
     }
     .appSideBarWrapper {
         grid-area: menu;
+        margin-right: 10px;
         .appSideBar {
-            margin-right: 10%;
             padding: 10px 20px;
             border-radius: @radiusStandard;
+            display: grid;
+            grid-template-rows: 10% 25% 60%;
+            grid-template-columns: 100%;
+            height: 100%;
             .container();
+            .themePicker {
+                text-align-last: center;
+                width: 100%;
+                select {
+                    .input();
+                    width: 100%;
+                    height: 4ch;
+                }
+            }            
             .colorPickers {
                 width: 100%;
-                margin: 10px auto;
                 display: inline-block;
+                height: fit-content;
                 .colorPicker {
                     display: block;
                     text-align: right;
@@ -167,7 +186,6 @@ body {
             .codePreview {
                 display: inline-block;
                 min-width: 100%;
-                height: 300px;
                 padding: 5px;
                 color: @black;
                 border-radius: @radiusStandard;
