@@ -1,5 +1,6 @@
 //Constants
 @white: #fdfdfd;
+@green: #49a04c;
 @greyLight: #585858;
 @greyDark: #414141;
 @black: #0e0e0e;
@@ -32,6 +33,10 @@
     font-family: @uiFont;
     user-select: none;
 }
+.button  {
+    cursor: pointer;
+    user-select: none;
+}
 
 //Styling
 body {
@@ -39,6 +44,31 @@ body {
 }
 * {
     box-sizing: border-box;
+}
+
+.colorPickers {
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    div {
+        width: 100%;
+        .button {
+            margin: 30px auto;
+            padding: 4px 0 4px 0;
+            overflow: hidden;
+            border-width: 0;
+            outline: none;
+            border-radius: 2px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+            background-color: @green;
+            color: @white;
+            transition: 0.4s;
+            width: 90%;
+            &:hover {
+                background-color: darken(@green, 10%);
+            }
+        }
+    }
 }
 
 .icon {
@@ -128,7 +158,7 @@ body {
             padding: 10px 20px;
             border-radius: @radiusStandard;
             display: grid;
-            grid-template-rows: 10% 25% 60%;
+            grid-template-rows: 10% 50% 40%;
             grid-template-columns: 100%;
             height: 100%;
             .container();

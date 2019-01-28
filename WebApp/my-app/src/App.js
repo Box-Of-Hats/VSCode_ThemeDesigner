@@ -5,6 +5,7 @@ import ColorPicker from './ColorPicker'
 import CodePreview from './CodePreview'
 import Footer from './Footer'
 import WindowPreview from './WindowPreview'
+import ColorPickers from './ColorPickers';
 const vsCodeLogo = require('./img/vsCodeLogo.png');
 const defaultSettings = require('./config.json');
 
@@ -20,6 +21,7 @@ class App extends Component {
         this.updateAsset = this.updateAsset.bind(this);
         this.updatePalette = this.updatePalette.bind(this);
         this.loadTheme = this.loadTheme.bind(this);
+        this.onColourAdd = this.onColourAdd.bind(this);
     }
 
     handleColorChange(colorName) {
@@ -53,6 +55,16 @@ class App extends Component {
         );
     }
 
+    onColourAdd(){
+        let randKey = Math.random();
+        console.log(randKey);
+        let prev = JSON.parse(JSON.stringify(this.state.palette))
+        prev[randKey] = "#FF0000";
+        this.setState({
+            palette: prev
+        });
+    }
+
     render() {
         return (
             <div className="App">
@@ -61,11 +73,7 @@ class App extends Component {
                     <div className="appSideBar">
                         <ThemePicker onChange={this.loadTheme} themes={defaultSettings.presets} />
                         <div className="colorPickers">
-                            {Object.keys(this.state.palette).map((i, key) => {
-                                return <ColorPicker key={key} colorName={i} color={this.state.palette[i]}
-                                    handleChange={this.updatePalette} handleSelect={this.handleColorChange}
-                                    selected={i === this.state.selectedColorName} />
-                            })}
+                            <ColorPickers palette={this.state.palette} onChange={this.updatePalette} onSelect={this.handleColorChange} selectedColorName={this.state.selectedColorName} onColourAdd={this.onColourAdd}/>
                         </div>
                         <CodePreview assets={this.state.assets} palette={this.state.palette} />
                     </div>
