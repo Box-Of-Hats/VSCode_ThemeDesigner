@@ -1,22 +1,21 @@
 {
     "presets": [
         {
-            "name": "VSCode Default",
+            "name": "Jake",
             "palette": {
                 "c0": "#141A18",
                 "c1": "#1D2725",
                 "c2": "#30423F",
-                "c3": "#FFD3F1",
-                "c4": "#EFEFEF",
-                "c5": "#cdeeca"
+                "c3": "#EFEFEF",
+                "c4": "#cdeeca"
             },
             "assets": {
                 "activityBar.background": "c2",
                 "activityBar.border": "c1",
-                "activityBar.foreground": "c3",
-                "activityBar.inactiveForeground": "c4",
+                "activityBar.foreground": "c4",
+                "activityBar.inactiveForeground": "c3",
                 "activityBarBadge.background": "c3",
-                "activityBarBadge.foreground": "c2",
+                "activityBarBadge.foreground": "c1",
                 "badge.background": "c1",
                 "badge.foreground": "c3",
                 "breadcrumb.activeSelectionForeground": "c3",
@@ -46,25 +45,25 @@
                 "settings.headerForeground": "c3",
                 "settings.modifiedItemIndicator": "c3",
                 "sideBar.background": "c1",
-                "sideBar.foreground": "c4",
+                "sideBar.foreground": "c3",
                 "sideBarSectionHeader.background": "c2",
                 "statusBar.background": "c1",
                 "statusBar.foreground": "c3",
                 "tab.activeBackground": "c0",
                 "tab.activeBorder": "c3",
-                "tab.activeForeground": "c4",
+                "tab.activeForeground": "c3",
                 "tab.inactiveBackground": "c1",
                 "textLink.foreground": "c3",
                 "titleBar.activeBackground": "c2",
-                "titleBar.activeForeground": "c4",
+                "titleBar.activeForeground": "c3",
                 "titleBar.inactiveBackground": "c1",
                 "menu.foreground": "c3",
                 "dropdown.background": "c1",
-                "dropdown.foreground": "c4",
+                "dropdown.foreground": "c3",
                 "input.background": "c2",
-                "input.placeholderForeground": "c4",
-                "input.foreground": "c4",
-                "terminal.foreground": "c4"
+                "input.placeholderForeground": "c3",
+                "input.foreground": "c3",
+                "terminal.foreground": "c3"
             }
         },
         {

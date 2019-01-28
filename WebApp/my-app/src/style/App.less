@@ -250,11 +250,17 @@ body {
                 color: @white;
                 grid-row-start: 2;
                 grid-row-end: 5;
-            }
-            .activityBarForeground {
-                color: @white;
-                position: relative;
-                top: 10px;
+                display: grid;
+                grid-template-rows: 5% 5% 5% 5% 5% 70% 5%;
+                grid-template-columns: 100%;
+                .activityBarIcon {
+                    padding-top: 6px;
+                    user-select: none;
+                    text-align: center;
+                    font-size: 16pt;
+                    font-weight: 900;
+                    vertical-align: bottom;
+                }
             }
             .sideBarContainer {
                 color: @white;
