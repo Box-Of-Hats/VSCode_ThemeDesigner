@@ -19,12 +19,12 @@ class App extends Component {
         this.handleColorChange = this.handleColorChange.bind(this);
         this.updateAsset = this.updateAsset.bind(this);
         this.updatePalette = this.updatePalette.bind(this);
+        this.loadTheme = this.loadTheme.bind(this);
     }
 
     handleColorChange(colorName) {
         this.setState({ selectedColorName: colorName });
     }
-
 
     updateAsset(assetName) {
         let prev = JSON.parse(JSON.stringify(this.state.assets))
@@ -44,13 +44,22 @@ class App extends Component {
         })
     }
 
+    loadTheme(themeId) {
+        this.setState(
+            {
+            palette: defaultSettings.presets[themeId].palette,
+            assets: defaultSettings.presets[themeId].assets
+            }
+        );
+    }
+
     render() {
         return (
             <div className="App">
                 <div className="header"><img src={vsCodeLogo} alt="Visual Studio Code Logo"></img><span>VSCode Theme Designer</span></div>
                 <div className="appSideBarWrapper">
                     <div className="appSideBar">
-                    <ThemePicker />
+                    <ThemePicker onChange={this.loadTheme} themes={defaultSettings.presets} />
                         <div className="colorPickers">
                             {Object.keys(this.state.palette).map((i, key) => {
                                 return <ColorPicker key={key} colorName={i} color={this.state.palette[i]}
@@ -314,7 +323,6 @@ class WindowPreview extends Component {
                     <Asset className="contextMenu" assetName="menu.background" assetFore="menu.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <ContextMenuItem text="Go to definition" shortcut="F12"/>
                         <ContextMenuItem text="Peek definition" shortcut="Alt+F12" />
-                              
                         <Asset className="contextMenuItemSeparator" assetName="menu.separatorBackground" assetFore="menu.separatorBackground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                             style={{color: palette[assets["menu.separatorBackground"]]}}>
                             <hr/>

@@ -1,7 +1,7 @@
 {
     "presets": [
         {
-            "name": "Default",
+            "name": "VSCode Default",
             "palette": {
                 "c0": "#141A18",
                 "c1": "#1D2725",
@@ -68,14 +68,14 @@
             }
         },
         {
-            "name": "VSCode Default",
+            "name": "MY EYES",
             "palette": {
-                "c0": "#141A18",
-                "c1": "#1D2725",
-                "c2": "#30423F",
-                "c3": "#FFD3F1",
-                "c4": "#EFEFEF",
-                "c5": "#cdeeca"
+                "c0": "#FF0000",
+                "c1": "#00FF00",
+                "c2": "#0000FF",
+                "c3": "#FF00FF",
+                "c4": "#FFFF00",
+                "c5": "#00FFFF"
             },
             "assets": {
                 "activityBar.background": "c2",

@@ -6,22 +6,21 @@ class ThemePicker extends Component {
 
         }
     }
+
+    onChange(key) {
+        this.props.onChange(key);
+    }
+
     render() {
-    return (
-        <div>
-            <select onChange>
-                {props.themes.map((i,key) => { 
-                    <option></option>
-                })}
-                <option>
-                    A
-                </option>
-                <option>
-                    B
-                </option>
-            </select>
-        </div>
-    )};
+        return (
+            <div className="themePicker">
+                <select onChange={(e) => this.onChange(e.target.value)}>
+                    {Object.keys(this.props.themes).map((element, key) => { 
+                        return <option value={key}>{this.props.themes[key].name}</option>
+                    })}
+                </select>
+            </div>
+        )};
 }
 
 export default ThemePicker
