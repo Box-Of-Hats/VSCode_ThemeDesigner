@@ -56,10 +56,14 @@ class App extends Component {
     }
 
     onColorAdd(){
+        let allowedColorChars = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += allowedColorChars[Math.floor(Math.random() * allowedColorChars.length)];
+        }
         let randKey = Math.random();
-        console.log(randKey);
         let prevPalette = JSON.parse(JSON.stringify(this.state.palette))
-        prevPalette[randKey] = "#FF0000";
+        prevPalette[randKey] = color;
         this.setState({
             palette: prevPalette
         });
