@@ -70,15 +70,21 @@ class App extends Component {
     }
 
     onColorRemove(){
-        let prevPalette = JSON.parse(JSON.stringify(this.state.palette));;
-        let keyToRemove = Object.keys(prevPalette).pop();
-        console.log("removing!", keyToRemove);
-        console.log(Object.keys(prevPalette));
-        delete prevPalette[keyToRemove];
-        console.log('prevPalette:', prevPalette)
-        
+        let palette = JSON.parse(JSON.stringify(this.state.palette));;
+        if (Object.keys(palette).length === 1){
+            return 0;
+        }
+        let assets = JSON.parse(JSON.stringify(this.state.assets));;
+        let keyToRemove = Object.keys(palette).pop();
+        Object.keys(assets).map((i, key) => {
+            if (assets[i] === keyToRemove){
+                assets[i] =  Object.keys(palette).shift();
+            }
+        });
+        delete palette[keyToRemove];
         this.setState({
-            palette: prevPalette
+            assets: assets,
+            palette: palette
         });
     }
 
