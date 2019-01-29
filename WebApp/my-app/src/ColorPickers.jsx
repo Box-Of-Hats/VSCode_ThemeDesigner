@@ -18,8 +18,9 @@ export default class ColorPickers extends Component {
                             handleChange={this.props.onChange} handleSelect={this.props.onSelect}
                             selected={i === this.props.selectedColorName} />
                 })}
-                <div>
-                    <div className="button" onClick={this.props.onColourAdd}>&#10133;&#xFE0E; Add</div>
+                <div className="addRemoveButtons">
+                    <div className="button button-plus" onClick={this.props.onColorAdd}>&#10133;&#xFE0E; Add</div>
+                    <div className="button button-minus" onClick={this.props.onColorRemove}>&#10134;&#xFE0E; Remove</div>
                 </div>
             </div>
         )

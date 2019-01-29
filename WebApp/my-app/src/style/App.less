@@ -4,6 +4,7 @@
 @greyLight: #585858;
 @greyDark: #414141;
 @black: #0e0e0e;
+@red: #962828;
 @highlight: rgb(249, 255, 191);
 @radiusStandard: 3px;
 @windowPreviewWidth: 1080px;
@@ -37,6 +38,18 @@
     cursor: pointer;
     user-select: none;
 }
+.button-minus {
+    background-color: @red;
+    &:hover {
+        background-color: darken(@red, 10%);
+    }
+}
+.button-plus {
+    background-color: @green;
+    &:hover {
+        background-color: darken(@green, 10%);
+    }
+}
 
 //Styling
 body {
@@ -60,13 +73,9 @@ body {
             outline: none;
             border-radius: 2px;
             box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-            background-color: @green;
             color: @white;
             transition: 0.4s;
             width: 90%;
-            &:hover {
-                background-color: darken(@green, 10%);
-            }
         }
     }
 }
@@ -175,6 +184,18 @@ body {
                 width: 100%;
                 display: inline-block;
                 height: fit-content;
+                .addRemoveButtons {
+                    grid-template-columns: 5% 45% 45% 5%;
+                    grid-template-rows: 100%;
+                    display: grid;
+                    grid-template-areas: ". left right .";
+                    .button-minus {
+                        grid-area: right;
+                    }
+                    .button-plus {
+                        grid-area: left;
+                    }
+                }
                 .colorPicker {
                     display: block;
                     text-align: right;
