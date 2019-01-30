@@ -80,6 +80,7 @@ class App extends Component {
             if (assets[i] === keyToRemove){
                 assets[i] =  Object.keys(palette).shift();
             }
+            return 0;
         });
         delete palette[keyToRemove];
         this.setState({

@@ -5,6 +5,7 @@
 @greyDark: #414141;
 @black: #0e0e0e;
 @red: #962828;
+@blue: rgb(65, 122, 139);
 @highlight: rgb(249, 255, 191);
 @radiusStandard: 3px;
 @windowPreviewWidth: 1080px;
@@ -34,31 +35,32 @@
     font-family: @uiFont;
     user-select: none;
 }
-.button  {
+
+.button(@bg)  {
     cursor: pointer;
     user-select: none;
-}
-.button-minus {
-    background-color: @red;
+    text-align: center;
+    margin: 10px auto;
+    padding: 4px 0 4px 0;
+    border-width: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    overflow: hidden;
+    color: @black;
+    transition: 0.4s;
+    width: 90%;
+    background-color: @bg;
     &:hover {
-        background-color: darken(@red, 10%);
+        background-color: darken(@bg, 10%);
     }
-}
-.button-plus {
-    background-color: @green;
-    &:hover {
-        background-color: darken(@green, 10%);
+    &:active {
+        //Something here
     }
 }
 
 //Styling
-body {
-    background-color: @white;
-}
-* {
-    box-sizing: border-box;
-}
 
+//Component - ColorPicker
 .colorPickers {
     align-content: center;
     text-align: center;
@@ -66,17 +68,65 @@ body {
     div {
         width: 100%;
         .button {
-            margin: 30px auto;
-            padding: 4px 0 4px 0;
-            overflow: hidden;
-            border-width: 0;
-            outline: none;
-            border-radius: 2px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
             color: @white;
-            transition: 0.4s;
             width: 90%;
+            &-plus {
+                grid-area: right;
+            }
+            &-minus {
+                grid-area: left;
+            }
         }
+    }
+}
+//Component - CodePreview
+.codePreviewContainer {
+    display: grid;
+    grid-template-columns: 5% 45% 45% 5%;
+    grid-template-rows: 85% 15%;
+    grid-template-areas:
+        "code code code code"
+        ".... b1   b2   ....";
+    .codePreview {
+        display: inline-block;
+        min-width: 100%;
+        padding: 5px;
+        color: @black;
+        border-radius: @radiusStandard;
+        background-color: @white;
+        vertical-align: top;
+        resize: none;
+        font-family: @codeFont;
+        grid-area: code;
+    }
+    .button:nth-child(2){
+        grid-area: b1;
+    }
+    .button:nth-child(3){
+        grid-area: b2;
+    }
+}
+
+body {
+    background-color: @white;
+}
+* {
+    box-sizing: border-box;
+}
+
+.button {
+    .button(@white);
+    &-minus {
+        .button(@red);
+        color: @white;
+    }
+    &-plus {
+        .button(@green);
+        color: @white;
+    }
+    &-blue {
+        .button(@blue);
+        color: @white;
     }
 }
 
@@ -189,12 +239,6 @@ body {
                     grid-template-rows: 100%;
                     display: grid;
                     grid-template-areas: ". left right .";
-                    .button-minus {
-                        grid-area: right;
-                    }
-                    .button-plus {
-                        grid-area: left;
-                    }
                 }
                 .colorPicker {
                     display: block;
@@ -234,17 +278,6 @@ body {
                         }
                     }
                 }
-            }
-            .codePreview {
-                display: inline-block;
-                min-width: 100%;
-                padding: 5px;
-                color: @black;
-                border-radius: @radiusStandard;
-                background-color: @white;
-                vertical-align: top;
-                resize: none;
-                font-family: @codeFont;
             }
         }
     }

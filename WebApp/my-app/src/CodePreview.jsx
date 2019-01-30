@@ -15,12 +15,22 @@ class CodePreview extends Component {
         return text
     }
 
+    copyText(){
+        let textArea = document.getElementsByClassName("codePreview")[0];
+        textArea.select();
+        document.execCommand("copy");
+    }
+
     render() {
         var codePreview = this.generatePreviewText();
 
         return (
-            <textarea className="codePreview" value={codePreview} readOnly>
-            </textarea >
+            <div className="codePreviewContainer">
+                <textarea className="codePreview" value={codePreview} readOnly>
+                </textarea >
+                <div className="button button-blue" onClick={this.copyText}><span role="img" aria-label="clipboard">📋</span> Copy</div>
+                <div className="button button-minus" >Download</div>
+            </div>
         )
     }
 }
