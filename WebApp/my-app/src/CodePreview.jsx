@@ -7,7 +7,7 @@ class CodePreview extends Component {
     }
 
     generatePreviewText() {
-        var text = "\"workbench.colorCustomizations\": {\n";
+        var text = "\"workbench.colorCustomisations\": {\n";
         Object.keys(this.props.assets).forEach(key => {
             text = text + "\"" + key + "\": \"" + this.props.palette[this.props.assets[key]] + "\",\n";
         });
