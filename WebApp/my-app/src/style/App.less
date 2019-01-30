@@ -12,8 +12,7 @@
 @codeFont: 'Lucida Sans',
 monospace;
 @uiFont: 'Helvetica';
-@pageFont: 'Comfortaa',
-cursive;
+@pageFont: 'Comfortaa', cursive;
 //Mix-ins
 .container {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -41,6 +40,8 @@ cursive;
 
 .button(@bg) {
     cursor: pointer;
+    font-family: @pageFont;
+    font-weight: 600;
     user-select: none;
     text-align: center;
     margin: 10px auto;
@@ -54,7 +55,6 @@ cursive;
     background-color: @bg;
     text-transform: uppercase;
     transition: 0.4s ease-in-out;
-    //border: 2px solid @black; //Unsure about this one
     &:hover {
         background-color: darken(@bg, 10%);
     }
@@ -80,7 +80,6 @@ cursive;
         grid-area: a;
     }
     .button {
-        color: @white;
         width: 90%;
         &-plus {
             grid-area: b1;
@@ -130,7 +129,9 @@ cursive;
     display: grid;
     grid-template-columns: 5% 45% 45% 5%;
     grid-template-rows: 85% 15%;
-    grid-template-areas: "code code code code" ".... b1   b2   ....";
+    grid-template-areas:
+            "code code code code"
+            ".... b1   b2   ....";
     .codePreview {
         display: inline-block;
         min-width: 100%;

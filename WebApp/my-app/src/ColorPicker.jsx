@@ -31,7 +31,7 @@ class ColorPicker extends Component {
                 <label className="colorPickerComponent__label" style={{ backgroundColor: this.props.color }}>
                     <input style={{ display: "none", overflow: "hidden", width: 0 }} onChange={this.handleColorChange} value={this.state.value} type="color"></input>
                 </label>
-                <input style={{ boxShadow: this.props.selected ? `inset 10px 0 5px ${this.props.color}` : "none", border: `2px solid ${this.props.color}`}} className={`colorPickerComponent__button ${highlightClass}`} type="button" value="Select" onClick={this.handleSelectButtonClick} />
+                <input style={{ boxShadow: this.props.selected ? `inset 10px 1px 0px ${this.props.color}` : "none", border: `2px solid ${this.props.color}`}} className={`colorPickerComponent__button ${highlightClass}`} type="button" value="Select" onClick={this.handleSelectButtonClick} />
             </div>
         );
     }
