@@ -9,14 +9,16 @@
 @highlight: rgb(249, 255, 191);
 @radiusStandard: 3px;
 @windowPreviewWidth: 1080px;
-@codeFont: 'Lucida Sans', monospace;
+@codeFont: 'Lucida Sans',
+monospace;
 @uiFont: 'Helvetica';
-@pageFont: 'Comfortaa', cursive;
-
+@pageFont: 'Comfortaa',
+cursive;
 //Mix-ins
 .container {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
+
 .input {
     border-radius: @radiusStandard;
     font-family: @pageFont;
@@ -26,6 +28,7 @@
     background-color: @white;
     color: @black;
 }
+
 .defaultText {
     color: @white;
     font-size: 70%;
@@ -36,57 +39,98 @@
     user-select: none;
 }
 
-.button(@bg)  {
+.button(@bg) {
     cursor: pointer;
     user-select: none;
     text-align: center;
     margin: 10px auto;
     padding: 4px 0 4px 0;
     border-width: 0;
-    border-radius: 2px;
+    border-radius: 4px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
     overflow: hidden;
     color: @black;
-    transition: 0.4s;
     width: 90%;
     background-color: @bg;
+    text-transform: uppercase;
+    transition: 0.4s ease-in-out;
+    //border: 2px solid @black; //Unsure about this one
     &:hover {
         background-color: darken(@bg, 10%);
     }
     &:active {
-        //Something here
+        transition: 0.1s;
+        transform: perspective(100px) rotateX(5deg);
+        transform: translateY(1px);
+        box-shadow: 0 0px 4px rgba(0, 0, 0, .6);
     }
 }
 
 //Styling
-
-//Component - ColorPicker
-.colorPickers {
+//Component - ColorPickers
+.colorPickersComponent {
     align-content: center;
     text-align: center;
     width: 100%;
-    div {
-        width: 100%;
-        .button {
-            color: @white;
-            width: 90%;
-            &-plus {
-                grid-area: right;
-            }
-            &-minus {
-                grid-area: left;
-            }
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:  "b1 b2" "a a";
+    .colorPickers {
+        grid-area: a;
+    }
+    .button {
+        color: @white;
+        width: 90%;
+        &-plus {
+            grid-area: b1;
+        }
+        &-minus {
+            grid-area: b2;
         }
     }
 }
+
+//Component - ColorPicker
+.colorPickerComponent {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 34px auto;
+    height: 34px;
+    margin: 2px auto;
+    &__label {
+        .button();
+        cursor: pointer;
+        height: 100%;
+        vertical-align: top;
+        margin: 0;
+    }
+    &__button {
+        .button(@white);
+        margin: 0 auto;
+        cursor: pointer;
+        text-decoration: none;
+        color: @black;
+        height: 100%;
+        &:focus {
+            outline: 0;
+        }
+        &:hover {
+            transition: 300ms;
+            background: @white;
+        }
+        &:active {
+            transition: 0s;
+        }
+    }
+}
+
 //Component - CodePreview
 .codePreviewContainer {
     display: grid;
     grid-template-columns: 5% 45% 45% 5%;
     grid-template-rows: 85% 15%;
-    grid-template-areas:
-        "code code code code"
-        ".... b1   b2   ....";
+    grid-template-areas: "code code code code" ".... b1   b2   ....";
     .codePreview {
         display: inline-block;
         min-width: 100%;
@@ -99,10 +143,10 @@
         font-family: @codeFont;
         grid-area: code;
     }
-    .button:nth-child(2){
+    .button:nth-child(2) {
         grid-area: b1;
     }
-    .button:nth-child(3){
+    .button:nth-child(3) {
         grid-area: b2;
     }
 }
@@ -110,6 +154,7 @@
 body {
     background-color: @white;
 }
+
 * {
     box-sizing: border-box;
 }
@@ -149,24 +194,22 @@ body {
     font-size: 10pt;
     max-width: 300px;
     min-width: 100px;
-    
     hr {
         border-top: 1px solid;
         border-bottom: 0;
         border-left: 0;
         border-right: 0;
     }
-
     .contextMenuItem {
         margin: 2px 6px 2px 6px;
-        width:97%;
+        width: 97%;
         clear: both;
         white-space: nowrap;
         display: inline-block;
     }
     .contextMenuItemHighlighted {
         margin: 2px 0 2px 0;
-        width:100%;
+        width: 100%;
         clear: both;
         white-space: nowrap;
         display: inline-block;
@@ -183,17 +226,12 @@ body {
     display: grid;
     grid-template-rows: 10% 1% 89% 10%;
     grid-template-columns: 20% 70% 10%;
-    grid-template-areas:
-        "header header header"
-        ". . ."
-        "menu preview ."
-        "footer footer footer";
+    grid-template-areas: "header header header" ". . ." "menu preview ." "footer footer footer";
     .highlighted {
         @highlightSize: 50;
         @highlightOpacity: 0.1;
         background-attachment: fixed;
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='@{highlightSize}' height='@{highlightSize}' viewBox='0 0 20 20'%3E%3Cg fill-opacity='@{highlightOpacity}'%3E%3Cpolygon fill='%23f2f2f2' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%23f2f2f2' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
-
     }
     .header {
         background-color: @greyDark;
@@ -226,83 +264,34 @@ body {
                 width: 100%;
                 select {
                     .input();
-                    width: 100%;  
+                    width: 100%;
                     height: 4ch;
-                }
-            }            
-            .colorPickers {
-                width: 100%;
-                display: inline-block;
-                height: fit-content;
-                .addRemoveButtons {
-                    grid-template-columns: 5% 45% 45% 5%;
-                    grid-template-rows: 100%;
-                    display: grid;
-                    grid-template-areas: ". left right .";
-                }
-                .colorPicker {
-                    display: block;
-                    text-align: right;
-                    .highlight {
-                        background-color: @highlight;
-                    }
-                    &__label {
-                        width: 60%;
-                        display: inline-block;
-                        border: 1px dashed black;
-                        cursor: pointer;
-                        height: 26px;
-                        vertical-align: top;
-                    }
-                    &__button {
-                        padding: 6px 12px;
-                        background: @white;
-                        border: none;
-                        border-radius: @radiusStandard;
-                        cursor: pointer;
-                        text-decoration: none;
-                        color: @black;
-                        vertical-align: top;
-                        height: 26px;
-                        width: 30%;
-                        &:focus {
-                            outline: 0;
-                        }
-                        &:hover {
-                            transition: 300ms;
-                            background: @white;
-                        }
-                        &:active {
-                            transition: 0s;
-                            background: @highlight;
-                        }
-                    }
                 }
             }
         }
     }
     .windowPreviewContainer {
         grid-area: preview;
+        font-family: @uiFont;
         .container();
         .windowPreview {
             background-color: @black;
             display: grid;
             grid-template-columns: 3% 17% 70% 10%;
             grid-template-rows: 3% 4% 66% 24.5% 2.5%;
-            height:100%;
+            height: 100%;
             border: 2px solid @black;
-            overflow: hidden;
-            // Assets
+            overflow: hidden; // Assets
             .titleBar {
                 .defaultText();
                 grid-column-start: 1;
                 grid-column-end: 6;
                 padding: 1px 5px;
                 .titleBarText {
-                    display:grid;
+                    display: grid;
                     grid-template-rows: 100%;
                     grid-template-columns: 2% 40% 44% 14%;
-                    margin:3px 0 0 0 ;
+                    margin: 3px 0 0 0;
                     white-space: nowrap;
                     overflow: hidden;
                     .icon {
@@ -425,16 +414,13 @@ body {
                     display: grid;
                     grid-template-columns: 10% 10% 10% 10% 40% 12% 8%;
                     grid-template-rows: 18% 92%;
-                    grid-template-areas:
-                        "problems output debugConsole terminal . dropdown buttons"
-                        "console console console console console console console";
+                    grid-template-areas: "problems output debugConsole terminal . dropdown buttons" "console console console console console console console";
                     font-size: 12pt;
                     padding: 10px;
                     font-size: 70%;
                     white-space: nowrap;
                     text-align: center;
-
-                    .problems{
+                    .problems {
                         grid-area: problems;
                         .badge {
                             width: fit-content;
@@ -444,20 +430,20 @@ body {
                             margin: 0 6px;
                         }
                     }
-                    .output{
+                    .output {
                         grid-area: output;
                     }
-                    .debugConsole{
+                    .debugConsole {
                         grid-area: debugConsole;
                     }
-                    .terminal{
+                    .terminal {
                         grid-area: terminal;
                     }
-                    .buttons{
+                    .buttons {
                         grid-area: buttons;
                         text-align: right;
                     }
-                    .console{
+                    .console {
                         text-align: left;
                         grid-area: console;
                         padding: 10px 0 0 8px;
@@ -466,8 +452,8 @@ body {
                         text-align: left;
                         grid-area: dropdown;
                         width: 100%;
-                        margin-left:auto;
-                        margin-right:0;
+                        margin-left: auto;
+                        margin-right: 0;
                         padding: 2px 0px 2px 6px;
                     }
                     .panelButtons {

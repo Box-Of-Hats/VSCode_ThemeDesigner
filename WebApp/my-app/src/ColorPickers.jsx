@@ -7,21 +7,21 @@ export default class ColorPickers extends Component {
         super(props)
         this.state = {
         }
-        
+
     }
 
     render() {
         return (
-            <div className="colorPickers">
-                {Object.keys(this.props.palette).map((i, key) => {
-                    return <ColorPicker key={key} colorName={i} color={this.props.palette[i]}
+            <div className="colorPickersComponent">
+                <div className="colorPickers">
+                    {Object.keys(this.props.palette).map((i, key) => {
+                        return <ColorPicker key={key} colorName={i} color={this.props.palette[i]}
                             handleChange={this.props.onChange} handleSelect={this.props.onSelect}
                             selected={i === this.props.selectedColorName} />
-                })}
-                <div className="addRemoveButtons">
-                    <div className="button button-plus" onClick={this.props.onColorAdd}>&#10133;&#xFE0E; Add</div>
-                    <div className="button button-minus" onClick={this.props.onColorRemove}>&#10134;&#xFE0E; Remove</div>
+                    })}
                 </div>
+                <div className="button button-plus" onClick={this.props.onColorAdd}>&#10133;&#xFE0E; Add</div>
+                <div className="button button-minus" onClick={this.props.onColorRemove}>&#10134;&#xFE0E; Remove</div>
             </div>
         )
     }
