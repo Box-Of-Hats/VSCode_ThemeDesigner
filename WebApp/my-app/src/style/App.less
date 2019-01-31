@@ -66,6 +66,7 @@ monospace;
         transform: translateY(1px);
         box-shadow: 0 0px 4px rgba(0, 0, 0, .6);
     }
+
 }
 
 //Styling
@@ -158,6 +159,30 @@ monospace;
     }
     .button:nth-child(3) {
         grid-area: b2;
+    }
+}
+
+//Component - Asset
+.asset {
+    &::before {
+        content: attr(data-assetname);;
+        position: absolute;
+        padding: 6px;
+        bottom:-10px;
+        left:0;
+        font-family: @pageFont;
+        font-size: 12pt;
+        font-weight: normal;
+        border-radius: 0 @radiusStandard 0 0 ;
+        color: @white;
+        background-color: @greyDark;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        opacity: 0;
+    }
+    &:hover::before{
+        bottom: 0;     
+        opacity: 1;
     }
 }
 
