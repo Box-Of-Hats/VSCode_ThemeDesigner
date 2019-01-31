@@ -134,6 +134,13 @@ monospace;
     grid-template-areas:
             "code code code code"
             ".... b1   b2   ....";
+    @media @tablet{
+        grid-template-columns: 5% 45% 45% 5%;
+        grid-template-rows: 20% 80%;
+        grid-template-areas:
+                ".... b1   b2   ...."
+                "code code code code";
+    }
     .codePreview {
         display: inline-block;
         min-width: 100%;
@@ -157,6 +164,7 @@ monospace;
 body {
     margin: 0;
     background-color: @white;
+    font-family: @pageFont;
 }
 
 * {
@@ -229,17 +237,18 @@ body {
     height: 98vh;
     display: grid;
     grid-template-rows: 10% 1% 89% 10%;
-    grid-template-columns: 20% 70% 10%;
+    grid-template-columns: 19% 1% 70% 10%;
     grid-template-areas: 
-        "header header header"
-        ". . ."
-        "menu preview ."
-        "footer footer footer";
+        "header  header  header header"
+        ".       .       .      ."
+        "menu   .       preview ."
+        "footer footer  footer  footer";
         @media @tablet{
-            grid-template-rows: 30% 70%;
-            grid-template-columns: 100%;
+            grid-template-rows: 30% 1% 69%;
+            grid-template-columns: 15% 85%;
             grid-template-areas: 
-                "menu menu menu"
+                "header menu menu"
+                ".    .    ."
                 "preview preview preview"
                 "footer footer footer"
         }
@@ -256,7 +265,7 @@ body {
         font-size: 30pt;
         grid-area: header;
         @media @tablet{
-            display: none;
+            font-size: 16pt;
         }
         .container();
         span {
@@ -269,7 +278,6 @@ body {
     }
     .appSideBarWrapper {
         grid-area: menu;
-        margin-right: 10px;
         .appSideBar {
             .container();
             height: 100%;
@@ -284,7 +292,7 @@ body {
                 "codePreview";
             @media @tablet{
                 grid-template-rows: 100%;
-                grid-template-columns: 33% 33% 33%;
+                grid-template-columns: 20% 40% 40%;
                 grid-template-areas:
                     "themePicker colorPickers codePreview";
             }
