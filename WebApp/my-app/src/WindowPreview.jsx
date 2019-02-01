@@ -27,11 +27,11 @@ class WindowPreview extends Component {
     handleEnter(assetName) {
         //Remove all with the class to fix pass through
         $(".highlighted").removeClass("highlighted");
-        $(`[data-assetName='${assetName}']`).addClass("highlighted");
+        $(`[data-primaryAsset='${assetName}']`).addClass("highlighted");
     }
 
     handleExit(assetName) {
-        $(`[data-assetName='${assetName}']`).removeClass("highlighted");
+        $(`[data-primaryAsset='${assetName}']`).removeClass("highlighted");
     }
 
     render() {

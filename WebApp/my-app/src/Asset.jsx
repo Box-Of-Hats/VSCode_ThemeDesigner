@@ -14,7 +14,7 @@ function Asset(props) {
             onContextMenu={(e) => { e.stopPropagation(); e.preventDefault(); e.stopPropagation(); props.handleClick(props.assetFore) }}
             onMouseEnter={(e) => { e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetName) }}
             onMouseLeave={(e) => { e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetName) }}
-            data-assetname={props.assetName}
+            data-primaryAsset={props.assetName} data-secondaryAsset={props.assetFore}
             style={props.style ? props.style : {
                 backgroundColor: props.palette[props.assets[props.assetName]],
                 color: foreColor
