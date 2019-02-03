@@ -9,7 +9,16 @@
                 "c3": "#EFEFEF",
                 "c4": "#FFD3F1"
             },
-            "assets": {
+            "editorTokenColorCustomizations": {
+                "comments": "#FF0000",
+                "functions": "#FF0000",
+                "keywords": "#FF0000",
+                "numbers": "#FF0000",
+                "strings": "#FF0000",
+                "types": "#FF0000",
+                "variables": "#FF0000"
+            },
+            "workbenchColorCustomizations": {
                 "activityBar.background": "c2",
                 "activityBar.border": "c1",
                 "activityBar.foreground": "c4",
@@ -76,7 +85,16 @@
                 "c4": "#FFFF00",
                 "c5": "#00FFFF"
             },
-            "assets": {
+            "editorTokenColorCustomizations": {
+                "comments": "#FF0000",
+                "functions": "#FF0000",
+                "keywords": "#FF0000",
+                "numbers": "#FF0000",
+                "strings": "#FF0000",
+                "types": "#FF0000",
+                "variables": "#FF0000"
+            },
+            "workbenchColorCustomizations": {
                 "activityBar.background": "c2",
                 "activityBar.border": "c1",
                 "activityBar.foreground": "c3",

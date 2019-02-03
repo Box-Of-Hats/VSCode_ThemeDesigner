@@ -13,7 +13,7 @@ class App extends Component {
         super(props);
         this.state = {
             palette: defaultSettings.presets[0].palette,
-            assets: defaultSettings.presets[0].assets,
+            assets: defaultSettings.presets[0].workbenchColorCustomizations,
             selectedColorName: "c0"
         };
         this.handleColorChange = this.handleColorChange.bind(this);
@@ -50,7 +50,7 @@ class App extends Component {
         this.setState(
             {
                 palette: defaultSettings.presets[themeId].palette,
-                assets: defaultSettings.presets[themeId].assets
+                assets: defaultSettings.presets[themeId].workbenchColorCustomizations
             }
         );
     }
