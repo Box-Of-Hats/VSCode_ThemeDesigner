@@ -44,28 +44,28 @@ class WindowPreview extends Component {
                 <div className="activityBar">
                     <Asset className="activityBarIcon" assetName="activityBar.background" assetFore="activityBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.foreground"]], backgroundColor: palette[assets["activityBar.background"]]}} >
-                        &#128459;&#xFe0E;
+                        <span role="img" aria-label="Files">&#128459;&#xFe0E;</span>
                     </Asset>
                     <Asset className="activityBarIcon" assetName="activityBar.background" assetFore="activityBar.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]]}} >
-                        &#128270;&#xFE0E;
+                        <span role="img" aria-label="Find">&#128270;&#xFE0E;</span>
                     </Asset>
                     <Asset className="activityBarIcon" assetName="activityBar.background" assetFore="activityBar.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]]}} >
-                        &#9282;&#xFE0E;
+                        <span role="img" aria-label="Git">&#9282;&#xFE0E;</span>
                     </Asset>
                     <Asset className="activityBarIcon" assetName="activityBar.background" assetFore="activityBar.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]]}} >
-                        	&#128029;&#xFE0E;
+                        	<span role="img" aria-label="Debugger">&#128029;&#xFE0E;</span>
                     </Asset>
                     <Asset className="activityBarIcon" assetName="activityBar.background" assetFore="activityBar.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]]}} >
-                        &#8862;&#xFE0E;
+                        <span role="img" aria-label="Extensions">&#8862;&#xFE0E;</span>
                     </Asset>
                     <Asset className="activityBarSpace" assetName="activityBar.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                     <Asset className="activityBarIcon" assetName="activityBar.background" assetFore="activityBar.inactiveForeground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]]}} >
-                        ⚙
+                        <span role="img" aria-label="Settings">&#9881;&#xFE0E;</span>
                     </Asset>
                 </div>
                 <div className="tabs">
