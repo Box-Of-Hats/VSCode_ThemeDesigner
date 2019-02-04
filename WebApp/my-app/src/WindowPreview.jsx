@@ -9,7 +9,6 @@ import TitleBarText from './TitleBarText'
 import $ from 'jquery';
 const icon0 = "💢";
 const icon1 = "💖";
-const icon2 = "👁‍🗨";
 
 
 class WindowPreview extends Component {
@@ -124,7 +123,13 @@ class WindowPreview extends Component {
                         <div className="debugConsole">DEBUG CONSOLE</div>
                         <div className="terminal">TERMINAL</div>
                         <Asset className="panelDropdown" assetName="dropdown.background" assetFore="dropdown.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>1: node ▾</Asset>
-                        <div className="panelButtons">➕ 🗖 🗑 ˄ ✕</div>
+                        <div className="panelButtons">
+                            <span role="img" aria-label="Plus">➕</span>
+                            <span role="img" aria-label="Window">🗖</span>
+                            <span role="img" aria-label="Bin">🗑</span>
+                            <span role="img" aria-label="Up arrow">˄</span>
+                            <span role="img" aria-label="Cross">✕</span>
+                        </div>
                         <div className="console">
                             You can now view my-app in the browser. <br />
                             <br />

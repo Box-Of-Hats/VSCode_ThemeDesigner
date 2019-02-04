@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 
 function CodeExample(props) {
     var l1 = "function CodeExample(props) {";

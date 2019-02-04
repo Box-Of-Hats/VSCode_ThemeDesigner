@@ -20,8 +20,12 @@ export default class ColorPickers extends Component {
                             selected={i === this.props.selectedColorName} />
                     })}
                 </div>
-                <div className="button button-plus" onClick={this.props.onColorAdd}>&#10133;&#xFE0E; Add</div>
-                <div className="button button-minus" onClick={this.props.onColorRemove}>&#10134;&#xFE0E; Remove</div>
+                <div className="button button-plus" onClick={this.props.onColorAdd}>
+                    <span role="img" aria-label="Plus">&#10133;&#xFE0E;</span> Add
+                </div>
+                <div className="button button-minus" onClick={this.props.onColorRemove}>
+                    <span role="img" aria-label="Minus">&#10134;&#xFE0E;</span> Remove
+                </div>
             </div>
         )
     }

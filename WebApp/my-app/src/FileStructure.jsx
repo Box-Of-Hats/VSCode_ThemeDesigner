@@ -1,13 +1,13 @@
-import React, { PureComponent } from 'react'
-const icon0 = "💢";
+import React from 'react'
 const icon1 = "💖";
 const icon2 = "👁‍🗨";
 
 function FileStructure(props) {
+    var lines;
     if (props.lines === undefined) {
-        var lines = ["◢ WebApp", "\t▶ .VSCode", "\t◢ src", `\t\t${icon1} App.js`, "\t◢ style", `\t\t${icon2}index.css`, `\t\t${icon2}app.css`]
+        lines = ["◢ WebApp", "\t▶ .VSCode", "\t◢ src", `\t\t${icon1} App.js`, "\t◢ style", `\t\t${icon2}index.css`, `\t\t${icon2}app.css`]
     } else {
-        var lines = props.lines
+        lines = props.lines
     }
     var parent = []
     lines.map((line) => {

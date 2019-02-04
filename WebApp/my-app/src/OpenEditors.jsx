@@ -1,6 +1,5 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 
-const icon0 = "💢";
 const icon1 = "💖";
 const icon2 = "👁‍🗨";
 
