@@ -14,7 +14,8 @@ class App extends Component {
         this.state = {
             palette: defaultSettings.presets[0].palette,
             assets: defaultSettings.presets[0].workbenchColorCustomizations,
-            selectedColorName: "c0"
+            selectedColorName: "c0",
+            tokenColors: defaultSettings.presets[0].editorTokenColorCustomizations
         };
         this.handleColorChange = this.handleColorChange.bind(this);
         this.updateAsset = this.updateAsset.bind(this);
@@ -28,12 +29,13 @@ class App extends Component {
         this.setState({ selectedColorName: colorName });
     }
 
-    updateAsset(assetName) {
-        let prev = JSON.parse(JSON.stringify(this.state.assets))
-
+    updateAsset(parent, assetName) {
+        let prev = JSON.parse(JSON.stringify(this.state[parent]))
+        console.log("Updating:", parent, assetName );
+        
         prev[assetName] = this.state.selectedColorName;
         this.setState({
-            assets: prev
+            [parent]: prev
         })
     }
 
@@ -104,7 +106,7 @@ class App extends Component {
                     </div>
                 </div>
                 <div className="windowPreviewContainer">
-                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} />
+                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors}/>
                 </div>
                 <Footer />
             </div>

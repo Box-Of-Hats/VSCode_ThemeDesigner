@@ -7,6 +7,7 @@ import OpenEditors from './OpenEditors'
 import StatusBar from './StatusBar'
 import TitleBarText from './TitleBarText'
 import $ from 'jquery';
+import CodeColorPreview from './CodeColorPreview';
 const icon0 = "💢";
 const icon1 = "💖";
 
@@ -19,8 +20,8 @@ class WindowPreview extends Component {
         this.handleExit = this.handleExit.bind(this);
     }
 
-    handleClick(assetName) {
-        this.props.handleChange(assetName);
+    handleClick(assetName, parent="assets") {
+        this.props.handleChange(parent, assetName);
     }
 
     handleEnter(assetName) {
@@ -140,7 +141,8 @@ class WindowPreview extends Component {
                     </div>
                 </Asset>
                 <Asset className="editor" assetName="editor.background" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    <CodeExample />
+                    {/* <CodeExample /> */}
+                    <CodeColorPreview palette={palette} assets={this.props.tokenColors} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset className="contextMenu" assetName="menu.background" assetFore="menu.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <ContextMenuItem text="Go to definition" shortcut="F12" />
                         <ContextMenuItem text="Peek definition" shortcut="Alt+F12" />
@@ -175,8 +177,6 @@ class WindowPreview extends Component {
                 <Asset className="statusBar" assetName="statusBar.background" assetFore="statusBar.foreground" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <StatusBar />
                 </Asset>
-
-
             </div >
         )
     }
