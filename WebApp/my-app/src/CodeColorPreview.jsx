@@ -13,7 +13,7 @@ export default class CodeColorPreview extends Component {
     }
 
     handleClick(assetName){
-        this.props.handleClick("tokenColors", assetName)
+        this.props.handleClick(assetName, "tokenColors")
     }
 
     render() {

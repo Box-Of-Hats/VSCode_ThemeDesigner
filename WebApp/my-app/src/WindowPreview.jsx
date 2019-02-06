@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Asset from './Asset'
-import CodeExample from './CodeExample'
 import ContextMenuItem from './ContextMenuItem'
 import FileStructure from './FileStructure'
 import OpenEditors from './OpenEditors'
@@ -21,7 +20,7 @@ class WindowPreview extends Component {
     }
 
     handleClick(assetName, parent="assets") {
-        this.props.handleChange(parent, assetName);
+        this.props.handleChange(assetName, parent);
     }
 
     handleEnter(assetName) {

@@ -29,13 +29,11 @@ class App extends Component {
         this.setState({ selectedColorName: colorName });
     }
 
-    updateAsset(parent, assetName) {
-        let prev = JSON.parse(JSON.stringify(this.state[parent]))
-        console.log("Updating:", parent, assetName );
-        
+    updateAsset(assetName, parent) {        
+        let prev = this.state[parent]        
         prev[assetName] = this.state.selectedColorName;
         this.setState({
-            [parent]: prev
+            parent: prev
         })
     }
 

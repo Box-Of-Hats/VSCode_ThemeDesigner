@@ -1,13 +1,6 @@
 import React from 'react'
 
 function CodeAsset(props) {
-    var foreColor;
-    //TODO: Fix null check. Somehow values are getting into code, such as "undefined": "#efefef",
-    if (props.assetFore !== null) {
-        foreColor = props.palette[props.assets[props.assetFore]];
-    } else {
-        foreColor = "#efefef";
-    }
     return (
         <div className={`codeAsset ${props.className}`}
             onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.handleClick(props.assetName) }}
