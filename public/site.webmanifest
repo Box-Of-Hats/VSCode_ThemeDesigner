@@ -1,0 +1,19 @@
+{
+    "name": "VSCode Designer",
+    "short_name": "VSCode Designer",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#95c8d5",
+    "background_color": "#95c8d5",
+    "display": "standalone"
+}
