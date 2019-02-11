@@ -11,7 +11,7 @@ const Asset = (props) => {
         <div className={`asset ${props.className}`}
             onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.handleClick(props.assetProps[0]) }}
             onContextMenu={(e) => { e.stopPropagation(); e.preventDefault(); e.stopPropagation(); props.handleClick(props.assetProps[1]) }}
-            onMouseEnter={(e) => { e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetProps[0]) }}
+            onMouseOver={(e) => { e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetProps[0]) }}
             onMouseLeave={(e) => { e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetProps[0]) }}
             data-primaryAsset={props.assetProps[0]} data-secondaryAsset={props.assetProps[1]}
             style={props.style ? props.style : {
