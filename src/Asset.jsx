@@ -1,22 +1,21 @@
 import React from 'react'
 
-function Asset(props) {
+const Asset = (props) => {
     var foreColor;
-    //TODO: Fix null check. Somehow values are getting into code, such as "undefined": "#efefef",
-    if (props.assetFore !== null) {
-        foreColor = props.palette[props.assets[props.assetFore]];
+    if (props.assetProps[1] !== null) {
+        foreColor = props.palette[props.assets[props.assetProps[1]]];
     } else {
         foreColor = "#efefef";
     }
     return (
         <div className={`asset ${props.className}`}
-            onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.handleClick(props.assetName) }}
-            onContextMenu={(e) => { e.stopPropagation(); e.preventDefault(); e.stopPropagation(); props.handleClick(props.assetFore) }}
-            onMouseEnter={(e) => { e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetName) }}
-            onMouseLeave={(e) => { e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetName) }}
-            data-primaryAsset={props.assetName} data-secondaryAsset={props.assetFore}
+            onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.handleClick(props.assetProps[0]) }}
+            onContextMenu={(e) => { e.stopPropagation(); e.preventDefault(); e.stopPropagation(); props.handleClick(props.assetProps[1]) }}
+            onMouseEnter={(e) => { e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetProps[0]) }}
+            onMouseLeave={(e) => { e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetProps[0]) }}
+            data-primaryAsset={props.assetProps[0]} data-secondaryAsset={props.assetProps[1]}
             style={props.style ? props.style : {
-                backgroundColor: props.palette[props.assets[props.assetName]],
+                backgroundColor: props.palette[props.assets[props.assetProps[0]]],
                 color: foreColor
             }
             }>
