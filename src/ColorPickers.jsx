@@ -11,16 +11,18 @@ export default class ColorPickers extends Component {
     }
 
     render() {
+        let containerClass = Object.keys(this.props.palette).length >= 8 ? "condensed" : "full";
+        let isAddButtonEnabled = Object.keys(this.props.palette).length < 16;
         return (
             <div className="colorPickersComponent">
                 <div className="colorPickers">
                     {Object.keys(this.props.palette).map((i, key) => {
-                        return <ColorPicker key={key} colorName={i} color={this.props.palette[i]}
+                        return <div className={`colorPickerContainer colorPickerContainer--${containerClass}`}><ColorPicker key={key} colorName={i} color={this.props.palette[i]}
                             handleChange={this.props.onChange} handleSelect={this.props.onSelect}
-                            selected={i === this.props.selectedColorName} />
+                            selected={i === this.props.selectedColorName} /></div>
                     })}
                 </div>
-                <div className="button button-plus" onClick={this.props.onColorAdd}>
+                <div className="button button-plus" onClick={isAddButtonEnabled ? this.props.onColorAdd : null }>
                     <span role="img" aria-label="Plus">&#10133;&#xFE0E;</span> Add
                 </div>
                 <div className="button button-minus" onClick={this.props.onColorRemove}>
