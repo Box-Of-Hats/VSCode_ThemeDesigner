@@ -7,8 +7,8 @@ import StatusBar from './StatusBar'
 import TitleBarText from './TitleBarText'
 import $ from 'jquery';
 import CodeColorPreview from './CodeColorPreview';
-const icon0 = "💢";
-const icon1 = "💖";
+import {JSIcon, JSONIcon} from './Icons'
+
 
 
 class WindowPreview extends Component {
@@ -69,13 +69,28 @@ class WindowPreview extends Component {
                 </div>
                 <div className="tabs">
                     <Asset assetProps={["tab.activeBackground", "tab.activeForeground"]} className="tab activeTab"   palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>{icon1} ActiveTab.js</span>
+                        <span>
+                            <JSIcon/>App.js
+                        </span>
+                        <span>
+                            &#10006;&#xFE0E;
+                        </span>
                     </Asset>
                     <Asset assetProps={["tab.inactiveBackground", "tab.inactiveForeground"]} className="tab inactiveTab"   palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>{icon0} bg1.json</span>
+                        <span>
+                            <JSONIcon/> bg1.json
+                        </span>
+                        <span>
+                            &#10006;&#xFE0E;
+                        </span>
                     </Asset>
                     <Asset assetProps={["tab.inactiveBackground", "tab.inactiveForeground"]} className="tab inactiveTab"   palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>{icon0} bg2.json</span>
+                        <span>
+                            <JSONIcon/> bg2.json
+                        </span>
+                        <span>
+                            &#10006;&#xFE0E;
+                        </span>
                     </Asset>
                     <Asset assetProps={["editorGroupHeader.tabsBackground"]} className="editorGroupHeader"  palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 </div>
