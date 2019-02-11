@@ -7,7 +7,7 @@
                 "c1": "#1D2725",
                 "c2": "#30423F",
                 "c3": "#EFEFEF",
-                "c4": "#FFD3F1"
+                "c4": "#f863aa"
             },
             "editorTokenColorCustomizations": {
                 "comments": "#FF0000",
@@ -39,8 +39,8 @@
                 "list.highlightForeground": "c3",
                 "list.inactiveSelectionForeground": "c3",
                 "menu.background": "c1",
-                "menu.selectionBackground": "c2",
-                "menu.selectionForeground": "c3",
+                "menu.selectionBackground": "c3",
+                "menu.selectionForeground": "c1",
                 "menu.separatorBackground": "c3",
                 "menubar.selectionForeground": "c3",
                 "notificationLink.foreground": "c3",
