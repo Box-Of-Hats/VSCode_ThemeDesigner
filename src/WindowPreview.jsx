@@ -113,7 +113,7 @@ class WindowPreview extends Component {
                         <span>◢ OPEN EDITORS</span>
                     </Asset>
                     <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <OpenEditors />
+                        <OpenEditors lines={this.props.openEditors}/>
                     </Asset>
                     <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <span>◢ MYPROJECTNAME</span>

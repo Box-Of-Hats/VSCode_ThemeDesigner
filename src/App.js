@@ -17,7 +17,8 @@ class App extends Component {
             selectedColorName: "c0",
             tokenColors: config.presets[0].editorTokenColorCustomizations,
             footerLinks: config.footerLinks,
-            owner: config.owner
+            owner: config.owner,
+            openEditors: config.windowPreview.openEditors
         };
         this.handleColorChange = this.handleColorChange.bind(this);
         this.updateAsset = this.updateAsset.bind(this);
@@ -106,7 +107,7 @@ class App extends Component {
                     </div>
                 </div>
                 <div className="windowPreviewContainer">
-                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors}/>
+                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors} openEditors={this.state.openEditors}/>
                 </div>
                 <Footer links={this.state.footerLinks} copyrightName={this.state.owner}/>
             </div>

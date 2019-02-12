@@ -9,6 +9,9 @@
         "label": "my work"
     }],
     "owner": "Box of Hats",
+    "windowPreview": {
+        "openEditors": ["App.js WebApp\\my-app\\src", "Settings", "index.css WebApp\\my-app\\style"]
+    },
     "presets": [
         {
             "name": "Jake",
