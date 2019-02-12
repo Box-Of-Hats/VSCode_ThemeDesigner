@@ -1,0 +1,74 @@
+@import './_sideBar.less';
+@import './_footer.less';
+
+.contextMenu {
+    margin-right: 30px;
+    margin-left: auto;
+    padding: 8px 16px;
+    width: fit-content;
+    font-size: 10pt;
+    max-width: 300px;
+    min-width: 100px;
+    hr {
+        border-top: 1px solid;
+        border-bottom: 0;
+        border-left: 0;
+        border-right: 0;
+    }
+    .contextMenuItem {
+        margin: 2px 6px 2px 6px;
+        width: 97%;
+        clear: both;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    .contextMenuItemHighlighted {
+        margin: 2px 0 2px 0;
+        width: 100%;
+        clear: both;
+        white-space: nowrap;
+        display: inline-block;
+    }
+    .contextMenuItemSeparator {
+        padding: 3px 0 3px 0;
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+.App {
+    box-sizing: border-box;
+    height: 98vh;
+    display: grid;
+    grid-template-rows: 10% 1% 89% 10%;
+    grid-template-columns: 19% 1% 70% 10%;
+    grid-template-areas: "header  header  header header" ".       .       .      ." "menu   .       preview ." "footer footer  footer  footer";
+    @media @tablet {
+        grid-template-rows: 30% 1% 69%;
+        grid-template-columns: 15% 85%;
+        grid-template-areas: "header menu menu" ".    .    ." "preview preview preview" "footer footer footer"
+    }
+    .highlighted {
+        @highlightSize: 50;
+        @highlightOpacity: 0.1;
+        background-attachment: fixed;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='@{highlightSize}' height='@{highlightSize}' viewBox='0 0 20 20'%3E%3Cg fill-opacity='@{highlightOpacity}'%3E%3Cpolygon fill='%23f2f2f2' points='20 10 10 0 0 0 20 20'/%3E%3Cpolygon fill='%23f2f2f2' points='0 10 0 20 10 20'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .header {
+        background-color: @greyDark;
+        padding: 12px 0 6px 16px;
+        color: @white;
+        font-size: 30pt;
+        grid-area: header;
+        @media @tablet {
+            font-size: 16pt;
+        }
+        .container();
+        span {
+            vertical-align: top;
+        }
+        img {
+            width: 60px;
+            margin: 0 10px 0 0;
+        }
+    }
+}
