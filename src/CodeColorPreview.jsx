@@ -19,9 +19,7 @@ export default class CodeColorPreview extends Component {
     render() {
         return (
             <div className="codeColorPreview">
-                <CodeAsset assetName="def" assets={this.props.assets} palette={this.props.palette} handleClick={this.handleClick} handleEnter={this.props.handleEnter} handleExit={this.props.handleExit}>Def</CodeAsset>
-                <CodeAsset assetName="func" assets={this.props.assets} palette={this.props.palette} handleClick={this.handleClick} handleEnter={this.props.handleEnter} handleExit={this.props.handleExit}>function</CodeAsset>
-                <CodeAsset assetName="misc" assets={this.props.assets} palette={this.props.palette} handleClick={this.handleClick} handleEnter={this.props.handleEnter} handleExit={this.props.handleExit}>Something</CodeAsset>
+                {this.props.codeWords.map((item, key) => <CodeAsset key={key} assetName={item.name} assets={this.props.assets} palette={this.props.palette} handleClick={this.handleClick} handleEnter={this.props.handleEnter} handleExit={this.props.handleExit}>{item.text}</CodeAsset> )}
             </div>
         )
     }

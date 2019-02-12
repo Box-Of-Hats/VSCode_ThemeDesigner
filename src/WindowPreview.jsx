@@ -9,15 +9,26 @@ import $ from 'jquery';
 import CodeColorPreview from './CodeColorPreview';
 import { JSIcon, JSONIcon } from './Icons'
 
-
-
 class WindowPreview extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            codePreviewText: [
+                {
+                    name: "code1",
+                    text: "def"
+                },
+                {
+                    name: "code2",
+                    text: "function"
+                }
+            ]
+        };
         this.handleClick = this.handleClick.bind(this);
         this.handleEnter = this.handleEnter.bind(this);
         this.handleExit = this.handleExit.bind(this);
     }
+
 
     handleClick(assetName, parent = "assets") {
         this.props.handleChange(assetName, parent);
@@ -155,8 +166,7 @@ class WindowPreview extends Component {
                     </div>
                 </Asset>
                 <Asset assetProps={["editor.background"]} className="editor" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    {/* <CodeExample /> */}
-                    <CodeColorPreview palette={palette} assets={this.props.tokenColors} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
+                    <CodeColorPreview codeWords={this.state.codePreviewText} palette={palette} assets={this.props.tokenColors} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset assetProps={["menu.background", "menu.foreground"]} className="contextMenu" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <ContextMenuItem text="Go to definition" shortcut="F12" />
                         <ContextMenuItem text="Peek definition" shortcut="Alt+F12" />
