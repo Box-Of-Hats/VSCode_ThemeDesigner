@@ -14,5 +14,7 @@ gulp.task("minify-css", () => {
         .pipe(gulp.dest('./src/style'));
 });
 
+gulp.task('watch-css', function () {
+    gulp.watch('src/style/*.less', gulp.series(['compile-less', 'minify-css']))});
 
 gulp.task("default", gulp.series(['compile-less', "minify-css"]));
