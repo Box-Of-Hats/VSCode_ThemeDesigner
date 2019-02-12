@@ -13,7 +13,7 @@
         "openEditors": ["App.js WebApp\\my-app\\src", "Settings", "index.css WebApp\\my-app\\style"]
     },
     "colorPickers": {
-        "compactLength": 3,
+        "compactLength": 6,
         "maxColorCount": 12
     },
     "presets": [
