@@ -1,12 +1,8 @@
 import React from 'react'
 
 const Asset = (props) => {
-    var foreColor;
-    if (props.assetProps[1] !== null) {
-        foreColor = props.palette[props.assets[props.assetProps[1]]];
-    } else {
-        foreColor = "#efefef";
-    }
+    var foreColor = props.palette.Count > 1 ? props.palette[props.assets[props.assetProps[1]]] : "#efefef";
+
     return (
         <div className={`asset ${props.className}`}
             onClick={(e) => { e.stopPropagation(); e.preventDefault(); props.handleClick(props.assetProps[0]) }}
