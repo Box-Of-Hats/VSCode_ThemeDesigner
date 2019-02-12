@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Asset = (props) => {
-    var foreColor = props.palette.Count > 1 ? props.palette[props.assets[props.assetProps[1]]] : "#efefef";
+    var foreColor = props.palette[props.assets[props.assetProps[1]]] !== null ? props.palette[props.assets[props.assetProps[1]]] : "#ff0000";
 
     return (
         <div className={`asset ${props.className}`}
