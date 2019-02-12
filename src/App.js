@@ -15,10 +15,7 @@ class App extends Component {
             palette: config.presets[0].palette,
             assets: config.presets[0].workbenchColorCustomizations,
             selectedColorName: "c0",
-            tokenColors: config.presets[0].editorTokenColorCustomizations,
-            footerLinks: config.footerLinks,
-            owner: config.owner,
-            openEditors: config.windowPreview.openEditors
+            tokenColors: config.presets[0].editorTokenColorCustomizations
         };
         this.handleColorChange = this.handleColorChange.bind(this);
         this.updateAsset = this.updateAsset.bind(this);
@@ -101,15 +98,16 @@ class App extends Component {
                         <ThemePicker onChange={this.loadTheme} themes={config.presets} />
                         <div className="colorPickers">
                             <ColorPickers palette={this.state.palette} onChange={this.updatePalette} onSelect={this.handleColorChange}
-                                selectedColorName={this.state.selectedColorName} onColorAdd={this.onColorAdd} onColorRemove={this.onColorRemove}/>
+                                selectedColorName={this.state.selectedColorName} onColorAdd={this.onColorAdd} onColorRemove={this.onColorRemove}
+                                compactLength={config.colorPickers.compactLength} maxColorCount={config.colorPickers.maxColorCount}/>
                         </div>
                         <CodePreview assets={this.state.assets} palette={this.state.palette} />
                     </div>
                 </div>
                 <div className="windowPreviewContainer">
-                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors} openEditors={this.state.openEditors}/>
+                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors} openEditors={config.windowPreview.openEditors}/>
                 </div>
-                <Footer links={this.state.footerLinks} copyrightName={this.state.owner}/>
+                <Footer links={config.footerLinks} copyrightName={config.owner}/>
             </div>
         );
     }

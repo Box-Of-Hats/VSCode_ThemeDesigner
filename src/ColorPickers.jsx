@@ -11,8 +11,8 @@ export default class ColorPickers extends Component {
     }
 
     render() {
-        let containerClass = Object.keys(this.props.palette).length >= 8 ? "compact" : "full";
-        let isAddButtonEnabled = Object.keys(this.props.palette).length < 16;
+        let containerClass = Object.keys(this.props.palette).length >= this.props.compactLength ? "compact" : "full";
+        let isAddButtonEnabled = Object.keys(this.props.palette).length < this.props.maxColorCount;
         return (
             <div className="colorPickersComponent">
                 <div className="colorPickers">
