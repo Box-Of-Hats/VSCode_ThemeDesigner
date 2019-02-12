@@ -12,7 +12,6 @@ class ColorPicker extends Component {
 
     handleColorChange(event) {
         event.preventDefault();
-        console.log("ColorPicker.handleColorChange: ", event.target.value);
         this.setState({ value: event.value });
         this.props.handleChange(this.props.colorName, event.target.value);
         this.props.handleSelect(this.props.colorName);
@@ -20,7 +19,6 @@ class ColorPicker extends Component {
 
     handleSelectButtonClick(event) {
         event.preventDefault();
-        console.log("ColorPicker.handleSelectButtonClick:", this.props.colorName);
         this.props.handleSelect(this.props.colorName);
     }
 
