@@ -1,13 +1,21 @@
 import React from 'react'
+import {JSIcon, JSONIcon, FileIcon} from './Icons'
 
-const icon1 = "💖";
-const icon2 = "👁‍🗨";
 
 function OpenEditors(props) {
-    var lines = [`${icon1} App.js WebApp\\my-app\\src`, "Settings", `${icon2}index.css WebApp\\my-app\\style`]
+    var lines = [`App.js WebApp\\my-app\\src`, "Settings", `index.css WebApp\\my-app\\style`]
     var parent = []
     lines.map((line) => {
-        parent.push(<div className="openEditorText"> {line}</div >);
+        var fileIcon = ""
+        if (line.includes(".json")){
+            fileIcon = <JSONIcon/>
+        } else if (line.includes(".js")){
+            fileIcon = <JSIcon/>
+        } else if (line.includes(".css")){
+            fileIcon = <FileIcon/>
+        }
+
+        parent.push(<div className="openEditorText">{fileIcon}{line}</div >);
         return 0;
     });
     return parent;
