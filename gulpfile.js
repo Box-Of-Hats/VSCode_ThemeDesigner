@@ -3,7 +3,7 @@ let less = require('gulp-less');
 let cleanCSS = require('gulp-clean-css');
 
 gulp.task("compile-less", () => {
-    return gulp.src('./src/style/*.less')
+    return gulp.src('./src/style/App.less')
         .pipe(less())
         .pipe(gulp.dest('./src/style/'))
 });
