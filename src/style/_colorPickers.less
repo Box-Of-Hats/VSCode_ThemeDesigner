@@ -1,0 +1,56 @@
+//ColorPickers
+.colorPickersComponent {
+    align-content: center;
+    text-align: center;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "b1 b2" "a a";
+    .colorPickers {
+        grid-area: a;
+    }
+    .button {
+        width: 90%;
+        &-plus {
+            grid-area: b1;
+        }
+        &-minus {
+            grid-area: b2;
+        }
+    }
+}
+
+//ColorPicker
+.colorPickerComponent {
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 34px auto;
+    height: 34px;
+    margin: 2px auto;
+    &__label {
+        .button();
+        cursor: pointer;
+        height: 100%;
+        vertical-align: top;
+        margin: 0;
+    }
+    &__button {
+        .button(@white);
+        margin: 0 auto;
+        cursor: pointer;
+        text-decoration: none;
+        color: @black;
+        height: 100%;
+        &:focus {
+            outline: 0;
+        }
+        &:hover {
+            transition: 300ms;
+            background: darken(@white, 5%);
+        }
+        &:active {
+            transition: 0s;
+        }
+    }
+}

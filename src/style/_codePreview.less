@@ -1,0 +1,29 @@
+.codePreviewContainer {
+    display: grid;
+    grid-template-columns: 5% 45% 45% 5%;
+    grid-template-rows: 85% 15%;
+    grid-template-areas: "code code code code" ".... b1   b2   ....";
+    @media @tablet {
+        grid-template-columns: 5% 45% 45% 5%;
+        grid-template-rows: 20% 80%;
+        grid-template-areas: ".... b1   b2   ...." "code code code code";
+    }
+    .codePreview {
+        display: inline-block;
+        min-width: 100%;
+        padding: 5px;
+        color: @black;
+        border-radius: @radiusStandard;
+        background-color: @white;
+        vertical-align: top;
+        resize: none;
+        font-family: @codeFont;
+        grid-area: code;
+    }
+    .button:nth-child(2) {
+        grid-area: b1;
+    }
+    .button:nth-child(3) {
+        grid-area: b2;
+    }
+}

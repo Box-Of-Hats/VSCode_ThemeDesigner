@@ -1,0 +1,45 @@
+.input {
+    border-radius: @radiusStandard;
+    font-family: @pageFont;
+    padding: 2px;
+    text-align: center;
+    font-size: 14pt;
+    background-color: @white;
+    color: @black;
+}
+
+.defaultText {
+    color: @white;
+    font-size: 70%;
+    padding-left: 10px;
+    padding-top: 1%;
+    display: inline-block;
+    font-family: @uiFont;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    background-color: @white;
+    font-family: @pageFont;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.button {
+    .button(@white);
+    &-minus {
+        .button(@red);
+        color: @white;
+    }
+    &-plus {
+        .button(@green);
+        color: @white;
+    }
+    &-blue {
+        .button(@blue);
+        color: @white;
+    }
+}
