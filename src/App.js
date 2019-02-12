@@ -6,16 +6,18 @@ import Footer from './Footer';
 import WindowPreview from './WindowPreview';
 import ColorPickers from './ColorPickers';
 const vsCodeLogo = require('./img/vsCodeLogo.png');
-const defaultSettings = require('./config.json');
+const config = require('./config.json');
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            palette: defaultSettings.presets[0].palette,
-            assets: defaultSettings.presets[0].workbenchColorCustomizations,
+            palette: config.presets[0].palette,
+            assets: config.presets[0].workbenchColorCustomizations,
             selectedColorName: "c0",
-            tokenColors: defaultSettings.presets[0].editorTokenColorCustomizations
+            tokenColors: config.presets[0].editorTokenColorCustomizations,
+            footerLinks: config.footerLinks,
+            owner: config.owner
         };
         this.handleColorChange = this.handleColorChange.bind(this);
         this.updateAsset = this.updateAsset.bind(this);
@@ -49,8 +51,8 @@ class App extends Component {
     loadTheme(themeId) {
         this.setState(
             {
-                palette: defaultSettings.presets[themeId].palette,
-                assets: defaultSettings.presets[themeId].workbenchColorCustomizations
+                palette: config.presets[themeId].palette,
+                assets: config.presets[themeId].workbenchColorCustomizations
             }
         );
     }
@@ -95,7 +97,7 @@ class App extends Component {
                 <div className="header"><img src={vsCodeLogo} alt="Visual Studio Code Logo"></img><span>VSCode Theme Designer</span></div>
                 <div className="appSideBarWrapper">
                     <div className="appSideBar">
-                        <ThemePicker onChange={this.loadTheme} themes={defaultSettings.presets} />
+                        <ThemePicker onChange={this.loadTheme} themes={config.presets} />
                         <div className="colorPickers">
                             <ColorPickers palette={this.state.palette} onChange={this.updatePalette} onSelect={this.handleColorChange}
                                 selectedColorName={this.state.selectedColorName} onColorAdd={this.onColorAdd} onColorRemove={this.onColorRemove}/>
@@ -106,7 +108,7 @@ class App extends Component {
                 <div className="windowPreviewContainer">
                     <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors}/>
                 </div>
-                <Footer />
+                <Footer links={this.state.footerLinks} copyrightName={this.state.owner}/>
             </div>
         );
     }

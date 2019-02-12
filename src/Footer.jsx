@@ -1,20 +1,10 @@
 import React from 'react'
 
-const Footer = ({ props }) => {
+const Footer = (props) => {
     return <div className="footer">
         <ul>
-            <li>
-                <a href="https://github.com/Box-Of-Hats/VSCode_ThemeGenerator/">Source</a>
-            </li>
-            <li>
-                <a href="https://box-of-hats.github.io/">My Work</a>
-            </li>
-            <li>
-                |
-            </li>
-            <li>
-                Box Of Hats &copy; {new Date().getFullYear()}
-            </li>
+            {props.links ? props.links.map((item, key) => <li key={key}><a href={item.url}>{item.label}</a></li>) : null}
+            {props.copyrightName ? <li>{props.copyrightName} &copy; {new Date().getFullYear()}</li> : null} 
         </ul>
     </div>
 }

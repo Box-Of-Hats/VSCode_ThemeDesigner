@@ -1,4 +1,14 @@
 {
+    "footerLinks": [
+    {
+        "url": "https://github.com/Box-Of-Hats/VSCode_ThemeGenerator/",
+        "label": "source"
+    },
+    {
+        "url": "https://box-of-hats.github.io/",
+        "label": "my work"
+    }],
+    "owner": "Box of Hats",
     "presets": [
         {
             "name": "Jake",
