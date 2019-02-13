@@ -15,7 +15,7 @@ class CodePreview extends Component {
         return text
     }
 
-    copyText(){
+    copyTextToClipboard(){
         let textArea = document.getElementsByClassName("codePreview")[0];
         textArea.select();
         document.execCommand("copy");
@@ -28,7 +28,7 @@ class CodePreview extends Component {
             <div className="codePreviewContainer">
                 <textarea className="codePreview" value={codePreview} readOnly>
                 </textarea >
-                <div className="button button-blue" onClick={this.copyText}><span role="img" aria-label="clipboard">📋</span> Copy</div>
+                <div className="button button-blue" onClick={this.copyTextToClipboard}><span role="img" aria-label="clipboard">📋</span> Copy</div>
                 <div className="button button-minus" >Download</div>
             </div>
         )
