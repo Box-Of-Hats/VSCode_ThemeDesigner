@@ -4,7 +4,7 @@ import ContextMenuItem from './ContextMenuItem'
 import FileStructure from './FileStructure'
 import OpenEditors from './OpenEditors'
 import StatusBar from './StatusBar'
-import TitleBarText from './TitleBarText'
+import TitleBar from './TitleBar'
 import $ from 'jquery';
 import CodeColorPreview from './CodeColorPreview';
 import { JSIcon, JSONIcon } from './Icons'
@@ -49,7 +49,7 @@ class WindowPreview extends Component {
         return (
             <div className="windowPreview">
                 <Asset assetProps={["titleBar.activeBackground", "titleBar.activeForeground"]} className="titleBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    <TitleBarText />
+                    <TitleBar menuItems={this.props.titleBarMenuItems} title={this.props.titleBarTitle} />
                 </Asset>
                 <div className="activityBar">
                     <Asset assetProps={["activityBar.background", "activityBar.foreground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}

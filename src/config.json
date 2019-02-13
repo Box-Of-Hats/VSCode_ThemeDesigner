@@ -10,6 +10,10 @@
     }],
     "owner": "Box of Hats",
     "windowPreview": {
+        "titleBar": {
+            "menuItems": "File Edit Selection View Go Debug Terminal Help",
+            "title": "App,js - VSCode_ThemeGenerator - Visual Studio Code"
+        },
         "openEditors": ["App.js", "bg1.json", "bg2.json"],
         "fileStructure": ["◢ WebApp", "\t▶ VSCode", "\t▶ build", "\t◢ src", "\t\tApp.js", "\t\tbg1.json", "\t\tbg2.json", "\t\tbg3.json", "\t◢ style", "\t\tindex.css", "\t\tapp.css"]
     },
