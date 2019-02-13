@@ -5,6 +5,7 @@ import CodePreview from './CodePreview';
 import Footer from './Footer';
 import WindowPreview from './WindowPreview';
 import ColorPickers from './ColorPickers';
+import FileStructure from './FileStructure';
 const vsCodeLogo = require('./img/vsCodeLogo.png');
 const config = require('./config.json');
 
@@ -105,7 +106,8 @@ class App extends Component {
                     </div>
                 </div>
                 <div className="windowPreviewContainer">
-                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors} openEditors={config.windowPreview.openEditors}/>
+                    <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors}
+                        openEditors={config.windowPreview.openEditors} fileStructure={config.windowPreview.fileStructure}/>
                 </div>
                 <Footer links={config.footerLinks} copyrightName={config.owner}/>
             </div>

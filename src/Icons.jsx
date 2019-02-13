@@ -12,6 +12,16 @@ export const FileIcon = () => {
     return <div className="icon icon-file"/>
 }
 
-export const SmileIcon = () => {
-    return <div className="icon icon-smile"/>
+export const GenerateFileIcon = (text) => {
+    var iconClassName = "";
+    if (text.endsWith(".js")){
+        iconClassName = "icon-js"
+    } else if (text.endsWith(".json")){
+        iconClassName = "icon-json"
+    } else if (text.includes(".")){
+        iconClassName = "icon-file";
+    }
+    return <div className={`icon ${iconClassName}`}/>
 }
+
+export default GenerateFileIcon

@@ -10,7 +10,8 @@
     }],
     "owner": "Box of Hats",
     "windowPreview": {
-        "openEditors": ["App.js WebApp\\my-app\\src", "Settings", "index.css WebApp\\my-app\\style"]
+        "openEditors": ["App.js WebApp\\my-app\\src", "Settings", "index.css WebApp\\my-app\\style"],
+        "fileStructure": ["◢ WebApp", "\t▶ .VSCode", "\t◢ src", "\t\t App.js", "\t◢ style", "\t\tindex.css", "\t\tapp.css"]
     },
     "colorPickers": {
         "compactLength": 6,

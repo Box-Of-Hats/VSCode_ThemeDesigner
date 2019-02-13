@@ -119,7 +119,7 @@ class WindowPreview extends Component {
                         <span>◢ MYPROJECTNAME</span>
                     </Asset>
                     <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <FileStructure />
+                        <FileStructure lines={this.props.fileStructure} />
                     </Asset>
                     <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <span>◢ OUTLINE</span>
