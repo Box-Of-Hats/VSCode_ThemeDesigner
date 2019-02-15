@@ -7,11 +7,11 @@
     grid-template-rows: auto;
     grid-template-columns: 50% 50%;
     grid-template-areas: "b1 b2" "a a";
+    font-size: 16pt;
     .colorPickers {
         grid-area: a;
     }
     .button {
-        width: 90%;
         &-plus {
             grid-area: b1;
         }
@@ -31,9 +31,11 @@
     &__label {
         .button();
         cursor: pointer;
-        height: 100%;
         vertical-align: top;
         margin: 0;
+        .material-icons {
+            font-size: 16pt;
+        }
     }
     &__button {
         .button(@white);
@@ -41,7 +43,8 @@
         cursor: pointer;
         text-decoration: none;
         color: @black;
-        height: 100%;
+
+        
         &:focus {
             outline: 0;
         }

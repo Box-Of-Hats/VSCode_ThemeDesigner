@@ -28,8 +28,8 @@ class CodePreview extends Component {
             <div className="codePreviewContainer">
                 <textarea className="codePreview" value={codePreview} readOnly>
                 </textarea >
-                <div className="button button-blue" onClick={this.copyTextToClipboard}><span role="img" aria-label="clipboard">📋</span> Copy</div>
-                <div className="button button-minus" >Download</div>
+                <div className="button button--blue" onClick={this.copyTextToClipboard}><i class="material-icons">file_copy</i> Copy</div>
+                <div className="button button--minus"><i class="material-icons">save_alt</i> save</div>
             </div>
         )
     }

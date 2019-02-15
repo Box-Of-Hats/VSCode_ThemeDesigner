@@ -70,7 +70,7 @@ class WindowPreview extends Component {
                     </Asset>
                     <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Extensions"><i class="material-icons">border_all</i></span>
+                        <span role="img" aria-label="Extensions"><i class="material-icons">dashboard</i></span>
                     </Asset>
                     <Asset assetProps={["activityBar.background"]} className="activityBarSpace" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
@@ -84,7 +84,7 @@ class WindowPreview extends Component {
                             <JSIcon />App.js
                         </span>
                         <span>
-                            &#10006;&#xFE0E;
+                            <i class="material-icons">close</i>
                         </span>
                     </Asset>
                     <Asset assetProps={["tab.inactiveBackground", "tab.inactiveForeground"]} className="tab inactiveTab" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
@@ -92,7 +92,7 @@ class WindowPreview extends Component {
                             <JSONIcon /> bg1.json
                         </span>
                         <span>
-                            &#10006;&#xFE0E;
+                            <i class="material-icons">close</i>
                         </span>
                     </Asset>
                     <Asset assetProps={["tab.inactiveBackground", "tab.inactiveForeground"]} className="tab inactiveTab" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
@@ -100,7 +100,7 @@ class WindowPreview extends Component {
                             <JSONIcon /> bg2.json
                         </span>
                         <span>
-                            &#10006;&#xFE0E;
+                            <i class="material-icons">close</i>
                         </span>
                     </Asset>
                     <Asset assetProps={["editorGroupHeader.tabsBackground"]} className="editorGroupHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
@@ -150,11 +150,11 @@ class WindowPreview extends Component {
                         <div className="terminal">TERMINAL</div>
                         <Asset assetProps={["dropdown.background", "dropdown.foreground"]} className="panelDropdown" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>1: node ▾</Asset>
                         <div className="panelButtons">
-                            <span role="img" aria-label="Plus">➕</span>
-                            <span role="img" aria-label="Window">🗖</span>
-                            <span role="img" aria-label="Bin">🗑</span>
-                            <span role="img" aria-label="Up arrow">˄</span>
-                            <span role="img" aria-label="Cross">✕</span>
+                            <span role="img" aria-label="Plus"><i class="material-icons">add</i></span>
+                            <span role="img" aria-label="Window"><i class="material-icons">vertical_split</i></span>
+                            <span role="img" aria-label="Bin"><i class="material-icons">delete</i></span>
+                            <span role="img" aria-label="Up arrow"><i class="material-icons">expand_less</i></span>
+                            <span role="img" aria-label="Cross"><i class="material-icons">close</i></span>
                         </div>
                         <div className="console">
                             You can now view my-app in the browser. <br />
@@ -198,7 +198,7 @@ class WindowPreview extends Component {
 
                     </Asset>
                 </Asset>
-                <Asset assetProps={["statusBar.background", "statusBar.foreground"]} className="statusBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
+                <Asset assetProps={["statusBar.background", "statusBar.foreground"]} className="statusBarContainer" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <StatusBar />
                 </Asset>
             </div >
