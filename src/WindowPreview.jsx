@@ -54,28 +54,28 @@ class WindowPreview extends Component {
                 <div className="activityBar">
                     <Asset assetProps={["activityBar.background", "activityBar.foreground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.foreground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Files">&#128459;&#xFe0E;</span>
+                        <span role="img" aria-label="Files"><i class="material-icons">file_copy</i></span>
                     </Asset>
                     <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Find">&#128270;&#xFE0E;</span>
+                        <span role="img" aria-label="Find"><i class="material-icons">search</i></span>
                     </Asset>
                     <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Git">&#9282;&#xFE0E;</span>
+                        <span role="img" aria-label="Git"><i class="material-icons">code</i></span>
                     </Asset>
                     <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Debugger">&#128029;&#xFE0E;</span>
+                        <span role="img" aria-label="Debugger"><i class="material-icons">bug_report</i></span>
                     </Asset>
                     <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Extensions">&#8862;&#xFE0E;</span>
+                        <span role="img" aria-label="Extensions"><i class="material-icons">border_all</i></span>
                     </Asset>
                     <Asset assetProps={["activityBar.background"]} className="activityBarSpace" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
                         style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Settings">&#9881;&#xFE0E;</span>
+                        <span role="img" aria-label="Settings"><i class="material-icons">settings</i></span>
                     </Asset>
                 </div>
                 <div className="tabs">
