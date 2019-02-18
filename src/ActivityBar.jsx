@@ -17,8 +17,8 @@ export default class ActivityBar extends PureComponent {
                 </Asset>    
                 })}
                 <Asset assetProps={["activityBar.background"]} className="activityBarSpace" palette={this.props.palette} assets={this.props.assets} handleClick={this.props.handleClick} handleEnter={this.props.handleEnter} handleExit={this.props.handleExit} />
-                <Asset assetProps={["activityBar.background", "activityBar.foreground"]} className="activityBarIcon" palette={this.props.palette} assets={this.props.assets} handleClick={this.props.handleClick} handleEnter={this.props.handleEnter} handleExit={this.props.handleExit}
-                    style={{ color: this.props.palette[this.props.assets["activityBar.foreground"]], backgroundColor: this.props.palette[this.props.assets["activityBar.background"]] }} >
+                <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={this.props.palette} assets={this.props.assets} handleClick={this.props.handleClick} handleEnter={this.props.handleEnter} handleExit={this.props.handleExit}
+                    style={{ color: this.props.palette[this.props.assets["activityBar.inactiveForeground"]], backgroundColor: this.props.palette[this.props.assets["activityBar.background"]] }} >
                     <span role="img" aria-label="Files"><i class="material-icons">{this.props.iconNames.pop(1)}</i></span>
                 </Asset>
             </div>
