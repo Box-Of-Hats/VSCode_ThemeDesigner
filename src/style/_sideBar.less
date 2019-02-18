@@ -1,44 +1,33 @@
-.appSideBarWrapper {
-    grid-area: menu;
-    .appSideBar {
-        .container();
-        height: 100%;
-        padding: 10px 20px;
-        border-radius: @radiusStandard;
-        display: grid;
-        grid-template-rows: 10% 50% 40%;
-        grid-template-columns: 100%;
-        grid-template-areas: "themePicker" "colorPickers" "codePreview";
-        @media @tablet {
-            grid-template-rows: 100%;
-            grid-template-columns: 20% 40% 40%;
-            grid-template-areas: "themePicker colorPickers codePreview";
+.side_bar {
+    display: grid;
+    grid-template-rows: 3.5% 3% 9% 3% 40% 3% 38.5%;
+    grid-template-columns: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 100%;
+    &__section_header {
+        .defaultText();
+        font-weight: 600;
+        width: 100%;
+    }
+    &__item {
+        padding: 4px 0 0 4px;
+        .openEditorText {
+            .defaultText();
+            color: unset;
+            height: 100/3%;
+            display: block;
         }
-        .themePicker {
-            grid-area: themePicker;
-            text-align-last: center;
-            width: 100%;
-            select {
-                .input();
-                width: 100%;
-                height: 4ch;
-            }
+        .fileEntryText {
+            .defaultText();
+            color: unset;
+            display: block;
         }
-        .colorPickersComponent {
-            grid-area: colorPickers;
-            text-align: left;
-            .colorPickerContainer {
-                display: inline-block;
-                &--compact {
-                    width: 50%;
-                }
-                &--full {
-                    width: 100%;
-                }
-            }
-        }
-        .codePreviewContainer {
-            grid-area: codePreview;
+        .filterBox {
+            width: 94%;
+            padding: 6px;
+            margin: 6px auto;
+            font-size: 75%;
         }
     }
 }

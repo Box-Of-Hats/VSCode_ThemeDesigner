@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import ActivityBar from './ActivityBar'
 import Asset from './Asset'
 import ContextMenuItem from './ContextMenuItem'
-import FileStructure from './FileStructure'
-import OpenEditors from './OpenEditors'
 import StatusBar from './StatusBar'
 import TitleBar from './TitleBar'
 import $ from 'jquery';
 import CodeColorPreview from './CodeColorPreview';
 import { JSIcon, JSONIcon } from './Icons'
+import { SideBar } from './SideBar';
+
 
 class WindowPreview extends Component {
     constructor(props) {
@@ -52,7 +52,7 @@ class WindowPreview extends Component {
                 <Asset assetProps={["titleBar.activeBackground", "titleBar.activeForeground"]} className="titleBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <TitleBar menuItems={this.props.titleBarMenuItems} title={this.props.titleBarTitle} />
                 </Asset>
-                <ActivityBar palette={this.props.palette} assets={this.props.assets} iconNames={["file_copy", "search", "code", "bug_report", "dashboard", "settings"]} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
+                <ActivityBar palette={this.props.palette} assets={this.props.assets} iconNames={["file_copy", "search", "code", "bug_report", "dashboard", "settings"]} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 <div className="tabs">
                     <Asset assetProps={["tab.activeBackground", "tab.activeForeground"]} className="tab activeTab" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <span>
@@ -80,31 +80,10 @@ class WindowPreview extends Component {
                     </Asset>
                     <Asset assetProps={["editorGroupHeader.tabsBackground"]} className="editorGroupHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 </div>
-                <div className="sideBarContainer">
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>EXPLORER</span>
-                    </Asset>
-                    <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>◢ OPEN EDITORS</span>
-                    </Asset>
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <OpenEditors lines={this.props.openEditors}/>
-                    </Asset>
-                    <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>◢ MYPROJECTNAME</span>
-                    </Asset>
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <FileStructure lines={this.props.fileStructure} />
-                    </Asset>
-                    <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>◢ OUTLINE</span>
-                    </Asset>
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <Asset assetProps={["input.background", "input.foreground"]} className="filterBox" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                            Filter
-                        </Asset>
-                        <FileStructure lines={["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"]} />
-                    </Asset>
+                <div className="side_bar_container">
+                    <SideBar handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} openEditors={this.props.openEditors} fileStructure={this.props.fileStructure}
+                        fileOutline={this.props.fileOutline} assets={assets} palette={palette} />
+                    
                 </div>
                 <div className="rightContainer">
                     <Asset assetProps={["editor.background"]} className="miniMapSection" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />

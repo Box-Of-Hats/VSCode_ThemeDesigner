@@ -15,7 +15,8 @@
             "title": "App,js - VSCode_ThemeGenerator - Visual Studio Code"
         },
         "openEditors": ["App.js", "bg1.json", "bg2.json"],
-        "fileStructure": ["◢ WebApp", "\t▶ VSCode", "\t▶ build", "\t◢ src", "\t\tApp.js", "\t\tbg1.json", "\t\tbg2.json", "\t\tbg3.json", "\t◢ style", "\t\tindex.css", "\t\tapp.css"]
+        "fileStructure": ["◢ WebApp", "\t▶ VSCode", "\t▶ build", "\t◢ src", "\t\tApp.js", "\t\tbg1.json", "\t\tbg2.json", "\t\tbg3.json", "\t◢ style", "\t\tindex.css", "\t\tapp.css"],
+        "fileOutline": ["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"]
     },
     "colorPickers": {
         "compactLength": 6,

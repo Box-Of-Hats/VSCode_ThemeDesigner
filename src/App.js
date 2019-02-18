@@ -107,7 +107,7 @@ class App extends Component {
                 <div className="windowPreviewContainer">
                     <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors}
                         openEditors={config.windowPreview.openEditors} fileStructure={config.windowPreview.fileStructure} titleBarMenuItems={config.windowPreview.titleBar.menuItems}
-                        titleBarTitle={config.windowPreview.titleBar.title}/>
+                        titleBarTitle={config.windowPreview.titleBar.title} fileOutline={config.windowPreview.fileOutline}/>
                 </div>
                 <Footer links={config.footerLinks} copyrightName={config.owner}/>
             </div>
