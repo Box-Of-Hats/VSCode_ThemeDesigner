@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ActivityBar from './ActivityBar'
 import Asset from './Asset'
 import ContextMenuItem from './ContextMenuItem'
 import FileStructure from './FileStructure'
@@ -51,33 +52,7 @@ class WindowPreview extends Component {
                 <Asset assetProps={["titleBar.activeBackground", "titleBar.activeForeground"]} className="titleBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <TitleBar menuItems={this.props.titleBarMenuItems} title={this.props.titleBarTitle} />
                 </Asset>
-                <div className="activityBar">
-                    <Asset assetProps={["activityBar.background", "activityBar.foreground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.foreground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Files"><i class="material-icons">file_copy</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Find"><i class="material-icons">search</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Git"><i class="material-icons">code</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Debugger"><i class="material-icons">bug_report</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Extensions"><i class="material-icons">dashboard</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background"]} className="activityBarSpace" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Settings"><i class="material-icons">settings</i></span>
-                    </Asset>
-                </div>
+                <ActivityBar palette={this.props.palette} assets={this.props.assets} iconNames={["file_copy", "search", "code", "bug_report", "dashboard", "settings"]} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}/>
                 <div className="tabs">
                     <Asset assetProps={["tab.activeBackground", "tab.activeForeground"]} className="tab activeTab" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <span>
