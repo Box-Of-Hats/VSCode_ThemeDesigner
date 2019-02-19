@@ -16,7 +16,10 @@
         },
         "openEditors": ["App.js", "bg1.json", "bg2.json"],
         "fileStructure": ["◢ WebApp", "\t▶ VSCode", "\t▶ build", "\t◢ src", "\t\tApp.js", "\t\tbg1.json", "\t\tbg2.json", "\t\tbg3.json", "\t◢ style", "\t\tindex.css", "\t\tapp.css"],
-        "fileOutline": ["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"]
+        "fileOutline": ["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"],
+        "terminal": {
+            "problemCount": 30
+        }
     },
     "colorPickers": {
         "compactLength": 6,

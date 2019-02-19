@@ -8,6 +8,8 @@ import $ from 'jquery';
 import CodeColorPreview from './CodeColorPreview';
 import { JSIcon, JSONIcon } from './Icons'
 import { SideBar } from './SideBar';
+import { Terminal } from './Terminal';
+
 
 
 class WindowPreview extends Component {
@@ -91,34 +93,9 @@ class WindowPreview extends Component {
                     <Asset assetProps={["scrollbarSlider.background"]} className="scrollBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset assetProps={["editor.background"]} className="" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 </div>
-                <Asset assetProps={["panel.background", "terminal.foreground"]} className="panel" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    <div className="terminalText">
-                        <div className="problems">
-                            PROBLEMS
-                            <Asset assetProps={["badge.background", "badge.foreground"]} className="badge" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} >
-                                23
-                            </Asset>
-                        </div>
-                        <div className="output">OUTPUT</div>
-                        <div className="debugConsole">DEBUG CONSOLE</div>
-                        <div className="terminal">TERMINAL</div>
-                        <Asset assetProps={["dropdown.background", "dropdown.foreground"]} className="panelDropdown" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>1: node ▾</Asset>
-                        <div className="panelButtons">
-                            <span role="img" aria-label="Plus"><i class="material-icons">add</i></span>
-                            <span role="img" aria-label="Window"><i class="material-icons">vertical_split</i></span>
-                            <span role="img" aria-label="Bin"><i class="material-icons">delete</i></span>
-                            <span role="img" aria-label="Up arrow"><i class="material-icons">expand_less</i></span>
-                            <span role="img" aria-label="Cross"><i class="material-icons">close</i></span>
-                        </div>
-                        <div className="console">
-                            You can now view my-app in the browser. <br />
-                            <br />
-                            Local:  http://localhost:3000/ <br />
-                            On Your Network:  http://192.168.1.182:3000/ <br /><br />
-                            >
-                        </div>
-                    </div>
-                </Asset>
+                <Terminal handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} assets={assets} palette={palette}
+                    problemCount={this.props.terminalProblemCount}
+                ></Terminal>
                 <Asset assetProps={["editor.background"]} className="editor" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <CodeColorPreview codeWords={this.state.codePreviewText} palette={palette} assets={this.props.tokenColors} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset assetProps={["menu.background", "menu.foreground"]} className="contextMenu" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
