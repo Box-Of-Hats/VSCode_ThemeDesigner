@@ -1,7 +1,7 @@
 import React from 'react'
 import GenerateFileIcon  from './Icons'
 
-function FileStructure(props) {
+function IndentedList(props) {
     return props.lines.map((line, key) => {
         var indentation = ""
         if (line.includes("\t\t")) {
@@ -16,4 +16,4 @@ function FileStructure(props) {
     });
 }
 
-export default FileStructure;
+export default IndentedList;

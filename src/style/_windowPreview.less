@@ -1,3 +1,5 @@
+@import './_sideBar.less';
+
 .windowPreviewContainer {
     grid-area: preview;
     font-family: @uiFont;
@@ -80,39 +82,10 @@
                 }
             }
         }
-        .sideBarContainer {
+        .side_bar_container {
             color: @white;
             grid-row-start: 2;
             grid-row-end: 5;
-            display: grid;
-            grid-template-rows: 3.5% 3% 9% 3% 40% 3% 38.5%;
-            grid-template-columns: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            .sideBarSectionHeader {
-                .defaultText();
-                font-weight: 600;
-            }
-            .sideBar {
-                padding: 4px 0 0 4px;
-                .openEditorText {
-                    .defaultText();
-                    color: unset;
-                    height: 100/3%;
-                    display: block;
-                }
-                .fileEntryText {
-                    .defaultText();
-                    color: unset;
-                    display: block;
-                }
-                .filterBox {
-                    width: 94%;
-                    padding: 6px;
-                    margin: 6px auto;
-                    font-size: 75%;
-                }
-            }
         }
         .editor {
             color: @white;

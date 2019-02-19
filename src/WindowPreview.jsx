@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import ActivityBar from './ActivityBar'
 import Asset from './Asset'
 import ContextMenuItem from './ContextMenuItem'
-import FileStructure from './FileStructure'
-import OpenEditors from './OpenEditors'
 import StatusBar from './StatusBar'
 import TitleBar from './TitleBar'
 import $ from 'jquery';
 import CodeColorPreview from './CodeColorPreview';
 import { JSIcon, JSONIcon } from './Icons'
+import { SideBar } from './SideBar';
+import { Terminal } from './Terminal';
+
+
 
 class WindowPreview extends Component {
     constructor(props) {
@@ -51,33 +54,7 @@ class WindowPreview extends Component {
                 <Asset assetProps={["titleBar.activeBackground", "titleBar.activeForeground"]} className="titleBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <TitleBar menuItems={this.props.titleBarMenuItems} title={this.props.titleBarTitle} />
                 </Asset>
-                <div className="activityBar">
-                    <Asset assetProps={["activityBar.background", "activityBar.foreground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.foreground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Files"><i class="material-icons">file_copy</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Find"><i class="material-icons">search</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Git"><i class="material-icons">code</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Debugger"><i class="material-icons">bug_report</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Extensions"><i class="material-icons">dashboard</i></span>
-                    </Asset>
-                    <Asset assetProps={["activityBar.background"]} className="activityBarSpace" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
-                    <Asset assetProps={["activityBar.background", "activityBar.inactiveForeground"]} className="activityBarIcon" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}
-                        style={{ color: palette[assets["activityBar.inactiveForeground"]], backgroundColor: palette[assets["activityBar.background"]] }} >
-                        <span role="img" aria-label="Settings"><i class="material-icons">settings</i></span>
-                    </Asset>
-                </div>
+                <ActivityBar palette={this.props.palette} assets={this.props.assets} iconNames={["file_copy", "search", "code", "bug_report", "dashboard", "settings"]} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 <div className="tabs">
                     <Asset assetProps={["tab.activeBackground", "tab.activeForeground"]} className="tab activeTab" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                         <span>
@@ -105,31 +82,10 @@ class WindowPreview extends Component {
                     </Asset>
                     <Asset assetProps={["editorGroupHeader.tabsBackground"]} className="editorGroupHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 </div>
-                <div className="sideBarContainer">
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>EXPLORER</span>
-                    </Asset>
-                    <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>◢ OPEN EDITORS</span>
-                    </Asset>
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <OpenEditors lines={this.props.openEditors}/>
-                    </Asset>
-                    <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>◢ MYPROJECTNAME</span>
-                    </Asset>
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <FileStructure lines={this.props.fileStructure} />
-                    </Asset>
-                    <Asset assetProps={["sideBarSectionHeader.background", "sideBarSectionHeader.foreground"]} className="sideBarSectionHeader" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <span>◢ OUTLINE</span>
-                    </Asset>
-                    <Asset assetProps={["sideBar.background", "sideBar.foreground"]} className="sideBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                        <Asset assetProps={["input.background", "input.foreground"]} className="filterBox" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                            Filter
-                        </Asset>
-                        <FileStructure lines={["◢ ⊏ App", "\t⊞ handleColorChange", "\t⊞ render", "◢ WindowPreview", "\t⊞ handleClick", "\t⊞ handleEnter", "\t⊞ handleExit"]} />
-                    </Asset>
+                <div className="side_bar_container">
+                    <SideBar handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} openEditors={this.props.openEditors} fileStructure={this.props.fileStructure}
+                        fileOutline={this.props.fileOutline} assets={assets} palette={palette} />
+                    
                 </div>
                 <div className="rightContainer">
                     <Asset assetProps={["editor.background"]} className="miniMapSection" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
@@ -137,34 +93,9 @@ class WindowPreview extends Component {
                     <Asset assetProps={["scrollbarSlider.background"]} className="scrollBar" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset assetProps={["editor.background"]} className="" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                 </div>
-                <Asset assetProps={["panel.background", "terminal.foreground"]} className="panel" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
-                    <div className="terminalText">
-                        <div className="problems">
-                            PROBLEMS
-                            <Asset assetProps={["badge.background", "badge.foreground"]} className="badge" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} >
-                                23
-                            </Asset>
-                        </div>
-                        <div className="output">OUTPUT</div>
-                        <div className="debugConsole">DEBUG CONSOLE</div>
-                        <div className="terminal">TERMINAL</div>
-                        <Asset assetProps={["dropdown.background", "dropdown.foreground"]} className="panelDropdown" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>1: node ▾</Asset>
-                        <div className="panelButtons">
-                            <span role="img" aria-label="Plus"><i class="material-icons">add</i></span>
-                            <span role="img" aria-label="Window"><i class="material-icons">vertical_split</i></span>
-                            <span role="img" aria-label="Bin"><i class="material-icons">delete</i></span>
-                            <span role="img" aria-label="Up arrow"><i class="material-icons">expand_less</i></span>
-                            <span role="img" aria-label="Cross"><i class="material-icons">close</i></span>
-                        </div>
-                        <div className="console">
-                            You can now view my-app in the browser. <br />
-                            <br />
-                            Local:  http://localhost:3000/ <br />
-                            On Your Network:  http://192.168.1.182:3000/ <br /><br />
-                            >
-                        </div>
-                    </div>
-                </Asset>
+                <Terminal handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} assets={assets} palette={palette}
+                    problemCount={this.props.terminalProblemCount}
+                ></Terminal>
                 <Asset assetProps={["editor.background"]} className="editor" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
                     <CodeColorPreview codeWords={this.state.codePreviewText} palette={palette} assets={this.props.tokenColors} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit} />
                     <Asset assetProps={["menu.background", "menu.foreground"]} className="contextMenu" palette={palette} assets={assets} handleClick={this.handleClick} handleEnter={this.handleEnter} handleExit={this.handleExit}>
