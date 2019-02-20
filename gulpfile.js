@@ -1,20 +1,20 @@
-let gulp = require("gulp");
-let less = require('gulp-less');
-let cleanCSS = require('gulp-clean-css');
+const gulp = require("gulp");
+const less = require('gulp-less');
+const cleanCSS = require('gulp-clean-css');
 
-gulp.task("compile-less", () => {
+const style = () => {
+    // Compile less to css and minify
     return gulp.src('./src/style/App.less')
         .pipe(less())
         .pipe(gulp.dest('./src/style/'))
-});
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(gulp.dest('./src/style'))
+}
 
-gulp.task("minify-css", () => {
-    return gulp.src('./src/style/*.css')
-        .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(gulp.dest('./src/style'));
-});
+const watch = () => {
+    gulp.watch('./src/**/*.less', style);
+}
 
-gulp.task('watch-css', function () {
-    gulp.watch('src/style/*.less', gulp.series(['compile-less', 'minify-css']))});
-
-gulp.task("default", gulp.series(['compile-less', "minify-css"]));
+exports.style = style;
+exports.watch = watch;
+exports.default = style;
