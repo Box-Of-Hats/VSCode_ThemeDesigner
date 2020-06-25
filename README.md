@@ -1,6 +1,6 @@
 # VSCode Theme Designer
 
-__[Use the online version](https://vscode.design/)__
+__[Use the online version](https://vscode-designer.netlify.app/)__
 
 [Trello Board](https://trello.com/b/daeuZRZT/vscode-theme-designer)
 
