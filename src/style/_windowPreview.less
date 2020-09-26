@@ -1,203 +1,216 @@
-@import './_sideBar.less';
+@import "./_sideBar.less";
 
 .windowPreviewContainer {
-    grid-area: preview;
-    font-family: @uiFont;
-    .container();
-    .windowPreview {
-        background-color: @black;
-        display: grid;
-        grid-template-columns: 3% 17% 70% 10%;
-        grid-template-rows: 3% 4% 66% 24.5% 2.5%;
-        height: 100%;
-        border: 2px solid @black;
-        overflow: hidden; // Assets
-        user-select: none;
-        .titleBar {
-            .defaultText();
-            grid-column-start: 1;
-            grid-column-end: 6;
-            padding: 1px 5px;
-            .titleBarText {
-                display: grid;
-                grid-template-rows: 100%;
-                grid-template-columns: 3% 40% 37% 20%;
-                margin: 3px 0 0 0;
-                white-space: nowrap;
-                overflow: hidden;
-                .icon {
-                    height: 14px;
-                    width: 14px;
-                    @media @tablet {
-                        height: 10px;
-                        width: 10px;
-                    }
-                }
-                .windowButtons {
-                    .material-icons {
-                        font-size: 12pt;
-                    }
-                    text-align: right;
-                }
-            }
-        }
-        .tabs {
-            grid-column-start: 3;
-            grid-column-end: 5;
-            grid-row-start: 2;
-            display: grid;
-            grid-template-columns: 15% 15% 15% 55%; //Over 100% because the gutter needs to overflow
-            grid-template-rows: 100%;
-            .tab {
-                .defaultText();
-                display: grid;
-                grid-template-rows: 100%;
-                grid-template-columns: 85% 15%;
-                text-align: left;
-                padding: 8px 0 0 16px;
-                white-space: nowrap;
-                .material-icons {
-                    font-size: 10pt;
-                    text-align: right;
-                }
-            }
-        }
-        .activityBar {
-            color: @white;
-            grid-row-start: 2;
-            grid-row-end: 5;
-            display: grid;
-            grid-template-rows: 5% 5% 5% 5% 5% 70% 5%;
-            grid-template-columns: 100%;
-            .activityBarIcon {
-                padding-top: 6px;
-                text-align: center;
-                font-size: 16pt;
-                font-weight: 900;
-                vertical-align: bottom;
-                .material-icons {
-                    @media @tablet {
-                        font-size: 12pt;
-                    }
-                }
-            }
-        }
-        .side_bar_container {
-            color: @white;
-            grid-row-start: 2;
-            grid-row-end: 5;
-        }
-        .editor {
-            color: @white;
-            grid-column-start: 3;
-            grid-column-end: 4;
-            grid-row-start: 3;
-            grid-row-end: 3;
-            font-family: @codeFont;
-            font-size: 10pt;
-            padding: 10px;
-        }
-        .rightContainer {
-            display: grid;
-            grid-column-start: 4;
-            grid-row-start: 3;
-            grid-row-end: 4;
-            grid-template-rows: 35% 20% 45%;
-            grid-template-columns: 90% 10%;
-            .scrollBar {
-                grid-row-start: 2;
-                grid-column-start: 2;
-            }
-            .miniMapSection {
-                //This asset doesn't have a corresponding VSCode setting
-                grid-row-start: 1;
-                grid-row-end: 4;
-                border-right: 1px solid fade(@black, 80%);
-            }
-        }
-        .statusBarContainer {
-            grid-column-start: 1;
-            grid-column-end: 6;
-            .defaultText();
-            padding: 4px 0 0 10px;
-            .statusBar {
-                display: grid;
-                grid-template-columns: 50% 50%;
-                grid-template-rows: 100%;
-                &__section {
-                    .material-icons {
-                        font-size: 8pt;
-                        margin: 0 4px;
-                    }
-                    &--left {
-                        text-align: left;
-                    }
-                    &--right {
-                        text-align: right;
-                    }
-                }
-            }
-        }
-        .panel {
-            grid-column-start: 3;
-            grid-column-end: 5;
-            grid-row-start: 4;
-            grid-row-end: 4;
-            .terminalText {
-                display: grid;
-                grid-template-columns: 10% 10% 10% 10% 38% 12% 10%;
-                grid-template-rows: 18% 92%;
-                grid-template-areas: "problems output debugConsole terminal . dropdown buttons" "console console console console console console console";
-                font-size: 12pt;
-                padding: 10px;
-                font-size: 70%;
-                white-space: nowrap;
-                text-align: center;
-                .problems {
-                    grid-area: problems;
-                    .badge {
-                        width: fit-content;
-                        padding: 2px 6px 2px 6px;
-                        border-radius: 40%;
-                        display: inline-block;
-                        margin: 0 6px;
-                    }
-                }
-                .output {
-                    grid-area: output;
-                }
-                .debugConsole {
-                    grid-area: debugConsole;
-                }
-                .terminal {
-                    grid-area: terminal;
-                }
-                .buttons {
-                    grid-area: buttons;
-                    text-align: right;
-                }
-                .console {
-                    text-align: left;
-                    grid-area: console;
-                    padding: 10px 0 0 8px;
-                }
-                .panelDropdown {
-                    text-align: left;
-                    grid-area: dropdown;
-                    width: 100%;
-                    margin-left: auto;
-                    margin-right: 0;
-                    padding: 2px 0px 2px 6px;
-                }
-                .panelButtons {
-                    text-align: right;
-                    grid-area: buttons;
-                    font-size: 10pt;
-                    .material-icons {
-                        font-size: 12pt;
-                    }
-                }
-            }
-        }
-    }
+	grid-area: preview;
+	font-family: @uiFont;
+	.container();
+	.windowPreview {
+		background-color: @black;
+		display: grid;
+		grid-template-columns: 3% 17% 70% 10%;
+		grid-template-rows: 3% 4% 66% 24.5% 2.5%;
+		height: 100%;
+		border: 2px solid @black;
+		overflow: hidden; // Assets
+		user-select: none;
+		.titleBar {
+			.defaultText();
+			grid-column-start: 1;
+			grid-column-end: 6;
+			padding: 1px 5px;
+			.titleBarText {
+				display: grid;
+				grid-template-rows: 100%;
+				grid-template-columns: 3% 40% 37% 20%;
+				margin: 3px 0 0 0;
+				white-space: nowrap;
+				overflow: hidden;
+				.icon {
+					height: 14px;
+					width: 14px;
+					@media @tablet {
+						height: 10px;
+						width: 10px;
+					}
+				}
+				.windowButtons {
+					.material-icons {
+						font-size: 12pt;
+					}
+					text-align: right;
+				}
+			}
+		}
+		.tabs {
+			grid-column-start: 3;
+			grid-column-end: 5;
+			grid-row-start: 2;
+			display: grid;
+			grid-template-columns: 15% 15% 15% 55%; //Over 100% because the gutter needs to overflow
+			grid-template-rows: 100%;
+			.tab {
+				.defaultText();
+				display: grid;
+				grid-template-rows: 100%;
+				grid-template-columns: 85% 15%;
+				text-align: left;
+				padding: 8px 0 0 16px;
+				white-space: nowrap;
+				.material-icons {
+					font-size: 10pt;
+					text-align: right;
+				}
+			}
+		}
+		.activityBar {
+			color: @white;
+			grid-row-start: 2;
+			grid-row-end: 5;
+			display: grid;
+			grid-template-rows: 5% 5% 5% 5% 5% 70% 5%;
+			grid-template-columns: 100%;
+			.activityBarIcon {
+				padding-top: 6px;
+				text-align: center;
+				font-size: 16pt;
+				font-weight: 900;
+				vertical-align: bottom;
+				.material-icons {
+					@media @tablet {
+						font-size: 12pt;
+					}
+				}
+			}
+		}
+		.side_bar_container {
+			color: @white;
+			grid-row-start: 2;
+			grid-row-end: 5;
+		}
+		.editor {
+			color: @white;
+			grid-column-start: 3;
+			grid-column-end: 4;
+			grid-row-start: 3;
+			grid-row-end: 3;
+			font-family: @codeFont;
+			font-size: 10pt;
+			padding: 10px;
+		}
+		.rightContainer {
+			display: grid;
+			grid-column-start: 4;
+			grid-row-start: 3;
+			grid-row-end: 4;
+			grid-template-rows: 35% 20% 45%;
+			grid-template-columns: 90% 10%;
+			.scrollBar {
+				grid-row-start: 2;
+				grid-column-start: 2;
+			}
+			.miniMapSection {
+				//This asset doesn't have a corresponding VSCode setting
+				grid-row-start: 1;
+				grid-row-end: 4;
+				border-right: 1px solid fade(@black, 80%);
+				&__code {
+					padding: 0.5rem;
+					span {
+						margin: 2px 3px;
+						background-color: #ffffff70;
+						border-radius: 3px;
+						height: 0.5rem;
+						display: inline-block;
+					}
+				}
+				&__slider {
+					height: 4rem;
+				}
+			}
+		}
+		.statusBarContainer {
+			grid-column-start: 1;
+			grid-column-end: 6;
+			.defaultText();
+			padding: 4px 0 0 10px;
+			.statusBar {
+				display: grid;
+				grid-template-columns: 50% 50%;
+				grid-template-rows: 100%;
+				&__section {
+					.material-icons {
+						font-size: 8pt;
+						margin: 0 4px;
+					}
+					&--left {
+						text-align: left;
+					}
+					&--right {
+						text-align: right;
+					}
+				}
+			}
+		}
+		.panel {
+			grid-column-start: 3;
+			grid-column-end: 5;
+			grid-row-start: 4;
+			grid-row-end: 4;
+			.terminalText {
+				display: grid;
+				grid-template-columns: 10% 10% 10% 10% 38% 12% 10%;
+				grid-template-rows: 18% 92%;
+				grid-template-areas: "problems output debugConsole terminal . dropdown buttons" "console console console console console console console";
+				font-size: 12pt;
+				padding: 10px;
+				font-size: 70%;
+				white-space: nowrap;
+				text-align: center;
+				.problems {
+					grid-area: problems;
+					.badge {
+						width: fit-content;
+						padding: 2px 6px 2px 6px;
+						border-radius: 40%;
+						display: inline-block;
+						margin: 0 6px;
+					}
+				}
+				.output {
+					grid-area: output;
+				}
+				.debugConsole {
+					grid-area: debugConsole;
+				}
+				.terminal {
+					grid-area: terminal;
+				}
+				.buttons {
+					grid-area: buttons;
+					text-align: right;
+				}
+				.console {
+					text-align: left;
+					grid-area: console;
+					padding: 10px 0 0 8px;
+				}
+				.panelDropdown {
+					text-align: left;
+					grid-area: dropdown;
+					width: 100%;
+					margin-left: auto;
+					margin-right: 0;
+					padding: 2px 0px 2px 6px;
+				}
+				.panelButtons {
+					text-align: right;
+					grid-area: buttons;
+					font-size: 10pt;
+					.material-icons {
+						font-size: 12pt;
+					}
+				}
+			}
+		}
+	}
 }

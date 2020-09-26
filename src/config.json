@@ -137,7 +137,8 @@
                 "list.invalidItemForeground": "c3",
                 "list.errorForeground": "c3",
                 "list.warningForeground": "c3",
-                "list.deemphasizedForeground": "c3"
+                "list.deemphasizedForeground": "c3",
+                "minimap.background": "c1"
             }
         }
     ]

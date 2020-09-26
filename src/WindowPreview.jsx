@@ -163,14 +163,49 @@ class WindowPreview extends Component {
 				</div>
 				<div className="rightContainer">
 					<Asset
-						assetProps={["editor.background"]}
+						assetProps={["minimap.background"]}
 						className="miniMapSection"
 						palette={palette}
 						assets={assets}
 						handleClick={this.handleClick}
 						handleEnter={this.handleEnter}
 						handleExit={this.handleExit}
-					/>
+					>
+						<div className="miniMapSection__code">
+							{[
+								2,
+								0.5,
+								1,
+								3,
+								1,
+								0.5,
+								1.5,
+								0.5,
+								1,
+								2,
+								1,
+								1,
+								1.5,
+								2,
+								0.5,
+								2.5,
+							].map((i) => {
+								return <span style={{ width: `${i}rem` }} />;
+							})}
+						</div>
+						<Asset
+							className="miniMapSection__slider"
+							assetProps={[
+								"minimapSlider.background",
+								"minimapSlider.hoverBackground",
+							]}
+							palette={palette}
+							assets={assets}
+							handleClick={this.handleClick}
+							handleEnter={this.handleEnter}
+							handleExit={this.handleExit}
+						/>
+					</Asset>
 					<Asset
 						assetProps={["editor.background"]}
 						className=""
