@@ -29,8 +29,8 @@ class App extends Component {
         this.setState({ selectedColorName: colorName });
     }
 
-    updateAsset(assetName, parent) {        
-        let prev = this.state[parent]        
+    updateAsset(assetName, parent) {
+        let prev = this.state[parent]
         prev[assetName] = this.state.selectedColorName;
         this.setState({
             parent: prev
@@ -55,7 +55,7 @@ class App extends Component {
         );
     }
 
-    onColorAdd(){
+    onColorAdd() {
         let allowedColorChars = '0123456789ABCDEF';
         let color = '#';
         for (let i = 0; i < 6; i++) {
@@ -69,16 +69,16 @@ class App extends Component {
         });
     }
 
-    onColorRemove(){
+    onColorRemove() {
         let palette = JSON.parse(JSON.stringify(this.state.palette));;
-        if (Object.keys(palette).length === 1){
+        if (Object.keys(palette).length === 1) {
             return 0;
         }
         let assets = JSON.parse(JSON.stringify(this.state.assets));;
         let keyToRemove = Object.keys(palette).pop();
         Object.keys(assets).map((i, key) => {
-            if (assets[i] === keyToRemove){
-                assets[i] =  Object.keys(palette).shift();
+            if (assets[i] === keyToRemove) {
+                assets[i] = Object.keys(palette).shift();
             }
             return 0;
         });
@@ -92,14 +92,14 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="header"><img src={vsCodeLogo} alt="Visual Studio Code Logo"></img><span>VSCode Theme Designer</span></div>
+                <div className="header"><span>VSCode Theme Designer</span></div>
                 <div className="appSideBarWrapper">
                     <div className="appSideBar">
                         <ThemePicker onChange={this.loadTheme} themes={config.presets} />
                         <div className="colorPickers">
                             <ColorPickers palette={this.state.palette} onChange={this.updatePalette} onSelect={this.handleColorChange}
                                 selectedColorName={this.state.selectedColorName} onColorAdd={this.onColorAdd} onColorRemove={this.onColorRemove}
-                                compactLength={config.colorPickers.compactLength} maxColorCount={config.colorPickers.maxColorCount}/>
+                                compactLength={config.colorPickers.compactLength} maxColorCount={config.colorPickers.maxColorCount} />
                         </div>
                         <CodePreview assets={this.state.assets} palette={this.state.palette} />
                     </div>
@@ -107,9 +107,9 @@ class App extends Component {
                 <div className="windowPreviewContainer">
                     <WindowPreview palette={this.state.palette} handleChange={this.updateAsset} assets={this.state.assets} tokenColors={this.state.tokenColors}
                         openEditors={config.windowPreview.openEditors} fileStructure={config.windowPreview.fileStructure} titleBarMenuItems={config.windowPreview.titleBar.menuItems}
-                        titleBarTitle={config.windowPreview.titleBar.title} fileOutline={config.windowPreview.fileOutline} terminalProblemCount={config.windowPreview.terminal.problemCount}/>
+                        titleBarTitle={config.windowPreview.titleBar.title} fileOutline={config.windowPreview.fileOutline} terminalProblemCount={config.windowPreview.terminal.problemCount} />
                 </div>
-                <Footer links={config.footerLinks} copyrightName={config.owner}/>
+                <Footer links={config.footerLinks} copyrightName={config.owner} />
             </div>
         );
     }

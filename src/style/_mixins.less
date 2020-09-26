@@ -1,49 +1,50 @@
 .iconify(@imageUrl) {
-    content: "";
-    height: 12px;
-    width: 12px;
-    margin: 0 4px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-image: url(@imageUrl);
+	content: "";
+	height: 12px;
+	width: 12px;
+	margin: 0 4px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url(@imageUrl);
 }
 
 .container {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .button(@bg) {
-    cursor: pointer;
-    font-family: @pageFont;
-    user-select: none;
-    text-align: center;
-    margin: 10px auto;
-    height: 36px;
-    line-height: 36px;
-    border-width: 0;
-    border-radius: 4px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    overflow: hidden;
-    color: @black;
-    width: 90%;
-    background-color: @bg;
-    text-transform: lowercase;
-    transition: 0.4s ease-in-out;
-    font-size: 16pt;
-    display:inline-block;
-    &:hover {
-        background-color: darken(@bg, 10%);
-    }
-    &:active {
-        transition: 0.1s;
-        transform: perspective(100px) rotateX(5deg);
-        transform: translateY(1px);
-        box-shadow: 0 0px 4px rgba(0, 0, 0, .6);
-    }
-    .material-icons {
-        font-size: inherit;
-        line-height: 36px;
-        display:inline-block;
-        vertical-align: middle;
-    }
+	cursor: pointer;
+	font-family: @pageFont;
+	user-select: none;
+	text-align: center;
+	margin: 10px auto;
+	height: 36px;
+	line-height: 36px;
+	border-width: 0;
+	border-radius: 4px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+	overflow: hidden;
+	color: @black;
+	width: 90%;
+	background-color: @bg;
+	text-transform: lowercase;
+	transition: 0.4s ease-in-out;
+	font-size: 16pt;
+	display: inline-block;
+	&:hover {
+		background-color: darken(@bg, 10%);
+		transform: translateY(-1px);
+	}
+	&:active {
+		transition: 0.1s;
+		transform: perspective(100px) rotateX(5deg);
+		transform: translateY(1px);
+		box-shadow: 0 0px 4px rgba(0, 0, 0, 0.6);
+	}
+	.material-icons {
+		font-size: inherit;
+		line-height: 36px;
+		display: inline-block;
+		vertical-align: middle;
+	}
 }
