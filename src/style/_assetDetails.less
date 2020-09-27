@@ -1,0 +1,27 @@
+.asset-details {
+	.container();
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	padding: 0.5rem 1rem;
+	font-size: 1.5rem;
+	font-family: @codeFont;
+	background: @white;
+	border-radius: 0 0.5em 0 0;
+	transition: 0.3s;
+	&__colour {
+		width: 1em;
+		height: 1em;
+		border-radius: @radiusStandard;
+		border: 1px solid black;
+	}
+	&__name {
+	}
+	&__property {
+		height: 2.5rem;
+		display: flex;
+		gap: 0.5rem;
+		justify-content: space-between;
+		align-items: center;
+	}
+}

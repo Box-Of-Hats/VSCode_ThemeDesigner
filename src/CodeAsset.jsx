@@ -7,7 +7,7 @@ function CodeAsset(props) {
             onContextMenu={(e) => { e.stopPropagation(); e.preventDefault(); e.stopPropagation(); props.handleClick(props.assetFore) }}
             onMouseEnter={(e) => { e.stopPropagation(); e.preventDefault(); props.handleEnter(props.assetName) }}
             onMouseLeave={(e) => { e.stopPropagation(); e.preventDefault(); props.handleExit(props.assetName) }}
-            data-primaryAsset={props.assetName} data-secondaryAsset={props.assetFore}
+            data-primaryasset={props.assetName} data-secondaryasset={props.assetFore}
             style={props.style ? props.style : {
                 color: props.palette[props.assets[props.assetName]],
             }

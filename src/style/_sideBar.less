@@ -1,33 +1,36 @@
 .side_bar {
-    display: grid;
-    grid-template-rows: 3.5% 3% 9% 3% 40% 3% 38.5%;
-    grid-template-columns: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    height: 100%;
-    &__section_header {
-        .defaultText();
-        font-weight: 600;
-        width: 100%;
-    }
-    &__item {
-        padding: 4px 0 0 4px;
-        .openEditorText {
-            .defaultText();
-            color: unset;
-            height: 100/3%;
-            display: block;
-        }
-        .fileEntryText {
-            .defaultText();
-            color: unset;
-            display: block;
-        }
-        .filterBox {
-            width: 94%;
-            padding: 6px;
-            margin: 6px auto;
-            font-size: 75%;
-        }
-    }
+	display: grid;
+	grid-template-rows: 3.5% 3% 9% 3% 40% 3% 38.5%;
+	grid-template-columns: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	height: 100%;
+	&__section_header {
+		.defaultText();
+		font-weight: 600;
+		width: 100%;
+	}
+	&__item {
+		padding: 4px 0 0 4px;
+		.openEditorText {
+			.defaultText();
+			align-items: center;
+			display: flex;
+			color: unset;
+			height: 1.2rem;
+		}
+		.fileEntryText {
+			.defaultText();
+			color: unset;
+			display: flex;
+			align-items: center;
+			height: 1.2rem;
+		}
+		.filterBox {
+			width: 94%;
+			padding: 6px;
+			margin: 6px auto;
+			font-size: 75%;
+		}
+	}
 }

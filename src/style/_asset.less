@@ -1,23 +1,2 @@
 .asset {
-    &::before {
-        content: attr(data-primaryAsset) " | " attr(data-secondaryAsset);
-        ;
-        position: absolute;
-        padding: 6px;
-        bottom: 0;
-        left: 0;
-        font-family: @pageFont;
-        font-size: 12pt;
-        font-weight: normal;
-        border-radius: 0 @radiusStandard 0 0;
-        color: @white;
-        background-color: @greyDark;
-        -webkit-transition: all 0.1s;
-        transition: all 0.1s;
-        opacity: 0;
-    }
-    &:hover::before {
-        bottom: 0;
-        opacity: 1;
-    }
 }

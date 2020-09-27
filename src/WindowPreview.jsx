@@ -8,6 +8,7 @@ import CodeColorPreview from "./CodeColorPreview";
 import { JSIcon, JSONIcon } from "./Icons";
 import { SideBar } from "./SideBar";
 import { Terminal } from "./Terminal";
+import { AssetDetails } from "./AssetDetails";
 
 class WindowPreview extends Component {
 	constructor(props) {
@@ -27,30 +28,42 @@ class WindowPreview extends Component {
 		this.handleClick = this.handleClick.bind(this);
 		this.handleEnter = this.handleEnter.bind(this);
 		this.handleExit = this.handleExit.bind(this);
+
+
+		this.currentPrimary = { name: "", color: "#ffffff" };
+		this.currentSecondary = { name: "", color: "#ffffff" };
 	}
 
 	handleClick(assetName, parent = "assets") {
 		this.props.handleChange(assetName, parent);
 	}
 
-	handleEnter(assetName) {
+	handleEnter(assetProps) {
 		//Remove all with the class to fix pass through
 		document.querySelectorAll(".highlighted").forEach((e) => {
 			e.classList.remove("highlighted");
 		});
 		document
-			.querySelectorAll(`[data-primaryAsset='${assetName}']`)
+			.querySelectorAll(`[data-primaryasset='${assetProps.primary.name}']`)
 			.forEach((e) => {
 				e.classList.add("highlighted");
 			});
+
+		this.currentPrimary = assetProps.primary
+		this.currentSecondary = assetProps.secondary
+		this.forceUpdate()
 	}
 
-	handleExit(assetName) {
+	handleExit(assetProps) {
 		document
-			.querySelectorAll(`[data-primaryAsset='${assetName}']`)
+			.querySelectorAll(`[data-primaryasset='${assetProps.primary.name}']`)
 			.forEach((e) => {
 				e.classList.remove("highlighted");
 			});
+
+		this.currentPrimary = undefined;
+		this.currentSecondary = undefined;
+		this.forceUpdate()
 	}
 
 	render() {
@@ -391,6 +404,7 @@ class WindowPreview extends Component {
 				>
 					<StatusBar />
 				</Asset>
+				<AssetDetails primary={this.currentPrimary} secondary={this.currentSecondary} />
 			</div>
 		);
 	}
