@@ -4,7 +4,6 @@ import Asset from "./Asset";
 import ContextMenuItem from "./ContextMenuItem";
 import StatusBar from "./StatusBar";
 import TitleBar from "./TitleBar";
-import $ from "jquery";
 import CodeColorPreview from "./CodeColorPreview";
 import { JSIcon, JSONIcon } from "./Icons";
 import { SideBar } from "./SideBar";
@@ -36,12 +35,22 @@ class WindowPreview extends Component {
 
 	handleEnter(assetName) {
 		//Remove all with the class to fix pass through
-		$(".highlighted").removeClass("highlighted");
-		$(`[data-primaryAsset='${assetName}']`).addClass("highlighted");
+		document.querySelectorAll(".highlighted").forEach((e) => {
+			e.classList.remove("highlighted");
+		});
+		document
+			.querySelectorAll(`[data-primaryAsset='${assetName}']`)
+			.forEach((e) => {
+				e.classList.add("highlighted");
+			});
 	}
 
 	handleExit(assetName) {
-		$(`[data-primaryAsset='${assetName}']`).removeClass("highlighted");
+		document
+			.querySelectorAll(`[data-primaryAsset='${assetName}']`)
+			.forEach((e) => {
+				e.classList.remove("highlighted");
+			});
 	}
 
 	render() {
