@@ -22,12 +22,12 @@ export default class ColorPickers extends Component {
                             selected={i === this.props.selectedColorName} /></div>
                     })}
                 </div>
-                <div className="button button--plus" onClick={isAddButtonEnabled ? this.props.onColorAdd : null}>
+                <button className="button button--plus" onClick={isAddButtonEnabled ? this.props.onColorAdd : null}>
                     <i class="material-icons">add_circle_outline</i>add
-                </div>
-                <div className="button button--minus" onClick={this.props.onColorRemove}>
+                </button>
+                <button className="button button--minus" onClick={this.props.onColorRemove}>
                     <i class="material-icons">remove_circle_outline</i>remove
-                </div>
+                </button>
             </div>
         )
     }
