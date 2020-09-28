@@ -279,6 +279,22 @@ class WindowPreview extends Component {
 					handleEnter={this.handleEnter}
 					handleExit={this.handleExit}
 				>
+					<Asset
+						assetProps={[
+							"editorGutter.background",
+							"editorLineNumber.foreground",
+						]}
+						className="gutter"
+						palette={palette}
+						assets={assets}
+						handleClick={this.handleClick}
+						handleEnter={this.handleEnter}
+						handleExit={this.handleExit}
+					>
+						{new Array(50).fill(0).map((_, i) => {
+							return <div className="">{i}</div>;
+						})}
+					</Asset>
 					<CodeColorPreview
 						codeWords={this.state.codePreviewText}
 						palette={palette}

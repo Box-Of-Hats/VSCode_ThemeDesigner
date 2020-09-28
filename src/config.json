@@ -58,7 +58,7 @@
 				"c1": "#1D2725",
 				"c2": "#30423F",
 				"c3": "#EFEFEF",
-				"c4": "#f863aa"
+				"c4": "#15C170"
 			},
 			"editorTokenColorCustomizations": {
 				"comments": "#FF0000",
@@ -134,7 +134,9 @@
 				"list.errorForeground": "c3",
 				"list.warningForeground": "c3",
 				"list.deemphasizedForeground": "c3",
-				"minimap.background": "c1"
+				"minimap.background": "c1",
+				"editorGutter.background": "c0",
+				"editorLineNumber.foreground": "c3"
 			}
 		}
 	]
