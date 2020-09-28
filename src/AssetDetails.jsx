@@ -18,18 +18,24 @@ export const AssetDetails = (props) => {
 
 	return (
 		<div className="asset-details">
-			{[props.primary, props.secondary].map((property) => {
-				return (
-					property && (
-						<div className="asset-details__property">
-							<div className="asset-details__name">
-								{property.name}
+			{
+				[
+					{ ...props.primary, icon: "switch_right" },
+					{ ...props.secondary, icon: "switch_left" }
+				].map((property) => {
+					return (
+						(property && property.name) && (
+							<div className="asset-details__property">
+								<div className="material-icons asset-details__icon">{property.icon}</div>
+
+								<div className="asset-details__name">
+									{property.name}
+								</div>
+								<div style={{ backgroundColor: property.color }} className="asset-details__colour"></div>
 							</div>
-							<div style={{ backgroundColor: property.color }} className="asset-details__colour"></div>
-						</div>
-					)
-				);
-			})}
+						)
+					);
+				})}
 		</div>
 	);
 

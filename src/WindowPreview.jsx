@@ -30,8 +30,8 @@ class WindowPreview extends Component {
 		this.handleExit = this.handleExit.bind(this);
 
 
-		this.currentPrimary = { name: "", color: "#ffffff" };
-		this.currentSecondary = { name: "", color: "#ffffff" };
+		this.currentPrimary = undefined;
+		this.currentSecondary = undefined;
 	}
 
 	handleClick(assetName, parent = "assets") {

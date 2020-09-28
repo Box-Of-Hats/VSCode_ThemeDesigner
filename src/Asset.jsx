@@ -14,12 +14,32 @@ const Asset = (props) => {
 				e.stopPropagation();
 				e.preventDefault();
 				props.handleClick(props.assetProps[0]);
+				props.handleEnter({
+					primary: {
+						name: props.assetProps[0],
+						color: props.palette[props.assets[props.assetProps[0]]]
+					},
+					secondary: {
+						name: props.assetProps[1],
+						color: props.palette[props.assets[props.assetProps[1]]]
+					}
+				});
 			}}
 			onContextMenu={(e) => {
 				e.stopPropagation();
 				e.preventDefault();
 				e.stopPropagation();
 				props.handleClick(props.assetProps[1]);
+				props.handleEnter({
+					primary: {
+						name: props.assetProps[0],
+						color: props.palette[props.assets[props.assetProps[0]]]
+					},
+					secondary: {
+						name: props.assetProps[1],
+						color: props.palette[props.assets[props.assetProps[1]]]
+					}
+				});
 			}}
 			onMouseOver={(e) => {
 				e.stopPropagation();
