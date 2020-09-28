@@ -17,12 +17,12 @@ const Asset = (props) => {
 				props.handleEnter({
 					primary: {
 						name: props.assetProps[0],
-						color: props.palette[props.assets[props.assetProps[0]]]
+						color: props.palette[props.assets[props.assetProps[0]]],
 					},
 					secondary: {
 						name: props.assetProps[1],
-						color: props.palette[props.assets[props.assetProps[1]]]
-					}
+						color: props.palette[props.assets[props.assetProps[1]]],
+					},
 				});
 			}}
 			onContextMenu={(e) => {
@@ -33,12 +33,12 @@ const Asset = (props) => {
 				props.handleEnter({
 					primary: {
 						name: props.assetProps[0],
-						color: props.palette[props.assets[props.assetProps[0]]]
+						color: props.palette[props.assets[props.assetProps[0]]],
 					},
 					secondary: {
 						name: props.assetProps[1],
-						color: props.palette[props.assets[props.assetProps[1]]]
-					}
+						color: props.palette[props.assets[props.assetProps[1]]],
+					},
 				});
 			}}
 			onMouseOver={(e) => {
@@ -47,28 +47,27 @@ const Asset = (props) => {
 				props.handleEnter({
 					primary: {
 						name: props.assetProps[0],
-						color: backgroundColor
+						color: backgroundColor,
 					},
 					secondary: {
 						name: props.assetProps[1],
-						color: foregroundColor
-					}
+						color: foregroundColor,
+					},
 				});
 			}}
 			onMouseLeave={(e) => {
 				e.stopPropagation();
 				e.preventDefault();
-				props.handleExit(
-					{
-						primary: {
-							name: props.assetProps[0],
-							color: backgroundColor
-						},
-						secondary: {
-							name: props.assetProps[1],
-							color: foregroundColor
-						}
-					});
+				props.handleExit({
+					primary: {
+						name: props.assetProps[0],
+						color: backgroundColor,
+					},
+					secondary: {
+						name: props.assetProps[1],
+						color: foregroundColor,
+					},
+				});
 			}}
 			data-primaryasset={props.assetProps[0]}
 			data-secondaryasset={props.assetProps[1]}
@@ -78,13 +77,13 @@ const Asset = (props) => {
 				props.style
 					? props.style
 					: {
-						backgroundColor: backgroundColor,
-						color: foregroundColor,
-					}
+							backgroundColor: backgroundColor,
+							color: foregroundColor,
+					  }
 			}
 		>
-			{ props.children}
-		</div >
+			{props.children}
+		</div>
 	);
 };
 

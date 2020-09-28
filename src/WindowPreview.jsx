@@ -29,7 +29,6 @@ class WindowPreview extends Component {
 		this.handleEnter = this.handleEnter.bind(this);
 		this.handleExit = this.handleExit.bind(this);
 
-
 		this.currentPrimary = undefined;
 		this.currentSecondary = undefined;
 	}
@@ -44,26 +43,30 @@ class WindowPreview extends Component {
 			e.classList.remove("highlighted");
 		});
 		document
-			.querySelectorAll(`[data-primaryasset='${assetProps.primary.name}']`)
+			.querySelectorAll(
+				`[data-primaryasset='${assetProps.primary.name}']`
+			)
 			.forEach((e) => {
 				e.classList.add("highlighted");
 			});
 
-		this.currentPrimary = assetProps.primary
-		this.currentSecondary = assetProps.secondary
-		this.forceUpdate()
+		this.currentPrimary = assetProps.primary;
+		this.currentSecondary = assetProps.secondary;
+		this.forceUpdate();
 	}
 
 	handleExit(assetProps) {
 		document
-			.querySelectorAll(`[data-primaryasset='${assetProps.primary.name}']`)
+			.querySelectorAll(
+				`[data-primaryasset='${assetProps.primary.name}']`
+			)
 			.forEach((e) => {
 				e.classList.remove("highlighted");
 			});
 
 		this.currentPrimary = undefined;
 		this.currentSecondary = undefined;
-		this.forceUpdate()
+		this.forceUpdate();
 	}
 
 	render() {
@@ -404,7 +407,10 @@ class WindowPreview extends Component {
 				>
 					<StatusBar />
 				</Asset>
-				<AssetDetails primary={this.currentPrimary} secondary={this.currentSecondary} />
+				<AssetDetails
+					primary={this.currentPrimary}
+					secondary={this.currentSecondary}
+				/>
 			</div>
 		);
 	}

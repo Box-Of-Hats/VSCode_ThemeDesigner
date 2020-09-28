@@ -1,145 +1,141 @@
 {
-    "footerLinks": [
-        {
-            "url": "https://github.com/Box-Of-Hats/VSCode_ThemeGenerator/",
-            "label": "source"
-        },
-        {
-            "url": "https://box-of-hats.netlify.com/",
-            "label": "my work"
-        },
-        {
-            "url": "https://www.buymeacoffee.com/boxofhats",
-            "label": "buy me a coffee"
-        }
-    ],
-    "owner": "Box of Hats",
-    "windowPreview": {
-        "titleBar": {
-            "menuItems": "File Edit Selection View Go Debug Terminal Help",
-            "title": "App,js - VSCode_ThemeGenerator - Visual Studio Code"
-        },
-        "openEditors": [
-            "App.js",
-            "bg1.json",
-            "bg2.json"
-        ],
-        "fileStructure": [
-            "◢ WebApp",
-            "\t▶ VSCode",
-            "\t▶ build",
-            "\t◢ src",
-            "\t\tApp.js",
-            "\t\tbg1.json",
-            "\t\tbg2.json",
-            "\t\tbg3.json",
-            "\t◢ style",
-            "\t\tindex.css",
-            "\t\tapp.css"
-        ],
-        "fileOutline": [
-            "◢ ⊏ App",
-            "\t⊞ handleColorChange",
-            "\t⊞ render",
-            "◢ WindowPreview",
-            "\t⊞ handleClick",
-            "\t⊞ handleEnter",
-            "\t⊞ handleExit"
-        ],
-        "terminal": {
-            "problemCount": 30
-        }
-    },
-    "colorPickers": {
-        "compactLength": 6,
-        "maxColorCount": 12
-    },
-    "presets": [
-        {
-            "name": "Swamp",
-            "palette": {
-                "c0": "#141A18",
-                "c1": "#1D2725",
-                "c2": "#30423F",
-                "c3": "#EFEFEF",
-                "c4": "#f863aa"
-            },
-            "editorTokenColorCustomizations": {
-                "comments": "#FF0000",
-                "functions": "#FF0000",
-                "keywords": "#FF0000",
-                "numbers": "#FF0000",
-                "strings": "#FF0000",
-                "types": "#FF0000",
-                "variables": "#FF0000"
-            },
-            "workbenchColorCustomizations": {
-                "activityBar.background": "c2",
-                "activityBar.border": "c1",
-                "activityBar.foreground": "c4",
-                "activityBar.inactiveForeground": "c3",
-                "activityBarBadge.background": "c3",
-                "activityBarBadge.foreground": "c1",
-                "badge.background": "c1",
-                "badge.foreground": "c3",
-                "breadcrumb.activeSelectionForeground": "c3",
-                "editor.background": "c0",
-                "editor.selectionBackground": "c2",
-                "editorGroupHeader.tabsBackground": "c0",
-                "editorSuggestWidget.highlightForeground": "c3",
-                "editorWhitespace.foreground": "c1",
-                "editorWidget.border": "c3",
-                "editorWidget.resizeBorder": "c3",
-                "list.activeSelectionForeground": "c3",
-                "list.highlightForeground": "c3",
-                "list.inactiveSelectionForeground": "c3",
-                "menu.background": "c1",
-                "menu.selectionBackground": "c3",
-                "menu.selectionForeground": "c1",
-                "menu.separatorBackground": "c3",
-                "menubar.selectionForeground": "c3",
-                "notificationLink.foreground": "c3",
-                "panel.background": "c2",
-                "panelTitle.activeBorder": "c3",
-                "pickerGroup.foreground": "c3",
-                "progressBar.background": "c3",
-                "scrollbar.shadow": "c1",
-                "scrollbarSlider.activeBackground": "c2",
-                "scrollbarSlider.background": "c2",
-                "settings.headerForeground": "c3",
-                "settings.modifiedItemIndicator": "c3",
-                "sideBar.background": "c1",
-                "sideBar.foreground": "c3",
-                "sideBarSectionHeader.background": "c2",
-                "statusBar.background": "c1",
-                "statusBar.foreground": "c3",
-                "tab.activeBackground": "c0",
-                "tab.activeBorder": "c3",
-                "tab.activeForeground": "c3",
-                "tab.inactiveBackground": "c1",
-                "textLink.foreground": "c3",
-                "titleBar.activeBackground": "c2",
-                "titleBar.activeForeground": "c3",
-                "titleBar.inactiveBackground": "c1",
-                "menu.foreground": "c3",
-                "dropdown.background": "c1",
-                "dropdown.foreground": "c3",
-                "input.background": "c2",
-                "input.placeholderForeground": "c3",
-                "input.foreground": "c3",
-                "terminal.foreground": "c3",
-                "terminal.background": "c2",
-                "list.inactiveSelectionBackground": "c2",
-                "list.activeSelectionBackground": "c2",
-                "list.hoverBackground": "c2",
-                "list.hoverForeground": "c3",
-                "list.focusForeground": "c3",
-                "list.invalidItemForeground": "c3",
-                "list.errorForeground": "c3",
-                "list.warningForeground": "c3",
-                "list.deemphasizedForeground": "c3",
-                "minimap.background": "c1"
-            }
-        }
-    ]
+	"footerLinks": [
+		{
+			"url": "https://github.com/Box-Of-Hats/VSCode_ThemeGenerator/",
+			"label": "source"
+		},
+		{
+			"url": "https://box-of-hats.netlify.com/",
+			"label": "my work"
+		},
+		{
+			"url": "https://www.buymeacoffee.com/boxofhats",
+			"label": "buy me a coffee"
+		}
+	],
+	"owner": "Box of Hats",
+	"windowPreview": {
+		"titleBar": {
+			"menuItems": "File Edit Selection View Go Debug Terminal Help",
+			"title": "App,js - VSCode_ThemeGenerator - Visual Studio Code"
+		},
+		"openEditors": ["App.js", "bg1.json", "bg2.json"],
+		"fileStructure": [
+			"◢ WebApp",
+			"\t▶ VSCode",
+			"\t▶ build",
+			"\t◢ src",
+			"\t\tApp.js",
+			"\t\tbg1.json",
+			"\t\tbg2.json",
+			"\t\tbg3.json",
+			"\t◢ style",
+			"\t\tindex.css",
+			"\t\tapp.css"
+		],
+		"fileOutline": [
+			"◢ ⊏ App",
+			"\t⊞ handleColorChange",
+			"\t⊞ render",
+			"◢ WindowPreview",
+			"\t⊞ handleClick",
+			"\t⊞ handleEnter",
+			"\t⊞ handleExit"
+		],
+		"terminal": {
+			"problemCount": 30
+		}
+	},
+	"colorPickers": {
+		"compactLength": 6,
+		"maxColorCount": 12
+	},
+	"presets": [
+		{
+			"name": "Swamp",
+			"palette": {
+				"c0": "#141A18",
+				"c1": "#1D2725",
+				"c2": "#30423F",
+				"c3": "#EFEFEF",
+				"c4": "#f863aa"
+			},
+			"editorTokenColorCustomizations": {
+				"comments": "#FF0000",
+				"functions": "#FF0000",
+				"keywords": "#FF0000",
+				"numbers": "#FF0000",
+				"strings": "#FF0000",
+				"types": "#FF0000",
+				"variables": "#FF0000"
+			},
+			"workbenchColorCustomizations": {
+				"activityBar.background": "c2",
+				"activityBar.border": "c1",
+				"activityBar.foreground": "c4",
+				"activityBar.inactiveForeground": "c3",
+				"activityBarBadge.background": "c3",
+				"activityBarBadge.foreground": "c1",
+				"badge.background": "c1",
+				"badge.foreground": "c3",
+				"breadcrumb.activeSelectionForeground": "c3",
+				"editor.background": "c0",
+				"editor.selectionBackground": "c2",
+				"editorGroupHeader.tabsBackground": "c0",
+				"editorSuggestWidget.highlightForeground": "c3",
+				"editorWhitespace.foreground": "c1",
+				"editorWidget.border": "c3",
+				"editorWidget.resizeBorder": "c3",
+				"list.activeSelectionForeground": "c3",
+				"list.highlightForeground": "c3",
+				"list.inactiveSelectionForeground": "c3",
+				"menu.background": "c1",
+				"menu.selectionBackground": "c3",
+				"menu.selectionForeground": "c1",
+				"menu.separatorBackground": "c3",
+				"menubar.selectionForeground": "c3",
+				"notificationLink.foreground": "c3",
+				"panel.background": "c2",
+				"panelTitle.activeBorder": "c3",
+				"pickerGroup.foreground": "c3",
+				"progressBar.background": "c3",
+				"scrollbar.shadow": "c1",
+				"scrollbarSlider.activeBackground": "c2",
+				"scrollbarSlider.background": "c2",
+				"settings.headerForeground": "c3",
+				"settings.modifiedItemIndicator": "c3",
+				"sideBar.background": "c1",
+				"sideBar.foreground": "c3",
+				"sideBarSectionHeader.background": "c2",
+				"statusBar.background": "c1",
+				"statusBar.foreground": "c3",
+				"tab.activeBackground": "c0",
+				"tab.activeBorder": "c3",
+				"tab.activeForeground": "c3",
+				"tab.inactiveBackground": "c1",
+				"textLink.foreground": "c3",
+				"titleBar.activeBackground": "c2",
+				"titleBar.activeForeground": "c3",
+				"titleBar.inactiveBackground": "c1",
+				"menu.foreground": "c3",
+				"dropdown.background": "c1",
+				"dropdown.foreground": "c3",
+				"input.background": "c2",
+				"input.placeholderForeground": "c3",
+				"input.foreground": "c3",
+				"terminal.foreground": "c3",
+				"terminal.background": "c2",
+				"list.inactiveSelectionBackground": "c2",
+				"list.activeSelectionBackground": "c2",
+				"list.hoverBackground": "c2",
+				"list.hoverForeground": "c3",
+				"list.focusForeground": "c3",
+				"list.invalidItemForeground": "c3",
+				"list.errorForeground": "c3",
+				"list.warningForeground": "c3",
+				"list.deemphasizedForeground": "c3",
+				"minimap.background": "c1"
+			}
+		}
+	]
 }

@@ -5,7 +5,6 @@ import CodePreview from './CodePreview';
 import Footer from './Footer';
 import WindowPreview from './WindowPreview';
 import ColorPickers from './ColorPickers';
-const vsCodeLogo = require('./img/vsCodeLogo.png');
 const config = require('./config.json');
 
 class App extends Component {
