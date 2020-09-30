@@ -1,61 +1,65 @@
-import React, { Component } from "react";
+//@ts-check
+import React, { useState } from "react";
 
-class ColorPicker extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			value: props.color ? props.color : "#FFFFFF",
-		};
-		this.handleColorChange = this.handleColorChange.bind(this);
-		this.handleSelectButtonClick = this.handleSelectButtonClick.bind(this);
-	}
+/**
+ * @typedef {Object} ColorPickerProps
+ * @property {string} color
+ * @property {string} colorName
+ * @property {string} selected The class to add when the colorpicker is selected
+ * @property {(colorName: string, value: string) => any} handleChange
+ * @property {(colorName: string) => any} handleSelect
+ */
 
-	handleColorChange(event) {
-		event.preventDefault();
-		this.setState({ value: event.value });
-		this.props.handleChange(this.props.colorName, event.target.value);
-		this.props.handleSelect(this.props.colorName);
-	}
+/**
+ * @param {ColorPickerProps} props
+ */
+export const ColorPicker = (props) => {
+	const [color, setColor] = useState(props.color || "#FFFFFF");
+	var highlightClass = props.selected ? "highlight" : "";
 
-	handleSelectButtonClick(event) {
-		event.preventDefault();
-		this.props.handleSelect(this.props.colorName);
-	}
+	const handleColorChange = (e) => {
+		e.preventDefault();
+		setColor(e.value);
+		props.handleChange(props.colorName, e.target.value);
+		props.handleSelect(props.colorName);
+	};
 
-	render() {
-		var highlightClass = this.props.selected ? "highlight" : "";
-		return (
-			<div className="colorPickerComponent">
-				<label
-					className="colorPickerComponent__label"
-					style={{ backgroundColor: this.props.color }}
-				>
-					<input
-						style={{
-							display: "none",
-							overflow: "hidden",
-							width: 0,
-						}}
-						onChange={this.handleColorChange}
-						value={this.state.value}
-						type="color"
-					/>
-				</label>
-				<button
+	const handleSelectButtonClick = (e) => {
+		e.preventDefault();
+		props.handleSelect(props.colorName);
+	};
+
+	return (
+		<div className="colorPickerComponent">
+			<label
+				className="colorPickerComponent__label"
+				style={{ backgroundColor: props.color }}
+			>
+				<input
 					style={{
-						boxShadow: this.props.selected
-							? `inset 10px 1px 0px ${this.props.color}`
-							: "none",
-						border: `2px solid ${this.props.color}`,
+						display: "none",
+						overflow: "hidden",
+						width: 0,
 					}}
-					className={`colorPickerComponent__button ${highlightClass}`}
-					onClick={this.handleSelectButtonClick}
-				>
-					select
-				</button>
-			</div>
-		);
-	}
-}
+					onChange={(e) => handleColorChange(e)}
+					value={color}
+					type="color"
+				/>
+			</label>
+			<button
+				style={{
+					boxShadow: props.selected
+						? `inset 10px 1px 0px ${props.color}`
+						: "none",
+					border: `2px solid ${props.color}`,
+				}}
+				className={`colorPickerComponent__button ${highlightClass}`}
+				onClick={handleSelectButtonClick}
+			>
+				select
+			</button>
+		</div>
+	);
+};
 
 export default ColorPicker;
