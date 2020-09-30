@@ -128,6 +128,7 @@
 				"list.inactiveSelectionBackground": "c2",
 				"list.activeSelectionBackground": "c2",
 				"list.hoverBackground": "c2",
+				"list.focusBackground": "c2",
 				"list.hoverForeground": "c3",
 				"list.focusForeground": "c3",
 				"list.invalidItemForeground": "c3",
@@ -136,7 +137,10 @@
 				"list.deemphasizedForeground": "c3",
 				"minimap.background": "c1",
 				"editorGutter.background": "c0",
-				"editorLineNumber.foreground": "c3"
+				"editorLineNumber.foreground": "c3",
+				"quickInput.background": "c2",
+				"quickInput.foreground": "c3",
+				"quickInputTitle.background": "c2"
 			}
 		}
 	]
