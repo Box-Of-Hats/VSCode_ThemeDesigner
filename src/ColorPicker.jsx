@@ -29,6 +29,10 @@ export const ColorPicker = (props) => {
 		props.handleSelect(props.colorName);
 	};
 
+	const randomColor = () => {
+		return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+	};
+
 	return (
 		<div className="colorPickerComponent">
 			<label
@@ -46,6 +50,14 @@ export const ColorPicker = (props) => {
 					type="color"
 				/>
 			</label>
+			<button
+				className="colorPickerComponent__button"
+				onClick={() => {
+					props.handleChange(props.colorName, randomColor());
+				}}
+			>
+				<i className="material-icons">autorenew</i>
+			</button>
 			<button
 				style={{
 					boxShadow: props.selected

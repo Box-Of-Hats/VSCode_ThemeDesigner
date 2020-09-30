@@ -1,59 +1,61 @@
 //ColorPickers
 .colorPickersComponent {
-    align-content: center;
-    text-align: center;
-    width: 100%;
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 50% 50%;
-    grid-template-areas: "b1 b2" "a a";
-    font-size: 16pt;
-    .colorPickers {
-        grid-area: a;
-    }
-    .button {
-        &-plus {
-            grid-area: b1;
-        }
-        &-minus {
-            grid-area: b2;
-        }
-    }
+	align-content: center;
+	text-align: center;
+	width: 100%;
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: 50% 50%;
+	grid-template-areas: "b1 b2" "a a";
+	font-size: 16pt;
+	.colorPickers {
+		grid-area: a;
+	}
+	.button {
+		&-plus {
+			grid-area: b1;
+		}
+		&-minus {
+			grid-area: b2;
+		}
+	}
 }
 
 //ColorPicker
 .colorPickerComponent {
-    display: grid;
-    grid-template-rows: 100%;
-    grid-template-columns: 34px auto;
-    height: 34px;
-    margin: 2px auto;
-    &__label {
-        .button();
-        cursor: pointer;
-        vertical-align: top;
-        margin: 0;
-        .material-icons {
-            font-size: 16pt;
-        }
-    }
-    &__button {
-        .button(@white);
-        margin: 0 auto;
-        cursor: pointer;
-        text-decoration: none;
-        color: @black;
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 3rem 3rem auto;
+	height: 2.5rem;
+	margin: 2px auto;
+	&__label {
+		.button();
+		cursor: pointer;
+		vertical-align: top;
+		margin: 0;
+		.material-icons {
+			font-size: 16pt;
+		}
+	}
+	&__button {
+		.button(@white);
+		margin: 0 0.5rem;
+		cursor: pointer;
+		text-decoration: none;
+		color: @black;
 
-        
-        &:focus {
-            outline: 0;
-        }
-        &:hover {
-            transition: 300ms;
-            background: darken(@white, 5%);
-        }
-        &:active {
-            transition: 0s;
-        }
-    }
+		&:focus {
+			outline: 0;
+		}
+		&:hover {
+			transition: 300ms;
+			background: darken(@white, 5%);
+		}
+		&:active {
+			transition: 0s;
+		}
+	}
+	.material-icons {
+		text-align: center;
+	}
 }
